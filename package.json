@@ -1,0 +1,8 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nstsoft/upwork-profile-frontend.git",
+  "author": "Oleg <keeperoleg26@gmail.com>",
+  "license": "MIT"
+}
