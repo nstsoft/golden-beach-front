@@ -9,7 +9,7 @@ function App() {
           <img src={Logo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>test</h1>
+      <h1 style={{ fontFamily: 'Inter regular' }}>test</h1>
     </>
   );
 }
