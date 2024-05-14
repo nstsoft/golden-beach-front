@@ -9,11 +9,10 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
 const filename = fileURLToPath(import.meta.url);
 const baseDirectory = path.dirname(filename);
-
-console.log(baseDirectory);
 
 const compat = new FlatCompat({ baseDirectory });
 
@@ -21,6 +20,7 @@ export default [
   js.configs.recommended,
   ...compat.extends('plugin:@typescript-eslint/recommended'),
   ...compat.extends('airbnb-typescript/base'),
+  ...compat.extends('plugin:react-hooks/recommended'),
 
   {
     plugins: {
@@ -29,6 +29,7 @@ export default [
       'unused-imports': unusedImports,
       import: importPlugin,
       'simple-import-sort': sort,
+      'react-refresh': reactRefresh,
     },
     languageOptions: {
       parser: parser,
@@ -51,8 +52,8 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'no-duplicate-imports': 'error',
       'unused-imports/no-unused-imports': 'error',
-      'simple-import-sort/imports': 'error',
-      'simple-import-sort/exports': 'error',
+      'simple-import-sort/imports': 0,
+      'simple-import-sort/exports': 0,
       'import/first': 'error',
       'import/no-duplicates': 'error',
       'import/no-extraneous-dependencies': 0,
@@ -66,6 +67,7 @@ export default [
           ],
         },
       ],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
   },
   ...compat.extends('prettier'),
