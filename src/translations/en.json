@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "Menu": {
+      "home": "HOME",
+      "event": "EVENT",
+      "news": "NEWS",
+      "service": "SERVICE",
+      "video": "VIDEO",
+      "gallery": "GALLERY"
+    }
+  }
+}

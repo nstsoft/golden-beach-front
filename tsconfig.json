@@ -18,7 +18,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "paths": {
+      "assets/*": ["./src/assets/*"],
+      "translations/*": ["./src/translations/*"],
+      "src/*": ["./src/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["eslint.config.mjs", "node_modules", "dist", ".prettierrc.js", "./tsconfig.node.json", "./tsconfig.json"],
