@@ -68,6 +68,7 @@ export default [
         },
       ],
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'import/extensions': 0,
     },
   },
   ...compat.extends('prettier'),

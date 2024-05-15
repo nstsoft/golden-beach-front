@@ -1,25 +1,21 @@
-import './App.css';
-import { useTranslation } from 'react-i18next';
-import logo from './assets/logo.svg';
+import { type RouteObject, useRoutes } from 'react-router-dom';
+import { Layout } from './Layout';
+import { HomePage, EventsPage, NotFoundPage } from 'src/pages';
 
-console.log(logo);
+export default function App() {
+  const routes: RouteObject[] = [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: '/events', element: <EventsPage /> },
+        { path: '*', element: <NotFoundPage /> },
+      ],
+    },
+  ];
 
-function App() {
-  const { t, i18n } = useTranslation();
+  const element = useRoutes(routes);
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-    console.log(i18n.language);
-  };
-
-  return (
-    <div>
-      <h1>{t('HomePage.Menu.home')}</h1>
-      <button onClick={() => changeLanguage('en')}>English</button>
-      <button onClick={() => changeLanguage('it')}>French</button>
-      <button>{t('button')}</button>
-    </div>
-  );
+  return <div>{element}</div>;
 }
-
-export default App;
