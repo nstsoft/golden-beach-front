@@ -9,6 +9,7 @@ i18n.init({
     en: { translation: enTranslation },
     it: { translation: itTranslation },
   },
+  fallbackLng: 'en',
 });
 
 export { i18n };
