@@ -23,7 +23,11 @@
     "paths": {
       "assets/*": ["./src/assets/*"],
       "translations/*": ["./src/translations/*"],
-      "src/*": ["./src/*"]
+      "src/*": ["./src/*"],
+      "components": ["./src/components"],
+      "pages": ["./src/pages"],
+      "utils": ["./src/utils"],
+      "elements": ["./src/elements"],
     }
   },
   "include": ["src"],
