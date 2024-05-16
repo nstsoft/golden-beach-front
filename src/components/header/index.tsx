@@ -10,7 +10,7 @@ import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import { isMobile } from 'react-device-detect';
 import { SideMenu } from './components';
-import { searchSvg, cartSvg, userSvg } from 'assets/svg/header';
+import { CartSvg, UserSvg, SearchSvg } from 'assets/svg/header';
 
 export const Header = () => {
   const { i18n } = useTranslation();
@@ -30,15 +30,21 @@ export const Header = () => {
   };
 
   return (
-    <div className="header app-padding">
+    <div className={`header app-padding ${isMobile ? 'mobile' : ''}`}>
       <div className="header_content">
         <div className="logo">
           <img src={Logo} className="logo" alt="Golden beach logo" />
         </div>
         <div className="menu">
-          <div className="menu_item">{<img src={searchSvg} className="icon" alt="search icon" />}</div>
-          <div className="menu_item">{<img src={cartSvg} className="icon" alt="cart icon" />}</div>
-          <div className="menu_item">{<img src={userSvg} className="icon" alt="cart icon" />}</div>
+          <div className="menu_item search">
+            <SearchSvg />
+          </div>
+          <div className="menu_item cart">
+            <CartSvg />
+          </div>
+          <div className="menu_item profile">
+            <UserSvg />
+          </div>
 
           <div className="menu_item language">
             <Select
@@ -57,7 +63,7 @@ export const Header = () => {
               </MenuItem>
             </Select>
           </div>
-          <div className="menu_item">
+          <div className="menu_item menu_drawer">
             <Button
               id="demo-positioned-button"
               aria-controls={isMenuOpen ? 'demo-positioned-menu' : undefined}

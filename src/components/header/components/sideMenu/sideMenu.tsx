@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import { arrowRightSvg } from 'assets/svg/header';
+import { ArrowRightSvg } from 'assets/svg/header';
 
 type Props = {
   toggleDrawer: (newOpen?: boolean) => void;
@@ -21,7 +21,7 @@ export const SideMenu: FC<Props> = ({ toggleDrawer }) => {
   return (
     <div className={`side-menu  ${isMobile ? 'mobile' : ''}`}>
       <div className="close" onClick={handleClick}>
-        <img src={arrowRightSvg} />
+        <ArrowRightSvg />
       </div>
       <div className="side-menu_content">
         <div className="logo">

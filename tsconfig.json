@@ -27,7 +27,7 @@
       "components": ["./src/components"],
       "pages": ["./src/pages"],
       "utils": ["./src/utils"],
-      "elements": ["./src/elements"],
+      "elements": ["./src/components/elements"]
     }
   },
   "include": ["src"],

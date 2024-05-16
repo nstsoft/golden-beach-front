@@ -1,7 +1,11 @@
 $color: #ffffff;
 $background: #222222;
+$shadowedText: #909090;
+$shadowedTextHeader: #343434;
 
 :export {
-    color: $color;
-    background: $background;
+  color: $color;
+  background: $background;
+  shadowedText: $shadowedText;
+  shadowedTextHeader: $shadowedTextHeader;
 }

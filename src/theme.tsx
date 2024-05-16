@@ -11,9 +11,10 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          fontFamily: '"Montserrat Regular", sans-serif',
+          fontFamily: '"Inter regular", sans-serif',
           margin: 0,
           fontSize: '1rem',
+          backgroundColor: '#171717',
         },
       },
     },

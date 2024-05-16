@@ -18,6 +18,7 @@
 
     .logo {
       display: flex;
+      padding-left: 30px;
       img {
         width: 60%;
       }
@@ -33,25 +34,47 @@
         display: flex;
         align-items: center;
         height: 30px;
-        img{
-          height:17px;
+        img {
+          height: 17px;
         }
-        .MuiInputBase-root,.MuiOutlinedInput-notchedOutline,svg {
+        .MuiInputBase-root,
+        .MuiOutlinedInput-notchedOutline,
+        svg {
           color: $color;
-          border:none;
+          border: none;
         }
-        .MuiOutlinedInput-input{
-          font-size: 0.8rem;
+        .MuiOutlinedInput-input {
+          font-size: 0.7rem;
         }
       }
-      .language{
-        width:70px;
-        border-left:1px solid $color;
-        border-right:1px solid $color;
+      .language {
+        width: 70px;
+        border-left: 1px solid $color;
+        border-right: 1px solid $color;
       }
     }
   }
 }
-.MuiMenu-papersssssssssssssssssssssss{
-  background: green;
+
+.mobile {
+  .header_content {
+    .logo {
+      display: flex;
+      padding-left: 0px;
+      img {
+        width: 100%;
+        max-width: 40vw;
+      }
+    }
+    .menu {
+      .cart,
+      .search {
+        display: none;
+      }
+      .language,
+      .menu_drawer {
+        margin: 0;
+      }
+    }
+  }
 }

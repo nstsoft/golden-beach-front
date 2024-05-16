@@ -1,8 +1,25 @@
-
-
-.app-padding{
-    padding: 0 5px;
+.app-padding {
+  padding: 0 5px;
 }
-.MuiPaper-root{
-    background-color: #212429;
+
+.MuiPaper-root {
+  background-color: #212429;
+}
+
+.page {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+
+  &_content {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+  }
 }
