@@ -4,7 +4,7 @@ import { Paper } from '@mui/material';
 import { isMobile } from 'react-device-detect';
 import { FC } from 'react';
 
-type Props = { children?: React.ReactNode[] };
+type Props = { children?: React.ReactNode[]; clasName?: string };
 
 function Item({ node }: { node: React.ReactNode }) {
   return <Paper>{node}</Paper>;

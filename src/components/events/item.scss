@@ -4,6 +4,7 @@
   height: 300px;
   margin: 0 10px;
   &_content {
+    background-color: #222222;
     .image_background {
       height: 170px;
       overflow: hidden;
@@ -18,11 +19,13 @@
       align-items: center;
       color: $color;
       height: 130px;
+
       .body {
         display: flex;
         justify-content: space-between;
         padding: 10px;
         width: 100%;
+
         .date {
           display: flex;
           flex-direction: column;
@@ -60,6 +63,15 @@
         margin-right: 15px;
       }
     }
+  }
+}
+.mobile_section {
+  flex-direction: column;
+  display: flex;
+  height: 60vh;
+  overflow: scroll;
+  .event_item {
+    margin: 20px 10px;
   }
 }
 .CarouselItem {

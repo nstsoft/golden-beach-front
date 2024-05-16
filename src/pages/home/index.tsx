@@ -14,6 +14,7 @@ export const HomePage = () => {
       <section className="page_content">
         <ShadowHeader bigText="Upcoming" smallText="events" />
         <EventsSection />
+        <ShadowHeader bigText="Upcoming" smallText="events" />
       </section>
     </div>
   );
