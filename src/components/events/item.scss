@@ -1,0 +1,69 @@
+@import '../../variables.scss';
+.event_item {
+  width: 350px;
+  height: 300px;
+  margin: 0 10px;
+  &_content {
+    .image_background {
+      height: 170px;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+    .content {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      color: $color;
+      height: 130px;
+      .body {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        width: 100%;
+        .date {
+          display: flex;
+          flex-direction: column;
+          text-transform: uppercase;
+          text-align: center;
+          justify-content: flex-start;
+          height: 100%;
+          .month {
+            text-transform: uppercase;
+          }
+          .day {
+            font-family: 'Montserrat-Bold', sans-serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+          }
+        }
+        .text {
+          display: flex;
+          flex-direction: column;
+          padding-left: 10px;
+          .title {
+            font-weight: 900;
+          }
+          .description {
+            color: $shadowedText;
+            font-size: 0.8rem;
+          }
+        }
+      }
+      .footer {
+        text-align: left;
+        align-self: flex-end;
+        cursor: pointer;
+        margin-bottom: 5px;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+.CarouselItem {
+  .MuiPaper-root {
+    background: transparent;
+  }
+}

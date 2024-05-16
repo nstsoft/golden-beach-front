@@ -1,6 +1,6 @@
 import './home.scss';
 import Video from 'assets/pages/home/benvenuto.mp4';
-import { ShadowHeader } from 'components';
+import { ShadowHeader, EventsSection } from 'components';
 
 export const HomePage = () => {
   return (
@@ -11,9 +11,10 @@ export const HomePage = () => {
           <script>var video = document.currentScript.parentElement; video.volume = 0.5;</script>
         </video>
       </div>
-      <div className="page_content">
+      <section className="page_content">
         <ShadowHeader bigText="Upcoming" smallText="events" />
-      </div>
+        <EventsSection />
+      </section>
     </div>
   );
 };
