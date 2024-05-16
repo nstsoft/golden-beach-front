@@ -12,7 +12,7 @@ function Item({ node }: { node: React.ReactNode }) {
 
 export const CustomCarousel: FC<Props & CarouselProps> = ({ children, ...props }) => {
   return (
-    <Carousel {...props} className={`custom_carousel ${isMobile ? 'mobile' : ''}`}>
+    <Carousel swipe {...props} className={`custom_carousel ${isMobile ? 'mobile' : ''}`}>
       {children?.map((item, i) => <Item key={i} node={item} />)}
     </Carousel>
   );

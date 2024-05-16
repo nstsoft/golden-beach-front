@@ -71,7 +71,12 @@
   height: 60vh;
   overflow: scroll;
   .event_item {
-    margin: 20px 10px;
+    margin: 20px 0px;
+    .event_item_content {
+      .image_background {
+        height: 140px;
+      }
+    }
   }
 }
 .CarouselItem {

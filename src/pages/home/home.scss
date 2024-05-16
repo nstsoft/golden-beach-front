@@ -37,3 +37,12 @@
     }
   }
 }
+.mobile {
+  .page_video {
+    height: 40vh;
+    min-height: 0;
+    .clip {
+      position: relative;
+    }
+  }
+}
