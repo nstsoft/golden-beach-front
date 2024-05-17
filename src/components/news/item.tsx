@@ -4,8 +4,8 @@ import { isMobile } from 'react-device-detect';
 
 export const EventItem = (event: Event) => {
   return (
-    <div className="event_item">
-      <div className="event_item_content">
+    <div className="news_item">
+      <div className="news_item_content">
         <div className="image_background">
           <img src={event.img} alt={event.name} />
         </div>

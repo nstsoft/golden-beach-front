@@ -1,13 +1,17 @@
 .events_section {
-  .event_item_set {
+  width: 100%;
+  .slide {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-  }
-}
-.mobile {
-  .custom_carousel {
-    display: none;
+    height: 250px;
+    width: 100%;
+    justify-content: space-between;
+    .image {
+      display: flex;
+      cursor: pointer;
+      max-width: 250px;
+      img {
+        height: 100%;
+      }
+    }
   }
 }

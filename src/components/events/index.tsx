@@ -1,26 +1,16 @@
 import './events.scss';
-import { useEvents } from 'hooks';
 import { CustomCarousel } from 'components';
-import { EventItem } from './item';
-import { splitByChunks, type Event } from 'utils';
 import { isMobile } from 'react-device-detect';
+import { splitByChunks } from 'utils';
+import { Slide } from './slide';
+import { useEvents } from 'hooks';
 
 const windowWidth = window.innerWidth;
-
-const ItemsSet = ({ chunk }: { chunk: Event[] }) => {
-  return (
-    <div className="event_item_set">
-      {chunk.map((item) => (
-        <EventItem key={item.id} {...item} />
-      ))}
-    </div>
-  );
-};
+const chunksSize = windowWidth / 200;
 
 export const EventsSection = () => {
   const { events } = useEvents();
-
-  const chunks = splitByChunks(events, windowWidth < 1200 ? 2 : 3);
+  const chunks = splitByChunks(events, Math.min(+chunksSize.toFixed(), 6));
 
   return (
     <section className={`events_section ${isMobile ? 'mobile' : ''}`}>
@@ -30,18 +20,13 @@ export const EventsSection = () => {
         className="carousel"
         autoPlay={true}
         animation="slide"
-        timeout={700}
+        timeout={0}
         interval={5000}
       >
         {chunks.map((chunk, i) => (
-          <ItemsSet chunk={chunk} key={`slide_${i}`} />
+          <Slide key={'chunk' + i} images={chunk} index={i} />
         ))}
       </CustomCarousel>
-      <div className="mobile_section" style={{ display: isMobile ? 'flex' : 'none' }}>
-        {events.map((item) => (
-          <EventItem key={item.id} {...item} />
-        ))}
-      </div>
     </section>
   );
 };

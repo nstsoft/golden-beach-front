@@ -1,0 +1,13 @@
+.news_section {
+  .news_item_set {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.news_section.mobile {
+  .custom_carousel {
+    display: none;
+  }
+}

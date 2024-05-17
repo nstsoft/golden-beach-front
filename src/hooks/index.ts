@@ -1,2 +1,3 @@
-export * from './useEvents';
+export * from './useNews';
 export * from './intersectionObserver';
+export * from './useEvents';
