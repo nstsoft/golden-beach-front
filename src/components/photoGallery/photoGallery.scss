@@ -1,0 +1,17 @@
+.gallery {
+  &_section {
+
+  }
+  &_item_set {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 16px; 
+  }
+} 
+
+.mobile {
+  .custom_carousel {
+    display: none;
+  }
+}
