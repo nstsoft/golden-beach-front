@@ -8,12 +8,10 @@ import { useMemo } from 'react';
 
 const windowWidth = window.innerWidth;
 
-const ItemsSet = ({ chunk, addViewMore }: { chunk: GalleryItemType[], addViewMore: boolean }) => {
+const ItemsSet = ({ chunk, addViewMore }: { chunk: GalleryItemType[]; addViewMore: boolean }) => {
   return (
     <div className="gallery_item_set">
-      {[...chunk.map((item) => (
-        <GalleryItem key={item.id} {...item} />
-      )), addViewMore ? <ViewMoreItem /> : null]}
+      {[...chunk.map((item) => <GalleryItem key={item.id} {...item} />), addViewMore ? <ViewMoreItem /> : null]}
     </div>
   );
 };
@@ -37,8 +35,6 @@ export const PhotoGallery = () => {
         {chunks.map((chunk, i) => (
           <ItemsSet chunk={chunk} addViewMore={chunks.length - 1 === i} key={`slide_${i}`} />
         ))}
-
-
       </CustomCarousel>
       <div className="mobile_section" style={{ display: isMobile ? 'flex' : 'none' }}>
         {galleryItems.map((item) => (
