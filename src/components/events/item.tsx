@@ -17,7 +17,7 @@ export const EventItem = (event: Event) => {
             </div>
             <div className="text">
               <div className="title">{event.name}</div>
-              <div className="description">{cutString(event.description, isMobile ? 90 : 110)}</div>
+              <div className="description">{cutString(event.description, isMobile ? 80 : 110)}</div>
             </div>
           </div>
           <div className="footer">Read more</div>

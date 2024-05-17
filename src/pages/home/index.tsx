@@ -1,6 +1,6 @@
 import './home.scss';
 import Video from 'assets/pages/home/benvenuto.mp4';
-import { ShadowHeader, EventsSection } from 'components';
+import { ShadowHeader, EventsSection, BeachClubRestaurant } from 'components';
 import { isMobile } from 'react-device-detect';
 
 export const HomePage = () => {
@@ -15,6 +15,7 @@ export const HomePage = () => {
         <ShadowHeader bigText="Upcoming" smallText="events" />
         <EventsSection />
         <ShadowHeader bigText="Discover" smallText="goleden beach" />
+        <BeachClubRestaurant />
       </section>
     </div>
   );

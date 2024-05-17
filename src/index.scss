@@ -23,6 +23,7 @@
     align-items: center;
     padding: 0 20px;
     width: 100%;
+    max-width: 1200px;
   }
 }
 
@@ -31,6 +32,16 @@
   font-size: 1.5rem;
   font-weight: 900;
 }
+.mobile .white-header-text {
+  font-size: 1rem;
+}
 .page_content.mobile {
   padding: 0 30px;
+}
+.shadowed-text {
+  color: $shadowedText;
+  font-size: 1rem;
+}
+.mobile .shadowed-text {
+  font-size: 0.8rem;
 }

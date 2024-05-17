@@ -31,6 +31,7 @@ export const EventsSection = () => {
         autoPlay={true}
         animation="slide"
         timeout={700}
+        interval={5000}
       >
         {chunks.map((chunk, i) => (
           <ItemsSet chunk={chunk} key={`slide_${i}`} />

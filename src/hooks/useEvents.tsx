@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { type Event } from 'utils';
-import Image from 'assets/removeme.jpg';
+import Image from 'assets/hardcode/removeme.jpg';
 
 const data = [
   {
