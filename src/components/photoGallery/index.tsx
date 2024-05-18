@@ -1,17 +1,42 @@
 import './photoGallery.scss';
-import { CustomCarousel } from 'components';
 import { GalleryItem, ViewMoreItem } from './galleryItem';
-import { GalleryItemType, splitByChunks } from 'utils';
+import { GalleryItemType } from 'utils';
 import { isMobile } from 'react-device-detect';
 import { useGallery } from 'src/hooks/useGallery';
-import { useMemo } from 'react';
+import { CustomCarousel } from '../elements';
+import Slide, { type SlideProps } from '@mui/material/Slide';
+import { useRef } from 'react';
+import { useIntersectionObserver } from 'hooks';
 
-const windowWidth = window.innerWidth;
+const slideDirections: SlideProps['direction'][][] = [
+  ['right', 'down', 'left', 'right', 'up', 'left'],
+  ['right', 'left', 'right', 'left', 'right', 'left'],
+];
+
+const directionSet = window.innerWidth > 970 ? slideDirections[0] : slideDirections[1];
 
 const ItemsSet = ({ chunk, addViewMore }: { chunk: GalleryItemType[]; addViewMore: boolean }) => {
+  const componentRef = useRef(null);
+  const { isIntersecting } = useIntersectionObserver(componentRef);
+
+  const items = [
+    ...chunk.map((item) => <GalleryItem key={item.id} {...item} />),
+    addViewMore ? <ViewMoreItem key="vewMore" /> : null,
+  ];
+
   return (
-    <div className="gallery_item_set">
-      {[...chunk.map((item) => <GalleryItem key={item.id} {...item} />), addViewMore ? <ViewMoreItem /> : null]}
+    <div ref={componentRef} className="gallery_item_set">
+      {items.map((item, i) => (
+        <Slide
+          key={i}
+          timeout={(items.length - i) * 200}
+          container={componentRef.current}
+          in={isIntersecting}
+          direction={directionSet[i]}
+        >
+          <div>{item}</div>
+        </Slide>
+      ))}
     </div>
   );
 };
@@ -19,27 +44,23 @@ const ItemsSet = ({ chunk, addViewMore }: { chunk: GalleryItemType[]; addViewMor
 export const PhotoGallery = () => {
   const { galleryItems } = useGallery();
 
-  const chunks = useMemo(() => splitByChunks(galleryItems, windowWidth < 1200 ? 6 : 6), [galleryItems]);
-
   return (
     <section className={`gallery_section ${isMobile ? 'mobile' : ''}`}>
-      <CustomCarousel
-        stopAutoPlayOnHover={true}
-        swipe={true}
-        className="carousel"
-        autoPlay={true}
-        animation="slide"
-        timeout={700}
-        interval={5000}
-      >
-        {chunks.map((chunk, i) => (
-          <ItemsSet chunk={chunk} addViewMore={chunks.length - 1 === i} key={`slide_${i}`} />
-        ))}
-      </CustomCarousel>
+      <ItemsSet chunk={galleryItems} addViewMore={true} />
       <div className="mobile_section" style={{ display: isMobile ? 'flex' : 'none' }}>
-        {galleryItems.map((item) => (
-          <GalleryItem key={item.id} {...item} />
-        ))}
+        <CustomCarousel
+          stopAutoPlayOnHover={true}
+          swipe={true}
+          className="carousel"
+          autoPlay={true}
+          animation="slide"
+          timeout={700}
+          interval={5000}
+        >
+          {galleryItems.map((item) => (
+            <GalleryItem key={item.id} {...item} />
+          ))}
+        </CustomCarousel>
       </div>
     </section>
   );

@@ -1,16 +1,21 @@
-.gallery {
-  &_section {
+.gallery_section {
+  .gallery_item_set {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
   }
-  &_item_set {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 16px;
-  }
-}
-
-.gallery_section.mobile {
   .custom_carousel {
     display: none;
+  }
+}
+.gallery_section.mobile {
+  .gallery_item_set {
+    display: none;
+  }
+  .custom_carousel {
+    display: block;
   }
 }

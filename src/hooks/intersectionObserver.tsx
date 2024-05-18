@@ -1,18 +1,17 @@
-import { useState, useEffect, type SetStateAction, type Dispatch } from 'react';
+import { useState, useEffect, type MutableRefObject } from 'react';
 
 type ReturnType = {
   isIntersecting: boolean;
-  setElement: Dispatch<SetStateAction<Element | null>>;
-  isObserved: boolean;
 };
 
-export const useIntersectionObserver = (
+export const useIntersectionObserver = <T extends Element | null>(
+  ref: MutableRefObject<T>,
   init: Partial<IntersectionObserverInit> = { root: null, rootMargin: '0px', threshold: 0.4 },
 ): ReturnType => {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const [element, setElement] = useState<Element | null>(null);
 
   useEffect(() => {
+    const element = ref.current;
     if (!element) {
       return () => {};
     }
@@ -26,7 +25,7 @@ export const useIntersectionObserver = (
     return () => {
       observer.unobserve(element);
     };
-  }, [element, init]);
+  }, [ref, init]);
 
-  return { isIntersecting, setElement, isObserved: !!element };
+  return { isIntersecting };
 };

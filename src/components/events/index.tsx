@@ -18,7 +18,7 @@ export const EventsSection = () => {
         stopAutoPlayOnHover={true}
         swipe={true}
         className="carousel"
-        autoPlay={true}
+        autoPlay={false}
         animation="slide"
         timeout={0}
         interval={5000}

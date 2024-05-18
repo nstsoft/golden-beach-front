@@ -4,7 +4,7 @@ import ClubImg from 'assets/hardcode/club.jpeg';
 import RestaurantImg from 'assets/hardcode/restaurant.jpeg';
 import BeachImg from 'assets/hardcode/beach.jpeg';
 import { ArrowRightSvg } from 'assets/svg/header';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import Grow from '@mui/material/Grow';
 import { useIntersectionObserver } from 'hooks';
 
@@ -13,13 +13,7 @@ const remove = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum,
 
 export const BeachClubRestaurant = () => {
   const componentRef = useRef(null);
-  const { isIntersecting, isObserved, setElement } = useIntersectionObserver();
-
-  useEffect(() => {
-    if (!isObserved && componentRef.current) {
-      setElement(componentRef.current);
-    }
-  }, [isObserved, componentRef, setElement]);
+  const { isIntersecting } = useIntersectionObserver(componentRef);
 
   return (
     <section className={`beach-club-restaurant ${isMobile ? 'mobile' : ''}`}>
