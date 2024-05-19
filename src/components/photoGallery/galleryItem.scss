@@ -1,6 +1,9 @@
 @import '../../variables.scss';
 
 .gallery_section {
+  .gallery_image_list {
+    max-height: 628px
+  }
   .gallery_item {
     width: 306px;
     height: 306px;

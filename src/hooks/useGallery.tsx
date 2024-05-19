@@ -32,6 +32,21 @@ const data = [
     name: 'Lorem',
     img: Image5,
   },
+  {
+    id: '6',
+    name: 'Lorem',
+    img: Image1,
+  },
+  {
+    id: '7',
+    name: 'Lorem',
+    img: Image2,
+  },
+  {
+    id: '8',
+    name: 'Lorem',
+    img: Image3,
+  },
 ];
 
 export const useGallery = (): { galleryItems: GalleryItemType[] } => {
