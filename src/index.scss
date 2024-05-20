@@ -1,11 +1,19 @@
 @import './variables.scss';
+body {
+  display: flex;
+  justify-content: center;
+  #root {
+    max-width: 1440px;
+    width: 100%;
+  }
+}
 
 .app-padding {
   padding: 0 5px;
 }
 
 .MuiPaper-root {
-  background-color: #212429;
+  background-color: transparent;
 }
 
 .page {
@@ -23,7 +31,7 @@
     align-items: center;
     padding: 0 20px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1440px;
   }
 }
 

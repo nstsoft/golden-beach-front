@@ -7,9 +7,11 @@ export const HomePage = () => {
   return (
     <div className={`page ${isMobile ? 'mobile' : ''}`}>
       <div className="page_video">
-        <video loop={true} className="clip" autoPlay muted>
-          <source src={Video} type="video/mp4" />
-        </video>
+        <div className="page_video_content">
+          <video loop={true} className="clip" autoPlay muted>
+            <source src={Video} type="video/mp4" />
+          </video>
+        </div>
       </div>
       <section className={`page_content ${isMobile ? 'mobile' : ''}`}>
         <ShadowHeader bigText="Upcoming" smallText="events" />
