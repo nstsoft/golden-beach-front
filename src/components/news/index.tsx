@@ -1,46 +1,34 @@
 import './events.scss';
 import { useNews } from 'hooks';
-import { CustomCarousel } from 'components';
 import { EventItem } from './item';
-import { splitByChunks, type News } from 'utils';
 import { isMobile } from 'react-device-detect';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
-const windowWidth = window.innerWidth;
-
-const ItemsSet = ({ chunk }: { chunk: News[] }) => {
-  return (
-    <div className="news_item_set">
-      {chunk.map((item) => (
-        <EventItem key={item.id} {...item} />
-      ))}
-    </div>
-  );
+const responsive = {
+  superLargeDesktop: { breakpoint: { max: 4000, min: 1100 }, items: 3 },
+  desktop: { breakpoint: { max: 1099, min: 760 }, items: 2 },
+  tablet: { breakpoint: { max: 759, min: 0 }, items: 1 },
 };
 
 export const NewsSection = () => {
   const { news } = useNews();
-  const chunks = splitByChunks(news, windowWidth < 1200 ? 2 : 3);
 
   return (
     <section className={`news_section ${isMobile ? 'mobile' : ''}`}>
-      <CustomCarousel
-        stopAutoPlayOnHover={true}
-        swipe={true}
-        className="carousel"
-        autoPlay={true}
-        animation="slide"
-        timeout={400}
-        interval={5000}
+      <Carousel
+        rewindWithAnimation={true}
+        draggable={true}
+        swipeable={true}
+        removeArrowOnDeviceType="mobile"
+        responsive={responsive}
+        itemClass={'news_carousel_item'}
+        arrows={!isMobile}
       >
-        {chunks.map((chunk, i) => (
-          <ItemsSet chunk={chunk} key={`slide_${i}`} />
-        ))}
-      </CustomCarousel>
-      <div className="mobile_section" style={{ display: isMobile ? 'flex' : 'none' }}>
         {news.map((item) => (
           <EventItem key={item.id} {...item} />
         ))}
-      </div>
+      </Carousel>
     </section>
   );
 };

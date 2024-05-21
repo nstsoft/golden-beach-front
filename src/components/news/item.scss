@@ -1,6 +1,9 @@
 @import '../../variables.scss';
 .news_section {
   width: 100%;
+  .news_carousel_item {
+    // min-width: 350px;
+  }
   .news_item {
     width: 350px;
     height: 300px;

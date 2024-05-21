@@ -45,31 +45,9 @@
     }
   }
 
-  .slide {
-    display: flex;
-    height: 250px;
-    width: 100%;
-    justify-content: space-between;
-    .image {
-      display: flex;
-      cursor: pointer;
-      max-width: 250px;
-      img {
-        height: 100%;
-      }
-    }
-  }
   .MuiPaper-root {
     background-color: transparent;
     box-shadow: none;
     border: none;
-  }
-}
-.mobile.events_section {
-  .slide {
-    .image {
-      max-width: 45%;
-      justify-content: center;
-    }
   }
 }

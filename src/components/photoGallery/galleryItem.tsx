@@ -12,7 +12,7 @@ export const GalleryItem = ({ img, name }: GalleryItemType) => {
 
 export const ViewMoreItem = () => {
   return (
-    <div key="gallery_view_more" className='gallery_view_more'>
+    <div key="gallery_view_more" className="gallery_view_more">
       <img src={ViewMoreImage} alt={'View more'} />
     </div>
   );

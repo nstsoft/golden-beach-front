@@ -15,22 +15,30 @@
       justify-content: flex-start;
       align-items: center;
       width: 100%;
-      max-width: 900px;
       height: 270px;
-      &:nth-child(even) {
-        flex-direction: row-reverse;
-      }
       .image {
         height: 100%;
-        width: 50%;
+        width: 40%;
         overflow: hidden;
+        display: flex;
+        justify-content: flex-start;
         img {
           height: 100%;
         }
       }
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+        .image {
+          justify-content: flex-end;
+          img {
+            height: 100%;
+          }
+        }
+      }
+
       .text {
         padding: 20px;
-        width: 50%;
+        width: 40%;
         align-self: flex-start;
       }
       .footer {
@@ -39,7 +47,12 @@
         margin-top: 10px;
         cursor: pointer;
       }
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 1021px) {
+        .text {
+          width: 60%;
+        }
+      }
+      @media screen and (max-width: 700px) {
         flex-direction: column;
         height: auto;
         max-width: 400px;
@@ -68,7 +81,7 @@
 .mobile {
   .content {
     .item {
-      max-width: 350px;
+      max-width: 100%;
       .text {
         padding: 20px 0;
         margin-top: 10px;

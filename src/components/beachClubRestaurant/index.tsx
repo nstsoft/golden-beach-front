@@ -4,7 +4,7 @@ import ClubImg from 'assets/hardcode/club.jpeg';
 import RestaurantImg from 'assets/hardcode/restaurant.jpeg';
 import BeachImg from 'assets/hardcode/beach.jpeg';
 import { ArrowRightSvg } from 'assets/svg/header';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Grow from '@mui/material/Grow';
 import { useIntersectionObserver } from 'hooks';
 
@@ -13,12 +13,20 @@ const remove = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum,
 
 export const BeachClubRestaurant = () => {
   const componentRef = useRef(null);
+  const [isAnimated, setIsAnimated] = useState(false);
+
   const { isIntersecting } = useIntersectionObserver(componentRef);
+
+  useEffect(() => {
+    if (isIntersecting && !isAnimated) {
+      setIsAnimated(true);
+    }
+  }, [isIntersecting, isAnimated]);
 
   return (
     <section className={`beach-club-restaurant ${isMobile ? 'mobile' : ''}`}>
       <div ref={componentRef} className="content">
-        <Grow in={isIntersecting}>
+        <Grow in={isIntersecting || isAnimated}>
           <div className="item">
             <div className="image">
               <img src={ClubImg} />
@@ -32,7 +40,7 @@ export const BeachClubRestaurant = () => {
             </div>
           </div>
         </Grow>
-        <Grow timeout={500} in={isIntersecting}>
+        <Grow timeout={500} in={isIntersecting || isAnimated}>
           <div className="item">
             <div className="image">
               <img src={RestaurantImg} />
@@ -46,7 +54,7 @@ export const BeachClubRestaurant = () => {
             </div>
           </div>
         </Grow>
-        <Grow in={isIntersecting} timeout={1000}>
+        <Grow in={isIntersecting || isAnimated} timeout={1000}>
           <div className="item">
             <div className="image">
               <img src={BeachImg} />
