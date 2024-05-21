@@ -1,0 +1,54 @@
+@import '../../../variables.scss';
+.page_footer {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  background: $background;
+  padding: 0 5px;
+  margin-top: 20px;
+  &_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .text {
+      color: $color;
+    }
+    .social_media {
+      color: $color;
+      width: 15%;
+      display: flex;
+      justify-content: space-around;
+      min-width: 120px;
+      svg {
+        font-size: 35px;
+      }
+    }
+    .logo {
+      height: 25px;
+      width: 30%;
+
+      img {
+        height: 100%;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      .text {
+        display: none;
+      }
+      .logo {
+        width: 60%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+  .footer_content.mobile .text {
+    display: none;
+  }
+}
