@@ -2,8 +2,8 @@ import './photoGallery.scss';
 import { isMobile } from 'react-device-detect';
 import { useGallery } from 'src/hooks/useGallery';
 import { ImageList, ImageListItem } from '@mui/material';
-import { CustomButton } from 'components';
-import { useState, type MouseEvent } from 'react';
+import { CustomButton, FullScreenDialog } from 'components';
+import { useState } from 'react';
 
 function srcset(image: string, size: number, rows = 1, cols = 1) {
   return {
@@ -14,19 +14,12 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
 
 export const PhotoGallery = () => {
   const { galleryItems } = useGallery();
-  const [ref, setRef] = useState<HTMLLIElement | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [src, setSrc] = useState('');
 
-  const handleClick = ({ target }: MouseEvent) => {
-    const elem = target as HTMLLIElement;
-    if (ref) {
-      ref.classList.toggle('active');
-
-      return setRef(null);
-    }
-
-    elem.classList.toggle('active');
-
-    return setRef(elem);
+  const handleClick = (source: string) => {
+    setSrc(source);
+    setIsOpen(true);
   };
 
   return (
@@ -39,20 +32,24 @@ export const PhotoGallery = () => {
         rowHeight={'auto'}
       >
         {galleryItems.map((item, i) => (
-          <ImageListItem
-            onClick={handleClick}
-            className="gallery_item"
-            key={item.img + i}
-            cols={item.cols || 1}
-            rows={item.rows || 1}
-          >
-            <img {...srcset(item.img, 121, item.rows, item.cols)} alt={item.name} loading="lazy" />
+          <ImageListItem className="gallery_item" key={item.img + i} cols={item.cols || 1} rows={item.rows || 1}>
+            <img
+              {...srcset(item.img, 121, item.rows, item.cols)}
+              onClick={() => handleClick(item.img)}
+              alt={item.name}
+              loading="lazy"
+            />
           </ImageListItem>
         ))}
       </ImageList>
       <div className="buttons_section">
         <CustomButton to="/gallery">Show more</CustomButton>
       </div>
+      <FullScreenDialog className="gallery_dialog" onClose={() => setIsOpen(false)} isOpen={isOpen} name="Gallery">
+        <div className="gallery_dialog_content">
+          <img className="dialog_image" src={src} loading="lazy" />
+        </div>
+      </FullScreenDialog>
     </section>
   );
 };
