@@ -1,0 +1,23 @@
+@import '../../../variables.scss';
+.common_button {
+  height: 50px;
+  border: 1px solid $color;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  min-width: 100px;
+  margin-top: 10px;
+  cursor: pointer;
+  color: $color;
+  text-decoration: none;
+
+  a {
+    color: $color;
+    text-decoration: none;
+  }
+}
+.common_button.mobile {
+  height: 35px;
+}

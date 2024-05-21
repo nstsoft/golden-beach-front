@@ -1,6 +1,6 @@
 import { type RouteObject, useRoutes } from 'react-router-dom';
 import { Layout } from './Layout';
-import { HomePage, EventsPage, NotFoundPage } from 'src/pages';
+import { HomePage, EventsPage, NotFoundPage, Gallery } from 'src/pages';
 
 export default function App() {
   const routes: RouteObject[] = [
@@ -10,6 +10,7 @@ export default function App() {
       children: [
         { index: true, element: <HomePage /> },
         { path: '/events', element: <EventsPage /> },
+        { path: '/gallery', element: <Gallery /> },
         { path: '*', element: <NotFoundPage /> },
       ],
     },

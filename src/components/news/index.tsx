@@ -4,6 +4,7 @@ import { EventItem } from './item';
 import { isMobile } from 'react-device-detect';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { CustomButton } from 'components';
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1100 }, items: 3 },
@@ -29,6 +30,9 @@ export const NewsSection = () => {
           <EventItem key={item.id} {...item} />
         ))}
       </Carousel>
+      <div className="buttons_section">
+        <CustomButton to="/news">Show more</CustomButton>
+      </div>
     </section>
   );
 };
