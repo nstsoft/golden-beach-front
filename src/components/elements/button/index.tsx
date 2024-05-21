@@ -6,16 +6,15 @@ import { isMobile } from 'react-device-detect';
 type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & { to?: string };
 
 export const CustomButton: FC<Props> = ({ children, to, ...props }) => {
-  const content = to ? (
+  return to ? (
     <Link className="link" to={to}>
-      {children}
+      <button className={`common_button ${isMobile ? 'mobile' : ''}`} {...props}>
+        {children}
+      </button>
     </Link>
   ) : (
-    children
-  );
-  return (
     <button className={`common_button ${isMobile ? 'mobile' : ''}`} {...props}>
-      {content}
+      {children}
     </button>
   );
 };
