@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { type Event } from 'utils';
+import { type News } from 'utils';
 import Image from 'assets/hardcode/removeme.jpg';
 
 const data = [
@@ -69,8 +69,8 @@ const data = [
   },
 ];
 
-export const useNews = (): { news: Event[] } => {
-  const [news] = useState<Event[]>(data);
+export const useNews = (): { news: News[] } => {
+  const [news] = useState<News[]>(data);
 
   return { news };
 };

@@ -2,12 +2,12 @@ import './events.scss';
 import { useNews } from 'hooks';
 import { CustomCarousel } from 'components';
 import { EventItem } from './item';
-import { splitByChunks, type Event } from 'utils';
+import { splitByChunks, type News } from 'utils';
 import { isMobile } from 'react-device-detect';
 
 const windowWidth = window.innerWidth;
 
-const ItemsSet = ({ chunk }: { chunk: Event[] }) => {
+const ItemsSet = ({ chunk }: { chunk: News[] }) => {
   return (
     <div className="news_item_set">
       {chunk.map((item) => (

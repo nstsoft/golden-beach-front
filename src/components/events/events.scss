@@ -1,5 +1,50 @@
+@import '../../variables.scss';
+
 .events_section {
   width: 100%;
+
+  .image {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px; /* Optional: Adjust padding as needed */
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    .date {
+      display: flex;
+      width: 55px;
+      flex-direction: column;
+      text-transform: uppercase;
+      text-align: center;
+      justify-content: flex-start;
+      height: 100%;
+      position: absolute;
+      background-color: #222222;
+      color: #ffffff;
+      height: 55px;
+      top: 0;
+      left: 0;
+      .month {
+        text-transform: uppercase;
+      }
+      .day {
+        font-family: 'Montserrat-Bold', sans-serif;
+        font-weight: 900;
+        font-size: 1.3rem;
+      }
+    }
+
+    img {
+      display: flex;
+
+      height: 100%;
+
+      border-radius: 2px; /* Optional: Add rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
   .slide {
     display: flex;
     height: 250px;

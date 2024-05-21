@@ -1,8 +1,8 @@
-import { type Event, cutString } from 'utils';
+import { type News, cutString } from 'utils';
 import './item.scss';
 import { isMobile } from 'react-device-detect';
 
-export const EventItem = (event: Event) => {
+export const EventItem = (event: News) => {
   return (
     <div className="news_item">
       <div className="news_item_content">

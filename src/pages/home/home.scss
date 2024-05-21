@@ -4,34 +4,6 @@
     min-height: calc(100vh - 60px);
     position: relative;
     background-color: rgba(0, 0, 0, 0.4);
-    .page_video_content {
-      position: absolute;
-      background: transparent;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      &::after {
-        background: linear-gradient(270deg, rgba(255, 255, 255, 0) 70%, rgb(23, 23, 23) 100%);
-        content: '';
-        width: 8%;
-        height: 100%;
-        display: block;
-        z-index: 2;
-        position: absolute;
-        left: 0;
-      }
-      &::before {
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 70%, rgb(23, 23, 23) 100%);
-        content: '';
-        width: 8%;
-        height: 100%;
-        display: block;
-        z-index: 2;
-        position: absolute;
-        right: 0;
-      }
-    }
 
     .clip {
       position: absolute;
@@ -72,14 +44,6 @@
     min-height: 0;
     .clip {
       position: relative;
-    }
-    .page_video_content {
-      &::before {
-        display: none;
-      }
-      &::after {
-        display: none;
-      }
     }
   }
 }
