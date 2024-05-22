@@ -9,12 +9,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 import theme from './theme';
+import 'leaflet/dist/leaflet.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-
       <BrowserRouter>
         <I18nextProvider i18n={i18n}>
           <App />

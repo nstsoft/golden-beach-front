@@ -4,7 +4,7 @@ const config = {
   tabWidth: 2,
   semi: true,
   singleQuote: true,
-  printWidth: 120,
+  printWidth: 100,
   bracketSpacing: true,
 };
 export default config;

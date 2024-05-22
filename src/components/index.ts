@@ -5,3 +5,4 @@ export * from './beachClubRestaurant';
 export * from './events';
 export * from './photoGallery';
 export * from './offer';
+export * from './contactUs';
