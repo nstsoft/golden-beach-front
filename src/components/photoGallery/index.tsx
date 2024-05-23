@@ -1,55 +1,43 @@
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
 import './photoGallery.scss';
 import { isMobile } from 'react-device-detect';
 import { useGallery } from 'src/hooks/useGallery';
-import { ImageList, ImageListItem } from '@mui/material';
-import { CustomButton, FullScreenDialog } from 'components';
-import { useState } from 'react';
+import { type GalleryItemType } from 'utils';
+import LightGallery from 'lightgallery/react';
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
 
-function srcset(image: string, size: number, rows = 1, cols = 1) {
-  return {
-    src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
-    srcSet: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`,
-  };
-}
+const documentWidth = window.innerWidth;
+
+const GalleryItem = (item: GalleryItemType) => {
+  return (
+    <div className="gallery-item" data-src={item.img}>
+      <a href={item.img} data-lg-size="3000-3000" data-poster={item.img} data-src={item.img}>
+        <img src={item.img} alt={item.name} />
+      </a>
+    </div>
+  );
+};
 
 export const PhotoGallery = () => {
-  const { galleryItems } = useGallery();
-  const [isOpen, setIsOpen] = useState(false);
-  const [src, setSrc] = useState('');
+  const { galleryItems } = useGallery(documentWidth > 799 ? 12 : 9);
 
-  const handleClick = (source: string) => {
-    setSrc(source);
-    setIsOpen(true);
+  const onInit = () => {
+    console.log('lightGallery has been initialized');
   };
 
   return (
-    <section className={`gallery_section ${isMobile ? 'mobile' : ''}`}>
-      <ImageList
-        className="gallery"
-        sx={{ width: '100%', height: '100%' }}
-        variant="quilted"
-        cols={isMobile ? 4 : 6}
-        rowHeight={'auto'}
+    <section className={`gallery-container gallery_section ${isMobile ? 'mobile' : ''}`}>
+      <LightGallery
+        licenseKey="0372F2F1-8E27-430B-B17C-F19454A8CE90"
+        onInit={onInit}
+        speed={500}
+        plugins={[lgThumbnail, lgZoom]}
       >
-        {galleryItems.map((item, i) => (
-          <ImageListItem className="gallery_item" key={item.img + i} cols={item.cols || 1} rows={item.rows || 1}>
-            <img
-              {...srcset(item.img, 121, item.rows, item.cols)}
-              onClick={() => handleClick(item.img)}
-              alt={item.name}
-              loading="lazy"
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-      <div className="buttons_section">
-        <CustomButton to="/gallery">Show more</CustomButton>
-      </div>
-      <FullScreenDialog className="gallery_dialog" onClose={() => setIsOpen(false)} isOpen={isOpen} name="Gallery">
-        <div className="gallery_dialog_content">
-          <img className="dialog_image" src={src} loading="lazy" />
-        </div>
-      </FullScreenDialog>
+        {galleryItems.map(GalleryItem)}
+      </LightGallery>
     </section>
   );
 };

@@ -7,31 +7,35 @@
   flex-direction: column;
   width: 100%;
   background: $background;
-  padding: 0 5px;
+  padding: 0 40px;
   margin-top: 20px;
   &_content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-
+    .item {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
     .text {
       color: $color;
+      justify-content: flex-start;
     }
     .social_media {
       color: $color;
-      width: 15%;
       display: flex;
       justify-content: space-around;
       min-width: 120px;
+      justify-content: flex-end;
       svg {
         font-size: 35px;
+        margin-left: 25px;
       }
     }
     .logo {
       height: 25px;
-      width: 30%;
-
       img {
         height: 100%;
       }

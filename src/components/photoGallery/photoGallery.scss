@@ -1,35 +1,32 @@
 .gallery_section {
   width: 100%;
-  .gallery {
-    overflow: hidden;
-    margin-bottom: 0;
-    .gallery_item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+
+  .lg-react-element {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    .gallery-item {
+      width: 25%;
+      overflow: hidden;
+      border-radius: 4px;
+      @media screen and (max-width: 800px) {
+        width: 33.3%;
+      }
       img {
         width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+        object-fit: contain;
       }
     }
-    .active {
-      transform: scale(1.5);
-      position: absolute;
-      z-index: 3;
-    }
-  }
-  .buttons_section {
-    justify-content: center;
   }
 }
-.gallery_dialog {
-  &_content {
-    width: 100%;
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    .dialog_image {
-      width: 100%;
-      height: auto;
-      max-height: 90vh;
-      max-width: 90vw;
-      object-fit: contain;
-    }
-  }
+
+.gallery-item .gallery-item:hover img {
+  transform: scale(1.05);
 }

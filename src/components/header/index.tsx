@@ -33,7 +33,7 @@ export const Header = () => {
     <div className={`header app-padding ${isMobile ? 'mobile' : ''}`}>
       <div className="header_content">
         <div className="logo">
-          <img src={Logo} className="logo" alt="Golden beach logo" />
+          <img src={Logo} alt="Golden beach logo" />
         </div>
         <div className="menu">
           <div className="menu_item search">

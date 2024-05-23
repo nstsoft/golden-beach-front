@@ -12,11 +12,11 @@ export const Footer = () => {
   return (
     <div className={`page_footer ${isMobile ? 'mobile' : ''}`}>
       <div className="page_footer_content">
-        <div className="text">Siti web © 2023. Tutti i diritti riservati.</div>
-        <div className="logo">
+        <div className="item text">Siti web © 2023. Tutti i diritti riservati.</div>
+        <div className="item logo">
           <img src={Logo} alt="logo" />
         </div>
-        <div className="social_media">
+        <div className="item social_media">
           <FacebookIcon onClick={handleClick} />
           <InstagramIcon onClick={handleClick} />
           <YouTubeIcon onClick={handleClick} />

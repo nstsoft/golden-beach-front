@@ -4,7 +4,7 @@ import Image2 from 'assets/hardcode/gallery/2.png';
 import Image3 from 'assets/hardcode/gallery/3.png';
 import Image4 from 'assets/hardcode/gallery/4.png';
 import Image5 from 'assets/hardcode/gallery/5.png';
-import { GalleryItemType, getItemFromArray } from 'src/utils';
+import { GalleryItemType } from 'src/utils';
 import { isMobile } from 'react-device-detect';
 
 const arrayLength = isMobile ? 11 : 15;
@@ -87,29 +87,8 @@ const data = [
   },
 ];
 
-export const matrix = [
-  { rows: 4, cols: 2 },
-  { rows: 2, cols: 1 },
-  { rows: 2, cols: 1 },
-  { cols: 2, rows: 3 },
-  { cols: 2, rows: 3 },
-  { rows: 2, cols: 1 },
-  { rows: 2, cols: 1 },
-  { rows: 1, cols: 1 },
-  { rows: 1, cols: 1 },
-  { rows: 2, cols: 1 },
-
-  { rows: 1, cols: 1 },
-  { rows: 1, cols: 1 },
-  { rows: 1, cols: 1 },
-  { rows: 1, cols: 1 },
-  { rows: 1, cols: 1 },
-];
-
-export const useGallery = (): { galleryItems: GalleryItemType[] } => {
-  const [galleryItems] = useState<GalleryItemType[]>(
-    data.slice(0, arrayLength).map((item, i) => ({ ...item, ...getItemFromArray(matrix.slice(0, arrayLength), i) })),
-  );
+export const useGallery = (take?: number): { galleryItems: GalleryItemType[] } => {
+  const [galleryItems] = useState<GalleryItemType[]>(data.slice(0, take ?? arrayLength));
 
   return { galleryItems };
 };
