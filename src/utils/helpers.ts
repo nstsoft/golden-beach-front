@@ -1,3 +1,5 @@
+import { type Event } from './events';
+
 export const splitByChunks = <T>(arr: T[], chunkSize: number): T[][] => {
   const chunks = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
@@ -20,3 +22,16 @@ export function getItemFromArray(array: any[], index: number) {
   const wrappedIndex = index % array.length;
   return array[wrappedIndex];
 }
+
+export const groupItemsByMonth = (items: Event[]) => {
+  const groupedItems: { [key: string]: Event[] } = {};
+  const sortedByDate = items.sort((a, b) => a.date.getTime() - b.date.getTime());
+  for (const item of sortedByDate) {
+    const month = `01-${item.date.getMonth()}-${item.date.getFullYear()}`;
+    if (!groupedItems[month]) {
+      groupedItems[month] = [];
+    }
+    groupedItems[month].push(item);
+  }
+  return groupedItems;
+};

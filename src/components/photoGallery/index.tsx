@@ -13,9 +13,9 @@ const documentWidth = window.innerWidth;
 
 const GalleryItem = (item: GalleryItemType) => {
   return (
-    <div className="gallery-item" data-src={item.img}>
+    <div key={item.id} className="gallery-item" data-src={item.img}>
       <a href={item.img} data-lg-size="3000-3000" data-poster={item.img} data-src={item.img}>
-        <img src={item.img} alt={item.name} />
+        <img src={item.img} />
       </a>
     </div>
   );

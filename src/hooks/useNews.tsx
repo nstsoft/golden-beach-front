@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { type News } from 'utils';
+import { type Event } from 'utils';
 import Image from 'assets/hardcode/removeme.jpg';
 
 const data = [
@@ -9,7 +9,7 @@ const data = [
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date('2022-01-01'),
-    img: Image,
+    image: Image,
   },
   {
     name: 'Sonic architects',
@@ -17,7 +17,7 @@ const data = [
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
-    img: Image,
+    image: Image,
   },
   {
     name: 'Sonic architects',
@@ -25,7 +25,7 @@ const data = [
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
-    img: Image,
+    image: Image,
   },
   {
     name: 'Sonic architects',
@@ -33,7 +33,7 @@ const data = [
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
-    img: Image,
+    image: Image,
   },
   {
     name: 'Sonic architects',
@@ -41,7 +41,7 @@ const data = [
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
-    img: Image,
+    image: Image,
   },
   {
     name: 'Sonic architects',
@@ -49,7 +49,7 @@ const data = [
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
-    img: Image,
+    image: Image,
   },
   {
     name: 'Sonic architects',
@@ -57,7 +57,7 @@ const data = [
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
-    img: Image,
+    image: Image,
   },
   {
     name: 'Sonic architects',
@@ -65,12 +65,12 @@ const data = [
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
-    img: Image,
+    image: Image,
   },
 ];
 
-export const useNews = (): { news: News[] } => {
-  const [news] = useState<News[]>(data);
+export const useNews = (): { news: Event[] } => {
+  const [news] = useState<Event[]>(data);
 
   return { news };
 };

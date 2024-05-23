@@ -1,0 +1,62 @@
+@import '../../../variables.scss';
+
+.event-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 250px;
+  margin: 10px 0;
+
+  .date {
+    color: $color;
+    align-self: flex-start;
+    width: 65px;
+    font-weight: 900;
+    flex-direction: column;
+    .day {
+      font-size: 2rem;
+      @media screen and (max-width: 700px) {
+        font-size: 1.8rem;
+      }
+    }
+  }
+  .image {
+    width: 250px;
+    height: 250px;
+    align-self: flex-start;
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+  .text {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    align-self: flex-start;
+    flex-direction: column;
+    padding: 0 10px;
+    .date {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+      flex-direction: row;
+      svg {
+        width: 20px;
+        margin-right: 20px;
+      }
+    }
+    .title {
+      margin: 10px 0;
+    }
+    .description {
+      font-size: 1rem;
+      @media screen and (max-width: 700px) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

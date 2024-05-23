@@ -1,0 +1,26 @@
+@import '../../../variables.scss';
+
+.custom-input-control {
+  border: 1px solid $color;
+  color: $color;
+  .custom-label {
+    color: $color;
+    top: 7px;
+    left: 15px;
+  }
+  .custom-input {
+    color: $color;
+    border: 1px solid $color;
+    padding: 5px 10px;
+  }
+  .custom-label.Mui-focused {
+    color: $color;
+    top: 0px;
+    left: 0px;
+  }
+  .custom-input.Mui-focused {
+    &:after {
+      border-bottom: none;
+    }
+  }
+}
