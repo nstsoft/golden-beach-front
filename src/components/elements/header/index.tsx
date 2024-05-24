@@ -1,5 +1,5 @@
 import './index.scss';
-import Logo from '../../assets/logo.svg';
+import Logo from 'assets/logo.svg';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useState, useEffect } from 'react';

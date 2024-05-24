@@ -11,7 +11,6 @@ export const EventsPage = () => {
   const { events } = useEvents({ name: search, date: selectedDate });
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    console.log(e.target.value);
     setSearch(e.target.value);
   };
 
@@ -20,6 +19,8 @@ export const EventsPage = () => {
   };
 
   const groups = Object.entries(groupItemsByMonth(events));
+
+  console.log(groups);
 
   return (
     <div className="page events-page">

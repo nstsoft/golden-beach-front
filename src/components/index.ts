@@ -1,4 +1,4 @@
-export * from './header';
+export * from './elements/header';
 export * from './elements';
 export * from './news';
 export * from './beachClubRestaurant';

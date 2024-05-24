@@ -5,3 +5,4 @@ export * from './fullScreenDialog';
 export * from './footer';
 export * from './input';
 export * from './event';
+export * from './header';
