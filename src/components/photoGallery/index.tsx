@@ -24,9 +24,7 @@ const GalleryItem = (item: GalleryItemType) => {
 export const PhotoGallery = () => {
   const { galleryItems } = useGallery(documentWidth > 799 ? 12 : 9);
 
-  const onInit = () => {
-    console.log('lightGallery has been initialized');
-  };
+  const onInit = () => {};
 
   return (
     <section className={`gallery-container gallery_section ${isMobile ? 'mobile' : ''}`}>

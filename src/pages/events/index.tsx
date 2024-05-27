@@ -20,8 +20,6 @@ export const EventsPage = () => {
 
   const groups = Object.entries(groupItemsByMonth(events));
 
-  console.log(groups);
-
   return (
     <div className="page events-page">
       <div className="page_content">

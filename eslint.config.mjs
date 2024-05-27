@@ -69,6 +69,16 @@ export default [
       ],
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'import/extensions': 0,
+      // '@typescript-eslint/typedef': [
+      //   'error',
+      //   {
+      //     parameter: true,
+      //     arrowParameter: true,
+      //     // variableDeclaration: true,
+      //     memberVariableDeclaration: true,
+      //     // objectDestructuring: true,
+      //   },
+      // ],
     },
   },
   ...compat.extends('prettier'),

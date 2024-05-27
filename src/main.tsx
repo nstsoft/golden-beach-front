@@ -10,16 +10,20 @@ import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 import theme from './theme';
 import 'leaflet/dist/leaflet.css';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <BrowserRouter>
-        <I18nextProvider i18n={i18n}>
-          <App />
-        </I18nextProvider>
-      </BrowserRouter>
-    </ThemeProvider>
+    <LocalizationProvider dateAdapter={AdapterMoment}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter>
+          <I18nextProvider i18n={i18n}>
+            <App />
+          </I18nextProvider>
+        </BrowserRouter>
+      </ThemeProvider>
+    </LocalizationProvider>
   </React.StrictMode>,
 );
