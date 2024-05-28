@@ -22,6 +22,15 @@ jobs:
       - name: Install yarn
         run: npm install -g yarn
 
+      - name: Install corepack
+        run: npm install -g corepack
+
+      - name: enable corepack
+        run: corepack enable
+
+      - name: set  yarn
+        run: yarn set version stable
+
       - name: Install dependencies
         run: yarn install
 
