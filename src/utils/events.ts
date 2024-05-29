@@ -5,6 +5,7 @@ export enum EventType {
 
 export type Event = {
   image: string;
+  thumb: string;
   date: Date;
   name: string;
   description: string;

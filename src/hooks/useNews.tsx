@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { type Event } from 'utils';
+import { type Event, EventType } from 'utils';
 import Image from 'assets/hardcode/removeme.jpg';
 
 const data = [
@@ -10,6 +10,8 @@ const data = [
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date('2022-01-01'),
     image: Image,
+    thumb: Image,
+    type: EventType.news,
   },
   {
     name: 'Sonic architects',
@@ -18,6 +20,8 @@ const data = [
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
     image: Image,
+    thumb: Image,
+    type: EventType.news,
   },
   {
     name: 'Sonic architects',
@@ -26,6 +30,8 @@ const data = [
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
     image: Image,
+    thumb: Image,
+    type: EventType.news,
   },
   {
     name: 'Sonic architects',
@@ -34,6 +40,8 @@ const data = [
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
     image: Image,
+    thumb: Image,
+    type: EventType.news,
   },
   {
     name: 'Sonic architects',
@@ -42,6 +50,8 @@ const data = [
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
     image: Image,
+    thumb: Image,
+    type: EventType.news,
   },
   {
     name: 'Sonic architects',
@@ -50,6 +60,8 @@ const data = [
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
     image: Image,
+    thumb: Image,
+    type: EventType.news,
   },
   {
     name: 'Sonic architects',
@@ -58,6 +70,8 @@ const data = [
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
     image: Image,
+    thumb: Image,
+    type: EventType.news,
   },
   {
     name: 'Sonic architects',
@@ -66,6 +80,8 @@ const data = [
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum aliquid architecto illo autem explicabo dolore',
     date: new Date(),
     image: Image,
+    thumb: Image,
+    type: EventType.news,
   },
 ];
 
