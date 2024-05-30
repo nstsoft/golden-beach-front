@@ -1,0 +1,57 @@
+@import '../../../variables.scss';
+
+.news-item {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 250px;
+  margin: 10px 0;
+  .text {
+    margin-top: 10px;
+  }
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
+  .image {
+    margin-right: 48px;
+    @media screen and (max-width: 700px) {
+      margin-right: 0;
+
+    }
+  }
+  .news-item-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    @media screen and (max-width: 700px) {
+      justify-content: flex-start;
+    }
+  }
+  .date {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 5px;
+    a {
+      margin-top: 5px;
+    }
+    svg {
+      margin-right: 10px;
+    }
+  }
+}
+
+.event-item.mobile {
+  .text {
+    font-size: 10px;
+    .date {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.7rem;
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+}

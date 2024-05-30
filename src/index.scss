@@ -4,8 +4,14 @@ body {
   justify-content: center;
   #root {
     width: 100%;
+    color: $color;
     overflow: hidden;
   }
+}
+
+.app-wrapper {
+  margin: auto;
+  width: 90%;
 }
 
 .app-padding {

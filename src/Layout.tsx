@@ -1,3 +1,4 @@
+import './index.scss';
 import { Outlet } from 'react-router-dom';
 import { Header, Footer } from 'components';
 
@@ -5,7 +6,9 @@ export const Layout = () => {
   return (
     <div>
       <Header />
-      <Outlet />
+      <div className="app-wrapper">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
