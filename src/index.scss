@@ -9,11 +9,6 @@ body {
   }
 }
 
-.app-wrapper {
-  margin: auto;
-  width: 90%;
-}
-
 .app-padding {
   padding: 0 5px;
 }
@@ -73,7 +68,7 @@ body {
 }
 
 .unstyled-link {
-  all: unset;
+  // all: unset;
   display: inline;
   cursor: pointer;
   color: inherit;
