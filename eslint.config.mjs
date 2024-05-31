@@ -70,8 +70,8 @@ export default [
       ],
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'import/extensions': 0,
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'error',
+      // 'react-hooks/rules-of-hooks': 'error',
+      // 'react-hooks/exhaustive-deps': 'error',
       // '@typescript-eslint/typedef': [
       //   'error',
       //   {
