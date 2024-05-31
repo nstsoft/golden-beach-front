@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+
+.gallery-page {
+  .gallery-header {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    .MuiFormControl-root {
+      margin: 0;
+    }
+    .types {
+      width: 100%;
+      display: flex;
+      margin: 20px 0;
+      align-items: center;
+      justify-content: flex-end;
+      border-bottom: 2px solid $color;
+      min-height: 50px;
+
+      .item {
+        margin: 0 10px;
+        text-transform: capitalize;
+        cursor: pointer;
+      }
+      .item.active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .footer {
+    margin: 20px;
+  }
+}

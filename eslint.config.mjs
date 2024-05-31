@@ -21,7 +21,8 @@ export default [
   ...compat.extends('plugin:@typescript-eslint/recommended'),
   ...compat.extends('airbnb-typescript/base'),
   ...compat.extends('plugin:react-hooks/recommended'),
-
+  ...compat.extends('prettier'),
+  ...compat.extends('plugin:prettier/recommended'),
   {
     plugins: {
       '@typescript-eslint': typescriptEslint,
@@ -69,6 +70,8 @@ export default [
       ],
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'import/extensions': 0,
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'error',
       // '@typescript-eslint/typedef': [
       //   'error',
       //   {
@@ -81,8 +84,7 @@ export default [
       // ],
     },
   },
-  ...compat.extends('prettier'),
-  ...compat.extends('plugin:prettier/recommended'),
+
   {
     ignores: ['./eslint.config.mjs', './tsconfig.json'],
   },

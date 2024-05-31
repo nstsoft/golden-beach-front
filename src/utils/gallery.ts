@@ -1,5 +1,12 @@
+export enum ImageTypeEnum {
+  beach = 'beach',
+  restaurant = 'restaurant',
+  club = 'club',
+}
 export type GalleryItemType = {
-  id: string;
-  name: string;
-  img: string;
+  _id: string;
+  label: string;
+  image: string;
+  thumb: string;
+  type: ImageTypeEnum;
 };

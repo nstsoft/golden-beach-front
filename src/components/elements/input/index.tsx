@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import { FC, type ChangeEvent } from 'react';
 import { SearchSvg } from 'assets/svg/header';
 
-const Adormnet = (
+const Adornment = (
   <InputAdornment position="end">
     <SearchSvg />
   </InputAdornment>
@@ -27,7 +27,7 @@ export const CustomInput: FC<Props> = ({ onChange, label }) => {
         className="custom-input"
         onChange={onChange}
         id="standard-adornment-amount"
-        endAdornment={Adormnet}
+        endAdornment={Adornment}
       />
     </FormControl>
   );
