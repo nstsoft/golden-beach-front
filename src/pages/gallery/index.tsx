@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { ImageTypeEnum, useDebounce } from 'utils';
 import { CustomInput } from 'elements';
 
-export const Gallery = () => {
+export const GalleryPage = () => {
   const [type, setType] = useState<ImageTypeEnum | null>();
   const [search, setSearch] = useDebounce<string>('');
 

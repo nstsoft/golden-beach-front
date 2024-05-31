@@ -8,6 +8,8 @@ import { GalleryItemType, ImageTypeEnum } from 'src/utils';
 
 import { http } from 'utils';
 
+let isLoadingRequest = false;
+
 const data: GalleryItemType[] = [
   { _id: '1', image: Image1, thumb: Image1, label: 'party', type: ImageTypeEnum.beach },
   { _id: '2', image: Image2, thumb: Image2, label: 'party', type: ImageTypeEnum.beach },
@@ -43,6 +45,9 @@ type ReturnProps = {
 };
 
 const getImages = async (props: Props) => {
+  if (isLoadingRequest) return [];
+
+  isLoadingRequest = true;
   try {
     const res = await http.get('/api/v1/gallery', {
       params: props,
@@ -52,6 +57,8 @@ const getImages = async (props: Props) => {
     return await Promise.resolve(
       data.filter((el) => (props.type ? el.type === props.type : true)).slice(0, props.limit),
     );
+  } finally {
+    isLoadingRequest = false;
   }
 };
 

@@ -4,3 +4,4 @@ export * from './gallery';
 export * from './events';
 export * from './http';
 export * from './debounce';
+export * from './menu';
