@@ -42,7 +42,6 @@ export const PhotoGallery: FC<Props> = (props) => {
     limit,
     skip,
     concatPages: true,
-    search: props.search ?? '',
   });
 
   const onInit = () => {};
@@ -67,7 +66,7 @@ export const PhotoGallery: FC<Props> = (props) => {
         </LightGallery>
       </div>
       {props.showLoadMore && (
-        <div className="load-more" onClick={loadMore}>
+        <div className="load-more">
           <CustomButton onClick={loadMore}>Show more</CustomButton>
         </div>
       )}

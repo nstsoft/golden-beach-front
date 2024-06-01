@@ -22,14 +22,6 @@ export const UploadGallery: FC = () => {
 
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
-  // const handleFileChangeMultiple = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const files = event.target.files;
-  //   console.log(files, selectedFiles);
-  //   if (files && files.length > 0) {
-  //     setSelectedFiles([...files]);
-  //   }
-  // };
-
   const [notification, setNotification] = useState<string>();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +49,7 @@ export const UploadGallery: FC = () => {
     formData.append('type', type);
 
     try {
-      await http.post('/api/v1/image', formData, {
+      await http.post('/api/v1/gallery', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
