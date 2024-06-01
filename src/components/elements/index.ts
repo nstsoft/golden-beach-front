@@ -6,3 +6,4 @@ export * from './footer';
 export * from './input';
 export * from './event';
 export * from './header';
+export * from './eventItem';

@@ -13,7 +13,7 @@ type Props = {
 
 export const EventItem: FC<Props> = ({ event, type }) => {
   return (
-    <Link className="unstyled-link" to={`/events/${event.id}`}>
+    <Link className="unstyled-link" to={`/events/${event._id}`}>
       <section
         className={`event-item ${type === 'event' ? 'event' : 'news'} ${isMobile ? 'mobile' : ''}`}
       >
@@ -22,7 +22,7 @@ export const EventItem: FC<Props> = ({ event, type }) => {
           <div className="day">{event.date.getDate()}</div>
         </div>
         <div className="image">
-          <img src={event.image} />
+          <img src={event.thumb} />
         </div>
         <div className="text">
           <div className="date">
@@ -30,7 +30,7 @@ export const EventItem: FC<Props> = ({ event, type }) => {
           </div>
           <div className="title white-header-text">{event.name}</div>
           <div className="description shadowed-text">
-            {cutString(event.description, isMobile ? 230 : 400)}
+            {cutString(event.descriptionEng, isMobile ? 230 : 400)}
           </div>
         </div>
       </section>

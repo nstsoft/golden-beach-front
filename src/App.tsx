@@ -5,7 +5,7 @@ import {
   EventsPage,
   NotFoundPage,
   GalleryPage,
-  EventItem,
+  EventItemPage,
   AdminPage,
   DishPage,
 } from 'src/pages';
@@ -20,7 +20,7 @@ export default function App() {
       children: [
         { index: true, element: <HomePage /> },
         { path: '/events', element: <EventsPage /> },
-        { path: '/events/:id', element: <EventItem /> },
+        { path: '/events/:id', element: <EventItemPage /> },
         { path: '/news', element: <NewsPage /> },
         { path: '/news/:id', element: <NewsItem /> },
         { path: '/gallery', element: <GalleryPage /> },

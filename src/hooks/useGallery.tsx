@@ -1,7 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-
 import { GalleryItemType, ImageTypeEnum } from 'src/utils';
-
 import { http } from 'utils';
 
 const imagePrefix = import.meta.env.VITE_BUCKET_URL;
@@ -44,8 +42,6 @@ export const useGallery = (props: Props): ReturnProps => {
   const [initialized, setInitialized] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState(props.search);
-
-  console.log(props);
 
   const loadImages = useCallback(() => {
     getImages({ skip, limit: props.limit, type: props.type, search })
