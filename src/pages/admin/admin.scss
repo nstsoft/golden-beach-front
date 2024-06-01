@@ -1,11 +1,15 @@
 .admin-page {
   background: white;
   .page_content {
-    .events {
+    .events,
+    .gallery {
       width: 100%;
       display: flex;
       justify-content: center;
       flex-direction: row;
+    }
+    .control-panel {
+      margin-top: 50px;
     }
   }
 }

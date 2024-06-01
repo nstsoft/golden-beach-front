@@ -7,3 +7,4 @@ export * from './photoGallery';
 export * from './offer';
 export * from './contactUs';
 export * from './uploadEvent';
+export * from './uploadGallery';

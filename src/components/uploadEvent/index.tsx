@@ -9,6 +9,7 @@ import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import moment, { Moment } from 'moment';
 import Select, { type SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 
 export const UploadEvent: FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -17,8 +18,10 @@ export const UploadEvent: FC = () => {
   const [date, setSelectedDate] = useState<Moment>(moment());
   const [time, setSelectedTime] = useState<Moment>(moment());
 
-  const [descriptionIt, setDescriptionIt] = useState<string>('');
-  const [descriptionEng, setDescriptionEng] = useState<string>('');
+  const [descriptionIt, setDescriptionIt] = useState('');
+  const [descriptionEng, setDescriptionEng] = useState('');
+
+  const [notification, setNotification] = useState<string>();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -27,6 +30,7 @@ export const UploadEvent: FC = () => {
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    setNotification(undefined);
     event.preventDefault();
 
     if (!file) {
@@ -45,16 +49,15 @@ export const UploadEvent: FC = () => {
     formData.append('date', dateTime);
 
     try {
-      const response = await http.post('/api/v1/event', formData, {
+      await http.post('/api/v1/event', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
-      console.log(response);
-
-      alert('File uploaded successfully!');
-    } catch (error) {
-      console.error('Error uploading file:', error);
-      alert('Error uploading file.');
+      setNotification('File uploaded successfully!');
+      setTimeout(setNotification, 3000, undefined);
+    } catch (err: unknown) {
+      setNotification('Error uploading file.' + err);
+      setTimeout(setNotification, 3000, undefined);
     }
   };
   return (
@@ -66,64 +69,75 @@ export const UploadEvent: FC = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          '& .MuiTextField-root': { m: 1, width: '500px' },
+          '& .MuiTextField-root': { m: 1, maxWidth: '500px', width: '40%' },
           '& .MuiButton-root': { m: 2 },
         }}
       >
         <Typography variant="h5" component="h2" gutterBottom>
-          Add event or news item
+          {notification ?? ' Add event or news item'}
         </Typography>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={type}
-          label="Age"
-          onChange={({ target }: SelectChangeEvent) => setType(target.value as EventType)}
-        >
-          <MenuItem value={EventType.event}>{EventType.event}</MenuItem>
-          <MenuItem value={EventType.news}>{EventType.news}</MenuItem>
-        </Select>
-        <TextField
-          label="Name"
-          variant="outlined"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <TextField
-          label="descriptionEng"
-          variant="outlined"
-          type="descriptionEng"
+        <div className="item">
+          <TextField
+            className="item-member"
+            label="Name"
+            variant="outlined"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <Select
+            className="item-member"
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={type}
+            label="Age"
+            onChange={({ target }: SelectChangeEvent) => setType(target.value as EventType)}
+          >
+            <MenuItem value={EventType.event}>{EventType.event}</MenuItem>
+            <MenuItem value={EventType.news}>{EventType.news}</MenuItem>
+          </Select>
+        </div>
+        <div className="item">
+          <DatePicker
+            className="date-select item-member"
+            label="Select Date"
+            value={date}
+            onChange={(newValue: Moment | null) => setSelectedDate(newValue ?? moment())}
+          />
+          <TimePicker
+            className="date-select item-member"
+            label="Select Time"
+            value={time}
+            onChange={(newValue: Moment | null) => setSelectedTime(newValue ?? moment())}
+          />
+        </div>
+
+        <TextareaAutosize
+          placeholder="Eng description"
+          className="text-area"
           value={descriptionEng}
           onChange={(e) => setDescriptionEng(e.target.value)}
           required
+          minRows={3}
         />
-        <TextField
-          label="descriptionEng"
-          variant="outlined"
-          type="descriptionIt"
-          value={descriptionIt}
+        <TextareaAutosize
           onChange={(e) => setDescriptionIt(e.target.value)}
+          aria-label="minimum height"
+          minRows={3}
+          placeholder="Eng description"
           required
+          className="text-area"
         />
-        <DatePicker
-          label="Select Date"
-          value={date}
-          onChange={(newValue: Moment | null) => setSelectedDate(newValue ?? moment())}
-        />
-        <TimePicker
-          label="Select Time"
-          value={time}
-          onChange={(newValue: Moment | null) => setSelectedTime(newValue ?? moment())}
-        />
-        <Button variant="contained" component="label">
-          Select File
-          <input type="file" hidden onChange={handleFileChange} />
-        </Button>
-        {file && <Typography variant="body1">Selected file: {file.name}</Typography>}
-        <Button type="submit" variant="contained" color="primary">
-          Upload
-        </Button>
+        <div className="item">
+          <Button variant="contained" component="label">
+            Select File
+            <input type="file" hidden onChange={handleFileChange} />
+          </Button>
+          {file && <Typography variant="body1">Selected file: {file.name}</Typography>}
+          <Button type="submit" variant="contained" color="primary">
+            Upload
+          </Button>
+        </div>
       </Box>
     </div>
   );

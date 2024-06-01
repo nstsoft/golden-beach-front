@@ -1,0 +1,24 @@
+.upload_gallery {
+  width: 100%;
+  color: black;
+  .item {
+    width: 50%;
+    min-width: 300px;
+    color: black;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    div,
+    label,
+    button {
+      height: 50px;
+    }
+
+    .item-member {
+      margin: 0;
+      width: 48%;
+      height: 50px;
+    }
+  }
+}
