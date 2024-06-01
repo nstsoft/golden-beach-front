@@ -1,9 +1,10 @@
 import './events.scss';
-import { useNews } from 'hooks';
+import { useEvents } from 'hooks';
 import { EventItem } from './item';
 import { isMobile } from 'react-device-detect';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { EventType } from 'src/utils';
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1100 }, items: 3 },
@@ -12,7 +13,7 @@ const responsive = {
 };
 
 export const NewsSection = () => {
-  const { news } = useNews();
+  const { events: news } = useEvents({ type: EventType.news });
 
   return (
     <section className={`news_section ${isMobile ? 'mobile' : ''}`}>
@@ -26,7 +27,7 @@ export const NewsSection = () => {
         arrows={!isMobile}
       >
         {news.map((item) => (
-          <EventItem key={item.id} {...item} />
+          <EventItem key={item._id} {...item} />
         ))}
       </Carousel>
     </section>

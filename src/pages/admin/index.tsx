@@ -1,7 +1,7 @@
 import './admin.scss';
 
 import { isMobile } from 'react-device-detect';
-import { UploadEvent, UploadGallery } from 'components';
+import { UploadEvent, UploadGallery, UploadMenu } from 'components';
 
 export const AdminPage = () => {
   return (
@@ -12,6 +12,9 @@ export const AdminPage = () => {
         </div>
         <div className="gallery control-panel">
           <UploadGallery />
+        </div>
+        <div className="gallery control-panel">
+          <UploadMenu />
         </div>
       </section>
     </div>

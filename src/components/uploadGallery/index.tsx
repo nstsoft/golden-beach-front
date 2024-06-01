@@ -12,29 +12,17 @@ import {
   TextField,
   MenuItem,
 } from '@mui/material';
-import { http, ImageTypeEnum } from 'utils';
+import { http, ServiceType } from 'utils';
 import Select, { type SelectChangeEvent } from '@mui/material/Select';
 
 export const UploadGallery: FC = () => {
-  // const [file, setFile] = useState<File | null>(null);
-  const [label, setLabel] = useState<string>('');
-  const [type, setType] = useState<string>(ImageTypeEnum.beach);
-
+  const [album, setAlbum] = useState<string>('');
+  const [type, setType] = useState<string>(ServiceType.beach);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-
-  // const handleFileChangeMultiple = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const files = event.target.files;
-  //   console.log(files, selectedFiles);
-  //   if (files && files.length > 0) {
-  //     setSelectedFiles([...files]);
-  //   }
-  // };
-
   const [notification, setNotification] = useState<string>();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
-    console.log(files, selectedFiles);
     if (files && files.length > 0) {
       setSelectedFiles((prev) => prev.concat(...files));
     }
@@ -53,11 +41,11 @@ export const UploadGallery: FC = () => {
     selectedFiles.forEach((file) => {
       formData.append('files', file);
     });
-    formData.append('label', label);
+    formData.append('album', album);
     formData.append('type', type);
 
     try {
-      await http.post('/api/v1/image', formData, {
+      await http.post('/api/v1/gallery', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -75,10 +63,10 @@ export const UploadGallery: FC = () => {
         <div className="item">
           <TextField
             className="item-member"
-            label="Custom label"
+            label="Album"
             variant="outlined"
-            value={label}
-            onChange={(e) => setLabel(e.target.value)}
+            value={album}
+            onChange={(e) => setAlbum(e.target.value)}
             required
           />
           <Select
@@ -87,11 +75,11 @@ export const UploadGallery: FC = () => {
             id="demo-simple-select"
             value={type}
             label="Age"
-            onChange={({ target }: SelectChangeEvent) => setType(target.value as ImageTypeEnum)}
+            onChange={({ target }: SelectChangeEvent) => setType(target.value as ServiceType)}
           >
-            <MenuItem value={ImageTypeEnum.beach}>{ImageTypeEnum.beach}</MenuItem>
-            <MenuItem value={ImageTypeEnum.restaurant}>{ImageTypeEnum.restaurant}</MenuItem>
-            <MenuItem value={ImageTypeEnum.club}>{ImageTypeEnum.club}</MenuItem>
+            <MenuItem value={ServiceType.beach}>{ServiceType.beach}</MenuItem>
+            <MenuItem value={ServiceType.restaurant}>{ServiceType.restaurant}</MenuItem>
+            <MenuItem value={ServiceType.club}>{ServiceType.club}</MenuItem>
           </Select>
         </div>
         <input

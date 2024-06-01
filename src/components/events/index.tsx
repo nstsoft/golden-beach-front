@@ -4,6 +4,7 @@ import { useEvents } from 'hooks';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Link } from 'react-router-dom';
+import { EventType } from 'utils';
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 6 },
@@ -13,13 +14,13 @@ const responsive = {
 };
 
 export const EventsSection = () => {
-  const { events } = useEvents({});
+  const { events } = useEvents({ type: EventType.event });
 
   return (
     <section className={`events_section ${isMobile ? 'mobile' : ''}`}>
       <Carousel responsive={responsive}>
-        {events.map((event, i) => (
-          <Link key={event.image + i} className="link" to="/events">
+        {events.map((event) => (
+          <Link key={event._id} className="link" to="/events">
             <div className="image">
               <div className="date">
                 <div className="month">
@@ -27,7 +28,7 @@ export const EventsSection = () => {
                 </div>
                 <div className="day">{event.date.getDate()}</div>
               </div>
-              <img src={event.image} />;
+              <img src={event.thumb} />;
             </div>
           </Link>
         ))}

@@ -2,13 +2,13 @@ import './eventspage.scss';
 import { CustomInput, CustomButton, EventItem } from 'components';
 import { type ChangeEvent, useState } from 'react';
 import { useEvents } from 'hooks';
-import { groupItemsByMonth } from 'utils';
+import { groupItemsByMonth, EventType } from 'utils';
 import moment from 'moment';
 
 export const EventsPage = () => {
   const [search, setSearch] = useState('');
   const [selectedDate, setDate] = useState<Date | undefined>();
-  const { events } = useEvents({ name: search, date: selectedDate });
+  const { events } = useEvents({ name: search, date: selectedDate, type: EventType.event });
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSearch(e.target.value);
@@ -35,7 +35,7 @@ export const EventsPage = () => {
                 <div className="line"></div>
               </div>
               {eventsItems.map((event) => (
-                <EventItem key={event.id} event={event} type="event" />
+                <EventItem key={event._id} event={event} type="event" />
               ))}
             </div>
           ))}

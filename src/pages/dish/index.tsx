@@ -51,11 +51,11 @@ export const DishPage = () => {
             </div>
             <div className="labels">
               {item.labels.map((label) => (
-                <Label label={label} />
+                <Label key={label} label={label} />
               ))}
             </div>
 
-            <p>{item.description}</p>
+            <p>{item.descriptionEn}</p>
           </div>
         </div>
         <ShadowHeader bigText="Other" smallText="menu" />
@@ -67,7 +67,9 @@ export const DishPage = () => {
               </div>
               <div className="carusel-text">
                 <div className="name">{menu.name}</div>
-                <div className="description shadowed-text">{cutString(menu.description, 100)}</div>
+                <div className="description shadowed-text">
+                  {cutString(menu.descriptionEn, 100)}
+                </div>
               </div>
             </div>
           ))}

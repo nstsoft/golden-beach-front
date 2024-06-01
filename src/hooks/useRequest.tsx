@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 
 export const useRequest = <T,>(
   requestFunction: (...args: unknown[]) => Promise<T>,
@@ -35,5 +35,8 @@ export const useRequest = <T,>(
     }
   }, [immediate, execute]);
 
-  return { data, execute, error, isLoading: isLoadingRef.current };
+  const isLoading = useMemo(() => isLoadingRef.current, [isLoadingRef]);
+  const initiated = useMemo(() => initiatedRef.current, [initiatedRef]);
+
+  return { data, execute, error, isLoading, initiated };
 };

@@ -4,7 +4,7 @@ import 'lightgallery/css/lg-thumbnail.css';
 import './photoGallery.scss';
 import { isMobile } from 'react-device-detect';
 import { useGallery } from 'src/hooks/useGallery';
-import { type GalleryItemType, type ImageTypeEnum } from 'utils';
+import { type GalleryItemType, type ServiceType } from 'utils';
 import LightGallery from 'lightgallery/react';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
@@ -27,7 +27,7 @@ const GalleryItem = (item: GalleryItemType) => {
 type Props = {
   skip?: number;
   limit?: number;
-  type?: ImageTypeEnum | null;
+  type?: ServiceType | null;
   showLoadMore?: boolean;
   page?: number;
   search?: string;
@@ -42,7 +42,6 @@ export const PhotoGallery: FC<Props> = (props) => {
     limit,
     skip,
     concatPages: true,
-    search: props.search ?? '',
   });
 
   const onInit = () => {};
@@ -67,7 +66,7 @@ export const PhotoGallery: FC<Props> = (props) => {
         </LightGallery>
       </div>
       {props.showLoadMore && (
-        <div className="load-more" onClick={loadMore}>
+        <div className="load-more">
           <CustomButton onClick={loadMore}>Show more</CustomButton>
         </div>
       )}

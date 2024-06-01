@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const EventItem = (event: Event) => {
   return (
-    <Link className="unstyled-link" to={'news'}>
+    <Link key={event._id} className="unstyled-link" to={'news'}>
       <div className="news_item">
         <div className="news_item_content">
           <div className="image_background">
@@ -22,7 +22,7 @@ export const EventItem = (event: Event) => {
               <div className="text">
                 <div className="title">{event.name}</div>
                 <div className="description">
-                  {cutString(event.description, isMobile ? 80 : 110)}
+                  {cutString(event.descriptionEng, isMobile ? 80 : 110)}
                 </div>
               </div>
             </div>

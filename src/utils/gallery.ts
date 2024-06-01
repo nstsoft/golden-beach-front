@@ -1,12 +1,9 @@
-export enum ImageTypeEnum {
-  beach = 'beach',
-  restaurant = 'restaurant',
-  club = 'club',
-}
+import { ServiceType } from './app.types';
+
 export type GalleryItemType = {
   _id: string;
-  label: string;
+  album: string;
   image: string;
   thumb: string;
-  type: ImageTypeEnum;
+  type: ServiceType;
 };

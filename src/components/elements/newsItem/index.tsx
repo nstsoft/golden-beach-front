@@ -13,7 +13,7 @@ type Props = {
 
 export const NewsItem: FC<Props> = ({ newsItem }) => {
   return (
-    <Link className="unstyled-link" to={`/news/${newsItem.id}`}>
+    <Link className="unstyled-link" to={`/news/${newsItem._id}`}>
       <section className={`news-item news ${isMobile ? 'mobile' : ''}`}>
         <div className="image">
           <img src={newsItem.image} width={380} />
@@ -24,7 +24,7 @@ export const NewsItem: FC<Props> = ({ newsItem }) => {
           </div>
           <div className="title white-header-text">{newsItem.name}</div>
           <div className="description shadowed-text">
-            {cutString(newsItem.description, isMobile ? 230 : 400)}
+            {cutString(newsItem.descriptionEng, isMobile ? 230 : 400)}
           </div>
           <div className={isMobile ? '' : 'news-item-button-container'}>
             <CustomButton>Read more</CustomButton>

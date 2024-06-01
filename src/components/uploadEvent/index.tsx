@@ -113,7 +113,7 @@ export const UploadEvent: FC = () => {
         </div>
 
         <TextareaAutosize
-          placeholder="Eng description"
+          placeholder="English description"
           className="text-area"
           value={descriptionEng}
           onChange={(e) => setDescriptionEng(e.target.value)}
@@ -124,9 +124,10 @@ export const UploadEvent: FC = () => {
           onChange={(e) => setDescriptionIt(e.target.value)}
           aria-label="minimum height"
           minRows={3}
-          placeholder="Eng description"
+          placeholder="Italian description"
           required
           className="text-area"
+          value={descriptionIt}
         />
         <div className="item">
           <Button variant="contained" component="label">

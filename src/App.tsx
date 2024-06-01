@@ -5,12 +5,12 @@ import {
   EventsPage,
   NotFoundPage,
   GalleryPage,
-  EventItem,
+  EventItemPage,
   AdminPage,
   DishPage,
+  DescriptionPage,
 } from 'src/pages';
 import { NewsPage } from './pages/news';
-import { NewsItem } from './pages/news-item';
 
 export default function App() {
   const routes: RouteObject[] = [
@@ -20,12 +20,12 @@ export default function App() {
       children: [
         { index: true, element: <HomePage /> },
         { path: '/events', element: <EventsPage /> },
-        { path: '/events/:id', element: <EventItem /> },
+        { path: '/events/:id', element: <EventItemPage /> },
         { path: '/news', element: <NewsPage /> },
-        { path: '/news/:id', element: <NewsItem /> },
+        { path: '/golden-beach/:type', element: <DescriptionPage /> },
         { path: '/gallery', element: <GalleryPage /> },
         { path: '/admin', element: <AdminPage /> },
-        { path: '/dish/:id', element: <DishPage /> },
+        { path: '/golden-beach/restaurant/menu/:id', element: <DishPage /> },
         { path: '*', element: <NotFoundPage /> },
       ],
     },

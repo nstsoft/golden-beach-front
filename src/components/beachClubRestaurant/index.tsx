@@ -7,6 +7,7 @@ import { ArrowRightSvg } from 'assets/svg/header';
 import { useRef, useState, useEffect } from 'react';
 import Grow from '@mui/material/Grow';
 import { useIntersectionObserver } from 'hooks';
+import { useNavigate } from 'react-router-dom';
 
 const remove = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum
               aliquid architecto illo autem explicabo dolore.`;
@@ -14,6 +15,7 @@ const remove = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum,
 export const BeachClubRestaurant = () => {
   const componentRef = useRef(null);
   const [isAnimated, setIsAnimated] = useState(false);
+  const navigate = useNavigate();
 
   const { isIntersecting } = useIntersectionObserver(componentRef);
 
@@ -27,7 +29,7 @@ export const BeachClubRestaurant = () => {
     <section className={`beach-club-restaurant ${isMobile ? 'mobile' : ''}`}>
       <div ref={componentRef} className="content">
         <Grow in={isIntersecting || isAnimated}>
-          <div className="item">
+          <div className="item" onClick={() => navigate('/golden-beach/club')}>
             <div className="image">
               <img src={ClubImg} />
             </div>
@@ -41,7 +43,7 @@ export const BeachClubRestaurant = () => {
           </div>
         </Grow>
         <Grow timeout={500} in={isIntersecting || isAnimated}>
-          <div className="item">
+          <div className="item" onClick={() => navigate('/golden-beach/restaurant')}>
             <div className="image">
               <img src={RestaurantImg} />
             </div>
@@ -55,7 +57,7 @@ export const BeachClubRestaurant = () => {
           </div>
         </Grow>
         <Grow in={isIntersecting || isAnimated} timeout={1000}>
-          <div className="item">
+          <div className="item" onClick={() => navigate('/golden-beach/beach')}>
             <div className="image">
               <img src={BeachImg} />
             </div>

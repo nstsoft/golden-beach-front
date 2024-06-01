@@ -8,7 +8,8 @@ export type Event = {
   thumb: string;
   date: Date;
   name: string;
-  description: string;
-  id: string;
+  descriptionEng: string;
+  descriptionIt: string;
+  _id: string;
   type: EventType;
 };
