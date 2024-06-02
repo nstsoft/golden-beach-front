@@ -8,3 +8,5 @@ export * from './offer';
 export * from './contactUs';
 export * from './uploadEvent';
 export * from './uploadGallery';
+export * from './aboutSection';
+export * from './service';

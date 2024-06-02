@@ -20,7 +20,7 @@ type Props = {
 
 export const EventItemSection: FC<Props> = ({ event }) => {
   return (
-    <section className={`${isMobile ? 'mobile' : 'event-item-section'}`}>
+    <section className={`event-item-section ${isMobile ? 'mobile' : ''}`}>
       <div className="white-header-text">{event.name}</div>
       <div className="date">
         <CalendarSvg /> <a>{moment(event.date).format('MMM DD | HH:mma')}</a>
