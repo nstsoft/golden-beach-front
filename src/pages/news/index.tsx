@@ -11,7 +11,7 @@ export const NewsPage = () => {
       <div className="page_content">
         <div className="new-header-container">
           <div className="news-header">
-            <h1>NEWS</h1>
+            <h1 className="white-header-text">NEWS</h1>
           </div>
         </div>
         <div className="news-list">

@@ -25,7 +25,7 @@ export function getItemFromArray(array: any[], index: number) {
 
 export const groupItemsByMonth = (items: Event[]) => {
   const groupedItems: { [key: string]: Event[] } = {};
-  const sortedByDate = items.sort((a, b) => a.date.getTime() - b.date.getTime());
+  const sortedByDate = items.sort((a, b) => b.date.getTime() - a.date.getTime());
   for (const item of sortedByDate) {
     const month = `${item.date.getFullYear()}/${item.date.getMonth() + 1}/01`;
     if (!groupedItems[month]) {

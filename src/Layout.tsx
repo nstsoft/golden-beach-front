@@ -2,6 +2,7 @@ import './index.scss';
 import { Outlet } from 'react-router-dom';
 import { Header, Footer } from 'components';
 import { useEffect } from 'react';
+import { isMobile } from 'react-device-detect';
 
 export const Layout = () => {
   useEffect(() => {
@@ -14,7 +15,7 @@ export const Layout = () => {
   }, []);
 
   return (
-    <div>
+    <div className={`layout ${isMobile ? 'mobile' : ''}`}>
       <Header />
       <Outlet />
       <Footer />

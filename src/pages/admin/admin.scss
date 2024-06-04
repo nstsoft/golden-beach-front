@@ -1,5 +1,6 @@
 .admin-page {
   background: white;
+  color: black;
   .page_content {
     .events,
     .gallery {
@@ -11,5 +12,11 @@
     .control-panel {
       margin-top: 50px;
     }
+  }
+  .main-tabs {
+    width: 100%;
+  }
+  [role='tabpanel'] {
+    width: 100%;
   }
 }

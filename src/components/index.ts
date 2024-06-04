@@ -12,3 +12,6 @@ export * from './aboutSection';
 export * from './service';
 export * from './specialMenu';
 export * from './uploadMenu';
+export * from './editEvent';
+export * from './editGallery';
+export * from './editMenu';

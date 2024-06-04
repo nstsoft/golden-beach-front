@@ -62,9 +62,19 @@
 
   @media screen and (max-width: 700px) {
     flex-direction: column;
-    .menu-group {
-      width: 100%;
-      margin: 0;
+    .groups {
+      .menu-group {
+        width: 100%;
+        &:first-child {
+          h2 {
+            margin-top: 0;
+          }
+        }
+
+        &:nth-child(even) {
+          margin: 0;
+        }
+      }
     }
   }
   .button-container {

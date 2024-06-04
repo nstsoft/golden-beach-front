@@ -32,17 +32,11 @@ export const SideMenu: FC<Props> = ({ toggleDrawer }) => {
             <Link onClick={handleClick} className="link" to="/">
               {t('HomePage.Menu.home')}
             </Link>
-            <Link onClick={handleClick} className="link" to="event">
-              {t('HomePage.Menu.event')}
+            <Link onClick={handleClick} className="link" to="events">
+              {t('HomePage.Menu.events')}
             </Link>
             <Link onClick={handleClick} className="link" to="news">
               {t('HomePage.Menu.news')}
-            </Link>
-            <Link onClick={handleClick} className="link" to="service">
-              {t('HomePage.Menu.service')}
-            </Link>
-            <Link onClick={handleClick} className="link" to="video">
-              {t('HomePage.Menu.video')}
             </Link>
             <Link onClick={handleClick} className="link" to="gallery">
               {t('HomePage.Menu.gallery')}

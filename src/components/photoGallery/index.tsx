@@ -3,7 +3,7 @@ import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
 import './photoGallery.scss';
 import { isMobile } from 'react-device-detect';
-import { useGallery } from 'src/hooks/useGallery';
+import { useGallery } from 'hooks';
 import { type GalleryItemType, type ServiceType } from 'utils';
 import LightGallery from 'lightgallery/react';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
@@ -17,8 +17,8 @@ const documentWidth = window.innerWidth;
 const GalleryItem = (item: GalleryItemType) => {
   return (
     <div itemID={item._id} key={item._id} className="gallery-item" data-src={item.image}>
-      <a href={item.thumb} data-lg-size="3000-3000" data-poster={item.thumb} data-src={item.thumb}>
-        <img src={item.image} />
+      <a href={item.image} data-lg-size="3000-3000" data-poster={item.thumb} data-src={item.thumb}>
+        <img src={item.thumb} />
       </a>
     </div>
   );

@@ -38,7 +38,7 @@
       }
 
       .text {
-        padding: 20px;
+        padding: 20px 20px 20px 20px;
         width: 40%;
         align-self: flex-start;
       }
@@ -75,6 +75,9 @@
           padding: 20px 0;
         }
       }
+      .text-last {
+        padding-bottom: 0;
+      }
     }
   }
 }
@@ -92,6 +95,9 @@
         img {
           height: fit-content;
         }
+      }
+      .text-last {
+        padding-bottom: 0;
       }
     }
   }

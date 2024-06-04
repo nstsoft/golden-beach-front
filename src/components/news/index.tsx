@@ -13,7 +13,11 @@ const responsive = {
 };
 
 export const NewsSection = () => {
-  const { events: news } = useEvents({ type: EventType.news });
+  const { events: news } = useEvents({ type: EventType.news, date: new Date() });
+
+  if (!news.length) {
+    return <section className="upcoming-soon white-header-text">Upcoming soon</section>;
+  }
 
   return (
     <section className={`news_section ${isMobile ? 'mobile' : ''}`}>

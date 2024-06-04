@@ -1,11 +1,14 @@
 import { MenuItemType, http } from 'utils';
 import { useRequest } from './useRequest';
+import { useCallback } from 'react';
 
 const imagePrefix = import.meta.env.VITE_BUCKET_URL;
 
 type ReturnProps = {
   menuItems: MenuItemType[];
   isLoading: boolean;
+  execute: (...args: unknown[]) => void;
+  remove: (id: string | string[]) => Promise<unknown>;
 };
 
 const getMenus = async (id?: string) => {
@@ -32,7 +35,18 @@ const getMenus = async (id?: string) => {
   }
 };
 
+const deleteMenu = async (id: string | string[]) => {
+  return http.delete('/api/v1/menu/' + (typeof id === 'string' ? id : 'many'), {
+    data: { ids: id },
+  });
+};
+
 export const useMenu = (id?: string): ReturnProps => {
-  const { data, isLoading } = useRequest<MenuItemType[]>(() => getMenus(id));
-  return { menuItems: data ?? [], isLoading };
+  const { data, isLoading, execute } = useRequest<MenuItemType[]>(() => getMenus(id));
+
+  const remove = useCallback(async (criteria: string | string[]) => {
+    return deleteMenu(criteria);
+  }, []);
+
+  return { menuItems: data ?? [], isLoading, execute, remove };
 };

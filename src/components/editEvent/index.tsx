@@ -1,9 +1,9 @@
-import './uploadEvent.scss';
+import './editEvent.scss';
 
 import { isMobile } from 'react-device-detect';
 import { FC, useState } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
-import { EventType, http } from 'utils';
+import { EventType, http, type Event } from 'utils';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import moment, { Moment } from 'moment';
@@ -12,18 +12,19 @@ import MenuItem from '@mui/material/MenuItem';
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 
 type Props = {
+  selected: Event;
   onConfirmed?: () => void;
 };
 
-export const UploadEvent: FC<Props> = ({ onConfirmed }) => {
+export const EditEvent: FC<Props> = ({ selected, onConfirmed }) => {
   const [file, setFile] = useState<File | null>(null);
-  const [name, setName] = useState<string>('');
-  const [type, setType] = useState<string>(EventType.event);
-  const [date, setSelectedDate] = useState<Moment>(moment());
-  const [time, setSelectedTime] = useState<Moment>(moment());
+  const [name, setName] = useState<string>(selected.name);
+  const [type, setType] = useState<string>(selected.type);
+  const [date, setSelectedDate] = useState<Moment>(moment(selected.date));
+  const [time, setSelectedTime] = useState<Moment>(moment(selected.date));
 
-  const [descriptionIt, setDescriptionIt] = useState('');
-  const [descriptionEng, setDescriptionEng] = useState('');
+  const [descriptionIt, setDescriptionIt] = useState(selected.descriptionEng);
+  const [descriptionEng, setDescriptionEng] = useState(selected.descriptionIt);
 
   const [notification, setNotification] = useState<string>();
 
@@ -37,13 +38,11 @@ export const UploadEvent: FC<Props> = ({ onConfirmed }) => {
     setNotification(undefined);
     event.preventDefault();
 
-    if (!file) {
-      alert('Please select a file to upload.');
-      return;
+    const formData = new FormData();
+    if (file) {
+      formData.append('file', file);
     }
 
-    const formData = new FormData();
-    formData.append('file', file);
     formData.append('name', name);
     formData.append('descriptionIt', descriptionIt);
     formData.append('descriptionEng', descriptionEng);
@@ -53,7 +52,7 @@ export const UploadEvent: FC<Props> = ({ onConfirmed }) => {
     formData.append('date', dateTime);
 
     try {
-      await http.post('/api/v1/event', formData, {
+      await http.put('/api/v1/event/' + selected._id, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -66,7 +65,7 @@ export const UploadEvent: FC<Props> = ({ onConfirmed }) => {
     onConfirmed?.();
   };
   return (
-    <div className={`upload_event ${isMobile ? 'mobile' : ''}`}>
+    <div className={`edit_event ${isMobile ? 'mobile' : ''}`}>
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -79,7 +78,7 @@ export const UploadEvent: FC<Props> = ({ onConfirmed }) => {
         }}
       >
         <Typography variant="h5" component="h2" gutterBottom>
-          {notification ?? ' Add event or news item'}
+          {notification ?? 'Edit event'}
         </Typography>
         <div className="item">
           <TextField
@@ -122,6 +121,7 @@ export const UploadEvent: FC<Props> = ({ onConfirmed }) => {
           className="text-area"
           value={descriptionEng}
           onChange={(e) => setDescriptionEng(e.target.value)}
+          required
           minRows={3}
         />
         <TextareaAutosize
@@ -129,6 +129,7 @@ export const UploadEvent: FC<Props> = ({ onConfirmed }) => {
           aria-label="minimum height"
           minRows={3}
           placeholder="Italian description"
+          required
           className="text-area"
           value={descriptionIt}
         />
@@ -139,7 +140,7 @@ export const UploadEvent: FC<Props> = ({ onConfirmed }) => {
           </Button>
           {file && <Typography variant="body1">Selected file: {file.name}</Typography>}
           <Button type="submit" variant="contained" color="primary">
-            Upload
+            Confirm
           </Button>
         </div>
       </Box>

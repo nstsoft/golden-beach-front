@@ -26,7 +26,7 @@ const groupMenuItems = (items: MenuItemType[]) => {
 const menusGroup = (data: { type: string; items: MenuItemType[] }) => {
   return (
     <div className="menu-group" key={data.type}>
-      <h2>{data.type}</h2>
+      <h2 className="white-header-text">{data.type}</h2>
       <div className="menu-items">
         {data.items.map((item) => (
           <div className="menu-item" key={item._id}>

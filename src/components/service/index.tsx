@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import ClubImg from 'assets/service/club.png';
 import BeachImg from 'assets/service/beach.png';
 import RestaurantImg from 'assets/service/restaurant.png';
+import { isMobile } from 'react-device-detect';
 
 const images: Record<ServiceType, string> = {
   club: ClubImg,
@@ -36,12 +37,13 @@ export const ServiceSection: FC<Props> = ({ service }) => {
   const currentLanguage = i18n.language as Languages;
   const serviceList: string[] = services[currentLanguage][service];
 
+  if (!serviceList) return null;
   return (
-    <section className="service-section">
+    <section className={`service-section  ${isMobile ? 'mobile' : ''}`}>
       <div className="image">
         <img src={images[service]} alt="" />
       </div>
-      <div className="service-list">{serviceList.map(renderServiceItem)}</div>
+      <div className="service-list">{serviceList?.map(renderServiceItem)}</div>
     </section>
   );
 };

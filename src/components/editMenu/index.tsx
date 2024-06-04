@@ -1,30 +1,31 @@
-import './uploadMenu.scss';
+import './editMenu.scss';
 
 import { isMobile } from 'react-device-detect';
 import { FC, useState } from 'react';
 import { Button, Box, Typography, TextField } from '@mui/material';
-import { http } from 'utils';
+import { http, MenuItemType } from 'utils';
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
 type Props = {
+  selected: MenuItemType;
   onConfirmed?: () => void;
 };
 
-export const UploadMenu: FC<Props> = ({ onConfirmed }) => {
-  const [category, setCategory] = useState('');
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
-  const [descriptionEn, setDescriptionEn] = useState('');
-  const [descriptionIt, setDescriptionIt] = useState('');
+export const EditMenu: FC<Props> = ({ selected, onConfirmed }) => {
+  const [category, setCategory] = useState(selected.category);
+  const [name, setName] = useState(selected.name);
+  const [price, setPrice] = useState(selected.price);
+  const [descriptionEn, setDescriptionEn] = useState(selected.descriptionEn);
+  const [descriptionIt, setDescriptionIt] = useState(selected.descriptionIt);
   const [file, setFile] = useState<File>();
   const [notification, setNotification] = useState<string>();
   const [checkboxes, setCheckboxes] = useState({
-    vegan: false,
-    soya: false,
-    gluten: false,
+    vegan: selected.labels.includes('vegan'),
+    soya: selected.labels.includes('soya'),
+    gluten: selected.labels.includes('gluten'),
   });
 
   const handleAddFile = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,18 +38,16 @@ export const UploadMenu: FC<Props> = ({ onConfirmed }) => {
     setNotification(undefined);
     event.preventDefault();
 
-    if (!file) {
-      alert('Please select a file to upload.');
-      return;
-    }
-
     const formData = new FormData();
 
     const labels = Object.entries(checkboxes)
       .filter(([, value]) => value)
       .map(([key]) => key);
 
-    formData.append('file', file);
+    if (file) {
+      formData.append('file', file);
+    }
+
     formData.append('name', name);
     formData.append('labels', labels.toString());
     formData.append('price', price);
@@ -57,7 +56,7 @@ export const UploadMenu: FC<Props> = ({ onConfirmed }) => {
     formData.append('descriptionIt', descriptionIt);
 
     try {
-      await http.post('/api/v1/menu', formData, {
+      await http.put('/api/v1/menu/' + selected._id, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -75,7 +74,7 @@ export const UploadMenu: FC<Props> = ({ onConfirmed }) => {
   };
 
   return (
-    <div className={`upload_menu ${isMobile ? 'mobile' : ''}`}>
+    <div className={`edit-menu ${isMobile ? 'mobile' : ''}`}>
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -88,7 +87,7 @@ export const UploadMenu: FC<Props> = ({ onConfirmed }) => {
         }}
       >
         <Typography variant="h5" component="h2" gutterBottom>
-          {notification ?? ' Add menu item'}
+          {notification ?? 'Edit menu'}
         </Typography>
         <div className="item">
           <TextField
@@ -143,7 +142,6 @@ export const UploadMenu: FC<Props> = ({ onConfirmed }) => {
           className="text-area"
           value={descriptionEn}
           onChange={(e) => setDescriptionEn(e.target.value)}
-          required
           minRows={3}
         />
         <TextareaAutosize
@@ -151,7 +149,6 @@ export const UploadMenu: FC<Props> = ({ onConfirmed }) => {
           aria-label="minimum height"
           minRows={3}
           placeholder="Italian description"
-          required
           className="text-area"
           value={descriptionIt}
         />
@@ -162,7 +159,7 @@ export const UploadMenu: FC<Props> = ({ onConfirmed }) => {
           </Button>
           {file && <Typography variant="body1">Selected file: {file.name}</Typography>}
           <Button type="submit" variant="contained" color="primary">
-            Upload
+            Confirm
           </Button>
         </div>
       </Box>

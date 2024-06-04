@@ -9,7 +9,7 @@ export const EventItem = (event: Event) => {
       <div className="news_item">
         <div className="news_item_content">
           <div className="image_background">
-            <img src={event.image} alt={event.name} />
+            <img src={event.thumb} alt={event.name} />
           </div>
           <div className="content">
             <div className="body">

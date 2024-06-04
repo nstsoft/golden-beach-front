@@ -1,7 +1,10 @@
 import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 
 export const useRequest = <T,>(
-  requestFunction: (...args: unknown[]) => Promise<T>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  requestFunction: (...args: any[]) => Promise<T>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  defaultArgs: any = {},
   immediate = true,
 ) => {
   const initiatedRef = useRef(false);
@@ -31,9 +34,9 @@ export const useRequest = <T,>(
     if (immediate && !initiatedRef.current) {
       initiatedRef.current = true;
 
-      execute();
+      execute(defaultArgs);
     }
-  }, [immediate, execute]);
+  }, [immediate, execute, defaultArgs]);
 
   const isLoading = useMemo(() => isLoadingRef.current, [isLoadingRef]);
   const initiated = useMemo(() => initiatedRef.current, [initiatedRef]);

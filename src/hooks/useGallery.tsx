@@ -18,20 +18,34 @@ type ReturnProps = {
   galleryItems: GalleryItemType[];
   loadMore: () => void;
   isLoading: boolean;
+  count: number;
+  execute: (props: Props) => void;
+  remove: (ids: string | string[]) => Promise<unknown>;
 };
 
-const getImages = async (props: Props) => {
+const getImages = async ({ skip = 0, limit = 99999, ...props }: Props) => {
   return http
     .get('/api/v1/gallery', {
-      params: props,
+      params: {
+        skip,
+        limit,
+        ...props,
+      },
     })
-    .then((res) =>
-      res.data.data.map((el: GalleryItemType) => ({
+    .then((res) => ({
+      count: res.data.count,
+      items: res.data.data.map((el: GalleryItemType) => ({
         ...el,
         thumb: imagePrefix + el.thumb,
         image: imagePrefix + el.image,
       })),
-    );
+    }));
+};
+
+const deleteImages = async (id: string | string[]) => {
+  return http.delete('/api/v1/gallery/' + (typeof id === 'string' ? id : 'many'), {
+    data: { ids: id },
+  });
 };
 
 export const useGallery = (props: Props): ReturnProps => {
@@ -42,15 +56,34 @@ export const useGallery = (props: Props): ReturnProps => {
   const [initialized, setInitialized] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState(props.search);
+  const [countData, setCount] = useState(0);
 
   const loadImages = useCallback(() => {
     getImages({ skip, limit: props.limit, type: props.type, search })
-      .then((items) => {
+      .then(({ items, count }) => {
         setItems((prev) => (props.concatPages ? prev.concat(items) : items));
         setLoaded(skip);
+        setCount(count);
       })
       .catch((err) => console.error(err));
   }, [skip, props.type, props.limit, props.concatPages, search]);
+
+  const execute = useCallback(
+    (criteria: Props) => {
+      getImages(criteria)
+        .then(({ items, count }) => {
+          setItems((prev) => (props.concatPages ? prev.concat(items) : items));
+          setLoaded(skip);
+          setCount(count);
+        })
+        .catch((err) => console.error(err));
+    },
+    [skip, props.concatPages],
+  );
+
+  const remove = useCallback((ids: string | string[]) => {
+    return deleteImages(ids);
+  }, []);
 
   useEffect(() => {
     if (type !== props.type) {
@@ -65,9 +98,10 @@ export const useGallery = (props: Props): ReturnProps => {
     if (initialized) return;
     setIsLoading(true);
     getImages(props)
-      .then((items) => {
+      .then(({ items, count }) => {
         setItems(items);
         setIsLoading(false);
+        setCount(count);
       })
       .catch((err) => console.error(err));
 
@@ -94,5 +128,5 @@ export const useGallery = (props: Props): ReturnProps => {
     setSkip(skip + (props.limit || 0));
   };
 
-  return { galleryItems, loadMore, isLoading };
+  return { galleryItems, loadMore, isLoading, count: countData, execute, remove };
 };

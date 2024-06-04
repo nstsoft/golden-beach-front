@@ -15,8 +15,13 @@ import {
 import { http, ServiceType } from 'utils';
 import Select, { type SelectChangeEvent } from '@mui/material/Select';
 
-export const UploadGallery: FC = () => {
+type Props = {
+  onConfirmed?: () => void;
+};
+
+export const UploadGallery: FC<Props> = ({ onConfirmed }) => {
   const [album, setAlbum] = useState<string>('');
+  const [eventId, setEventId] = useState<string>('');
   const [type, setType] = useState<string>(ServiceType.beach);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [notification, setNotification] = useState<string>();
@@ -43,6 +48,8 @@ export const UploadGallery: FC = () => {
     });
     formData.append('album', album);
     formData.append('type', type);
+    formData.append('event', eventId);
+    formData.append('eventId', 'eventId');
 
     try {
       await http.post('/api/v1/gallery', formData, {
@@ -55,6 +62,7 @@ export const UploadGallery: FC = () => {
       setNotification('Error uploading file.' + err);
       setTimeout(setNotification, 3000, undefined);
     }
+    onConfirmed?.();
   };
   return (
     <div className={`upload_gallery ${isMobile ? 'mobile' : ''}`}>
@@ -67,7 +75,13 @@ export const UploadGallery: FC = () => {
             variant="outlined"
             value={album}
             onChange={(e) => setAlbum(e.target.value)}
-            required
+          />
+          <TextField
+            className="item-member"
+            label="Event ID"
+            variant="outlined"
+            value={eventId}
+            onChange={(e) => setEventId(e.target.value)}
           />
           <Select
             className="item-member"

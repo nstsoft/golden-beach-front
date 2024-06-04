@@ -61,7 +61,7 @@ export const BeachClubRestaurant = () => {
             <div className="image">
               <img src={BeachImg} />
             </div>
-            <div className="text">
+            <div className="text text-last">
               <div className="title white-header-text">Beach</div>
               <div className="decsription shadowed-text">{remove}</div>
               <div className="footer">

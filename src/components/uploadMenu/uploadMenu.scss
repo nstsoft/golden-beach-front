@@ -1,5 +1,8 @@
 .upload_menu {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
   form {
     width: 50%;
     min-width: 300px;

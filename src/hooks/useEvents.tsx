@@ -1,6 +1,6 @@
 import { EventType, type Event, http } from 'utils';
-import moment from 'moment';
 import { useRequest } from './useRequest';
+import { useCallback } from 'react';
 
 const imagePrefix = import.meta.env.VITE_BUCKET_URL;
 
@@ -9,45 +9,72 @@ type Props = {
   date?: Date;
   id?: string;
   type?: EventType;
+  skip?: number;
+  limit?: number;
+  event?: string;
+};
+
+type ReturnProps = {
+  events: Event[];
+  count: number;
+  execute: (...args: unknown[]) => Promise<void>;
+  isLoading: boolean;
+  remove: (id: string | string[]) => Promise<unknown>;
 };
 const getEvents = async (props: Props = {}) => {
-  const { id, ...params } = props;
-
-  return http.get('/api/v1/event/' + (id ?? ''), { params }).then((res) => {
-    if (!Array.isArray(res.data.data)) {
-      return [
+  const { id, skip = 0, limit = 999999, ...params } = props;
+  try {
+    const response = await http.get('/api/v1/event/' + (id ?? ''), {
+      params: { skip, limit, ...params },
+    });
+    let data = [];
+    if (!Array.isArray(response.data.data)) {
+      data = [
         {
-          ...res.data,
-          thumb: imagePrefix + res.data.thumb,
-          image: imagePrefix + res.data.image,
-          date: new Date(res.data.date),
+          ...response.data,
+          thumb: imagePrefix + response.data.thumb,
+          image: imagePrefix + response.data.image,
+          date: new Date(response.data.date),
         },
       ];
+    } else {
+      data = response.data.data.map((el: Event) => ({
+        ...el,
+        thumb: imagePrefix + el.thumb,
+        image: imagePrefix + el.image,
+        date: new Date(el.date),
+      }));
     }
 
-    return res.data.data.map((el: Event) => ({
-      ...el,
-      thumb: imagePrefix + el.thumb,
-      image: imagePrefix + el.image,
-      date: new Date(el.date),
-    }));
+    return { data, count: response.data.count ?? 0 };
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const deleteEvents = async (id: string | string[]) => {
+  return http.delete('/api/v1/event/' + (typeof id === 'string' ? id : 'many'), {
+    data: { ids: id },
   });
 };
 
-export const useEvents = (props: Props): { events: Event[] } => {
-  const { data } = useRequest<Event[]>(() => getEvents(props));
+export const useEvents = (props: Props): ReturnProps => {
+  const { data, execute, isLoading } = useRequest<{ data: Event[]; count: number } | undefined>(
+    getEvents,
+    props,
+  );
+
+  const remove = useCallback(async (id: string | string[]) => {
+    return deleteEvents(id);
+  }, []);
 
   if (props.type === EventType.news) {
-    return { events: data ?? [] };
+    return { events: data?.data ?? [], execute, count: data?.count ?? 0, isLoading, remove };
   }
 
-  let filtered = (data ?? []).filter((el) =>
+  const filtered = (data?.data ?? []).filter((el) =>
     el.name.toLowerCase().includes(props?.name?.toLowerCase() || ''),
   );
 
-  if (props.date) {
-    filtered = filtered.filter((el) => moment(el.date).isSame(props.date, 'day'));
-  }
-
-  return { events: filtered };
+  return { events: filtered, execute, count: data?.count ?? 0, isLoading, remove };
 };

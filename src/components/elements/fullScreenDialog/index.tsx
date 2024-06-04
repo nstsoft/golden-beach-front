@@ -12,15 +12,22 @@ type Props = {
   children: ReactNode;
   isOpen?: boolean;
   className?: string;
+  fullScreen?: boolean;
 };
 
-export const FullScreenDialog: FC<Props> = ({ children, onClose, isOpen, className }) => {
+export const FullScreenDialog: FC<Props> = ({
+  children,
+  onClose,
+  isOpen,
+  className,
+  fullScreen = true,
+}) => {
   return (
     <Fragment>
       <Dialog
         style={{ background: '#222222' }}
         className={`custom_dialog ${className}`}
-        fullScreen
+        fullScreen={fullScreen}
         open={!!isOpen}
         onClose={onClose}
         TransitionComponent={Transition}

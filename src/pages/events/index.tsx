@@ -19,6 +19,7 @@ export const EventsPage = () => {
   };
 
   const groups = Object.entries(groupItemsByMonth(events));
+  const sorted = groups.sort((a, b) => (moment(b[0]).isAfter(moment(a[0])) ? 1 : -1));
 
   return (
     <div className="page events-page">
@@ -28,7 +29,7 @@ export const EventsPage = () => {
           <CustomButton onClick={handleChangeDate}>Today</CustomButton>
         </div>
         <div className="events-list">
-          {groups.map(([date, eventsItems]) => (
+          {sorted.map(([date, eventsItems]) => (
             <div className="event-list-container" key={date}>
               <div className="list-header">
                 <div className="date">{moment(date).format('MMMM YYYY')}</div>

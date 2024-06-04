@@ -11,11 +11,13 @@ import Button from '@mui/material/Button';
 import { isMobile } from 'react-device-detect';
 import { SideMenu } from './components';
 import { CartSvg, UserSvg, SearchSvg } from 'assets/svg/header';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const { i18n } = useTranslation();
   const [language, setLanguage] = useState(Language.en);
-  const [isMenuOpen, setIsMneuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     i18n.changeLanguage(language);
@@ -26,13 +28,13 @@ export const Header = () => {
   };
 
   const toggleDrawer = (newOpen?: boolean) => () => {
-    setIsMneuOpen((prev) => newOpen ?? !prev);
+    setIsMenuOpen((prev) => newOpen ?? !prev);
   };
 
   return (
     <div className={`header app-padding ${isMobile ? 'mobile' : ''}`}>
       <div className="header_content">
-        <div className="logo">
+        <div className="logo" onClick={() => navigate('/')}>
           <img src={Logo} alt="Golden beach logo" />
         </div>
         <div className="menu">
@@ -69,7 +71,7 @@ export const Header = () => {
               aria-controls={isMenuOpen ? 'demo-positioned-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={isMenuOpen ? 'true' : undefined}
-              onClick={() => setIsMneuOpen((prev) => !prev)}
+              onClick={() => setIsMenuOpen((prev) => !prev)}
             >
               <MenuIcon />
             </Button>
@@ -81,7 +83,7 @@ export const Header = () => {
               open={isMenuOpen}
               onClose={toggleDrawer(false)}
             >
-              <SideMenu toggleDrawer={() => setIsMneuOpen((prev) => !prev)} />
+              <SideMenu toggleDrawer={() => setIsMenuOpen((prev) => !prev)} />
             </Drawer>
           </div>
         </div>

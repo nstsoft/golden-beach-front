@@ -13,6 +13,11 @@
       .image_background {
         height: 170px;
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
         img {
           width: 100%;
         }
@@ -51,9 +56,6 @@
             display: flex;
             flex-direction: column;
             padding-left: 10px;
-            .title {
-              font-weight: 900;
-            }
             .description {
               color: $shadowedText;
               font-size: 0.8rem;

@@ -5,5 +5,6 @@ export type GalleryItemType = {
   album: string;
   image: string;
   thumb: string;
+  event?: string;
   type: ServiceType;
 };

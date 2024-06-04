@@ -24,9 +24,6 @@ export const DescriptionPage = () => {
         <div className="page_video_content">
           <div className="big-title">{params.type}</div>
           <img src={images[params.type]} alt="" />
-          {/* <video loop={true} className="clip" autoPlay muted>
-            <source src={Video} type="video/mp4" />
-          </video> */}
         </div>
       </div>
       <section className={`page_content ${isMobile ? 'mobile' : ''}`}>

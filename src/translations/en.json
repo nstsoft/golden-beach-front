@@ -2,7 +2,7 @@
   "HomePage": {
     "Menu": {
       "home": "HOME",
-      "event": "EVENT",
+      "events": "EVENTS",
       "news": "NEWS",
       "service": "SERVICE",
       "video": "VIDEO",
