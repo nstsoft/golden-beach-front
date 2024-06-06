@@ -3,7 +3,7 @@ import { isMobile } from 'react-device-detect';
 import { useEvents } from 'hooks';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { EventType } from 'utils';
 
 const responsive = {
@@ -15,26 +15,29 @@ const responsive = {
 
 export const EventsSection = () => {
   const { events } = useEvents({ type: EventType.event, date: new Date() });
+  const navigate = useNavigate();
 
   if (!events.length) {
     return <section className="upcoming-soon white-header-text">Upcoming soon</section>;
   }
 
+  const maxItemsForCentring = isMobile ? 2 : 6;
+
   return (
-    <section className={`events_section ${isMobile ? 'mobile' : ''}`}>
+    <section
+      className={`events_section ${isMobile ? 'mobile' : ''}  ${events.length < maxItemsForCentring ? 'center' : ''}`}
+    >
       <Carousel responsive={responsive}>
-        {events.map((event) => (
-          <Link key={event._id} className="link" to="/events">
-            <div className="image">
-              <div className="date">
-                <div className="month">
-                  {event.date.toLocaleString('default', { month: 'short' })}
-                </div>
-                <div className="day">{event.date.getDate()}</div>
+        {events.reverse().map((event) => (
+          <div key={event._id} className="image" onClick={() => navigate(`events/${event._id}`)}>
+            <div className="date">
+              <div className="month">
+                {event.date.toLocaleString('default', { month: 'short' })}
               </div>
-              <img src={event.thumb} />;
+              <div className="day">{event.date.getDate()}</div>
             </div>
-          </Link>
+            <img src={event.thumb} />;
+          </div>
         ))}
       </Carousel>
     </section>

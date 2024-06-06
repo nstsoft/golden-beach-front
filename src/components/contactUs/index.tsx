@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { EmailSvg, PhoneSvg, LocationSvg } from 'assets/svg/contact';
 import { Icon } from 'leaflet';
 import MarkerImg from 'assets/marker.png';
+import { useTranslation } from 'react-i18next';
 
 const coordinates: [number, number] = [44.32921300790015, 8.51025542024294];
 
@@ -14,12 +15,13 @@ const customIcon = new Icon({
 
 export const ContactUs = () => {
   const mapRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   return (
     <section className="contact">
       <div className="contact_content">
         <div className="text_content">
-          <div className="contact_header">Contact us</div>
+          <div className="contact_header">{t('Headers.locations.small')}</div>
           <div className="item">
             <div className="label">
               <EmailSvg />

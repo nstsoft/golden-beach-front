@@ -9,7 +9,7 @@ type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButt
 
 export const CustomButton: FC<Props> = ({ children, to, ...props }) => {
   return to ? (
-    <Link className="link" to={to}>
+    <Link className="link unstyled-link" to={to}>
       <button className={`common_button ${isMobile ? 'mobile' : ''}`} {...props}>
         {children}
       </button>

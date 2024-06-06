@@ -15,3 +15,5 @@ export * from './uploadMenu';
 export * from './editEvent';
 export * from './editGallery';
 export * from './editMenu';
+export * from './albums';
+export * from './newsItem';

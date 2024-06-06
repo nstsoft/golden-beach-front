@@ -5,6 +5,9 @@
     .button-container {
       display: flex;
       align-self: flex-start;
+      button {
+        margin-right: 15px;
+      }
     }
     .events-list {
       width: 100%;

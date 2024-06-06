@@ -1,4 +1,4 @@
-import { type RouteObject, useRoutes } from 'react-router-dom';
+import { type RouteObject, useRoutes, useLocation } from 'react-router-dom';
 import { Layout } from './Layout';
 import {
   HomePage,
@@ -9,10 +9,17 @@ import {
   AdminPage,
   DishPage,
   DescriptionPage,
+  NewsItemPage,
+  NewsPage,
 } from 'src/pages';
-import { NewsPage } from './pages/news';
+import { useEffect } from 'react';
 
 export default function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const routes: RouteObject[] = [
     {
       path: '/',
@@ -21,8 +28,10 @@ export default function App() {
         { index: true, element: <HomePage /> },
         { path: '/events', element: <EventsPage /> },
         { path: '/events/:id', element: <EventItemPage /> },
+        { path: '/news/:id', element: <NewsItemPage /> },
         { path: '/news', element: <NewsPage /> },
         { path: '/golden-beach/:type', element: <DescriptionPage /> },
+        { path: '/gallery/:id', element: <GalleryPage /> },
         { path: '/gallery', element: <GalleryPage /> },
         { path: '/admin', element: <AdminPage /> },
         { path: '/golden-beach/restaurant/menu/:id', element: <DishPage /> },

@@ -10,8 +10,10 @@ import {
   ContactUs,
 } from 'components';
 import { isMobile } from 'react-device-detect';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage = () => {
+  const { t } = useTranslation();
   return (
     <div className={`page ${isMobile ? 'mobile' : ''}`}>
       <div className="page_video">
@@ -22,17 +24,35 @@ export const HomePage = () => {
         </div>
       </div>
       <section className={`page_content ${isMobile ? 'mobile' : ''}`}>
-        <ShadowHeader bigText="Upcoming" smallText="events" />
+        <ShadowHeader
+          bigText={t('Headers.UpcomingEvents.big')}
+          smallText={t('Headers.UpcomingEvents.small')}
+        />
         <EventsSection />
-        <ShadowHeader bigText="Discover" smallText="golden beach" />
+        <ShadowHeader
+          bigText={t('Headers.DiscoverGB.big')}
+          smallText={t('Headers.DiscoverGB.small')}
+        />
         <BeachClubRestaurant />
-        <ShadowHeader bigText="Service" smallText="offer" />
+        <ShadowHeader
+          bigText={t('Headers.ServiceOffers.big')}
+          smallText={t('Headers.ServiceOffers.small')}
+        />
         <Offer />
-        <ShadowHeader bigText="Gallery" smallText="photo" />
-        <PhotoGallery />
-        <ShadowHeader bigText="Interesting" smallText="news" />
+        <ShadowHeader
+          bigText={t('Headers.photoGallery.big')}
+          smallText={t('Headers.photoGallery.small')}
+        />
+        <PhotoGallery showVisitGallery={isMobile} />
+        <ShadowHeader
+          bigText={t('Headers.interestingNews.big')}
+          smallText={t('Headers.interestingNews.small')}
+        />
         <NewsSection />
-        <ShadowHeader bigText="Locations" smallText="contact us" />
+        <ShadowHeader
+          bigText={t('Headers.locations.big')}
+          smallText={t('Headers.locations.small')}
+        />
         <ContactUs />
       </section>
     </div>

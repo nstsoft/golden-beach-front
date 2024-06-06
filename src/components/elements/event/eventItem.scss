@@ -7,6 +7,7 @@
   width: 100%;
   min-height: 250px;
   margin: 10px 0;
+  cursor: pointer;
 
   .date {
     color: $color;
@@ -22,10 +23,11 @@
     }
   }
   .image {
-    width: 250px;
+    width: 210px;
     height: 250px;
     align-self: flex-start;
     overflow: hidden;
+
     img {
       width: auto;
       height: 100%;
@@ -61,8 +63,11 @@
     }
   }
 }
-
 .event-item.mobile {
+  .image {
+    width: 166px;
+    overflow: visible;
+  }
   .text {
     font-size: 10px;
     .date {
@@ -71,6 +76,30 @@
       svg {
         margin-right: 10px;
       }
+    }
+  }
+}
+.event-item.news {
+  .image {
+    width: 350px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+  }
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    margin-bottom: 30px;
+    .image {
+      width: 100%;
+      height: 300px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .text {
+      padding: 0;
+      margin-top: 10px;
     }
   }
 }

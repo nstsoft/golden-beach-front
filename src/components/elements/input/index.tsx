@@ -15,11 +15,18 @@ const Adornment = (
 type Props = {
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   label?: string;
+  style?: React.CSSProperties;
 };
 
-export const CustomInput: FC<Props> = ({ onChange, label }) => {
+export const CustomInput: FC<Props> = ({ onChange, label, style }) => {
   return (
-    <FormControl className="custom-input-control" fullWidth sx={{ m: 1 }} variant="standard">
+    <FormControl
+      style={style}
+      className="custom-input-control"
+      fullWidth
+      sx={{ m: 1 }}
+      variant="standard"
+    >
       <InputLabel className="custom-label" htmlFor="standard-adornment-amount">
         {label ?? 'Search'}
       </InputLabel>

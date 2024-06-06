@@ -12,6 +12,8 @@ type Props = {
   label?: string;
   concatPages?: boolean;
   search?: string;
+  album?: string;
+  event?: string;
 };
 
 type ReturnProps = {
@@ -59,14 +61,14 @@ export const useGallery = (props: Props): ReturnProps => {
   const [countData, setCount] = useState(0);
 
   const loadImages = useCallback(() => {
-    getImages({ skip, limit: props.limit, type: props.type, search })
+    getImages({ skip, limit: props.limit, type: props.type, search, event: props.event })
       .then(({ items, count }) => {
         setItems((prev) => (props.concatPages ? prev.concat(items) : items));
         setLoaded(skip);
         setCount(count);
       })
       .catch((err) => console.error(err));
-  }, [skip, props.type, props.limit, props.concatPages, search]);
+  }, [skip, props.type, props.limit, props.event, props.concatPages, search]);
 
   const execute = useCallback(
     (criteria: Props) => {
@@ -97,6 +99,7 @@ export const useGallery = (props: Props): ReturnProps => {
   useEffect(() => {
     if (initialized) return;
     setIsLoading(true);
+
     getImages(props)
       .then(({ items, count }) => {
         setItems(items);

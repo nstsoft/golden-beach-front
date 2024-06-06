@@ -3,6 +3,10 @@ import { useRequest } from './useRequest';
 import { useCallback } from 'react';
 
 const imagePrefix = import.meta.env.VITE_BUCKET_URL;
+type ImageUrls = {
+  thumb: string;
+  image: string;
+};
 
 type ReturnProps = {
   menuItems: MenuItemType[];
@@ -21,14 +25,22 @@ const getMenus = async (id?: string) => {
           thumb: imagePrefix + res.data.thumb,
           image: imagePrefix + res.data.image,
           date: new Date(res.data.date),
+          images: res.data.images.map((el: ImageUrls) => ({
+            thumb: imagePrefix + el.thumb,
+            image: imagePrefix + el.image,
+          })),
         },
       ];
     }
 
-    return res.data.data.map((el: MenuItemType) => ({
-      ...el,
-      thumb: imagePrefix + el.thumb,
-      image: imagePrefix + el.image,
+    return res.data.data.map((image: MenuItemType) => ({
+      ...image,
+      thumb: imagePrefix + image.thumb,
+      image: imagePrefix + image.image,
+      images: image.images.map((el: ImageUrls) => ({
+        thumb: imagePrefix + el.thumb,
+        image: imagePrefix + el.image,
+      })),
     }));
   } catch (err) {
     console.log(err);

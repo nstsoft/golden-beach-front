@@ -6,6 +6,7 @@ import { ShadowHeader } from 'components';
 import Carousel from 'react-multi-carousel';
 import { cutString } from 'utils';
 import { SoyaSvg, VeganSvg, GlutenSvg } from 'assets/svg';
+import { useState } from 'react';
 
 const labels: Record<string, JSX.Element> = {
   soya: <SoyaSvg />,
@@ -23,31 +24,49 @@ const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 4 },
   desktop: { breakpoint: { max: 1199, min: 990 }, items: 3 },
   tablet: { breakpoint: { max: 989, min: 580 }, items: 2 },
-  mobile: { breakpoint: { max: 579, min: 0 }, items: 2 },
+  mobile: { breakpoint: { max: 579, min: 0 }, items: 1 },
 };
 
 export const DishPage = () => {
   const params = useParams();
-
   const { menuItems } = useMenu(params.id);
   const { menuItems: allMenus } = useMenu();
 
   const [item] = menuItems;
+  const [activeImage, setActiveImage] = useState<null | string>(null);
+
   if (!item || !allMenus.length) {
     return null;
   }
+
+  const handleChangePreview = (image: string) => {
+    setActiveImage((prev) => (prev === image ? null : image));
+  };
 
   return (
     <div className={`dish-page page ${isMobile ? 'mobile' : ''}`}>
       <div className="page_content">
         <div className="dish-page_content">
-          <div className="image">
-            <img src={item.image} alt="" />
+          <div className="image-block">
+            <div className="image">
+              <img src={activeImage ?? item.image} alt="" />
+            </div>
+            <div className="images-container">
+              {item.images.map((el) => (
+                <div
+                  onClick={() => handleChangePreview(el.image)}
+                  className={`image-preview-block ${el.image === activeImage ? 'active' : 'inactive'}`}
+                >
+                  <img key={el.thumb} src={el.thumb} alt="" />
+                </div>
+              ))}
+            </div>
           </div>
+
           <div className="text">
             <div className="description header">
               <h2>{item.name}</h2>
-              <h2>{item.price}</h2>
+              <h2 className="price">{item.price}</h2>
             </div>
             <div className="labels">
               {item.labels.map((label) => (
@@ -67,9 +86,7 @@ export const DishPage = () => {
               </div>
               <div className="carusel-text">
                 <div className="name">{menu.name}</div>
-                <div className="description shadowed-text">
-                  {cutString(menu.descriptionEn, 100)}
-                </div>
+                <div className="description shadowed-text">{cutString(menu.descriptionEn, 80)}</div>
               </div>
             </div>
           ))}

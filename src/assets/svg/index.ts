@@ -3,3 +3,5 @@ export * from './header';
 export * from './calendar';
 export * from './download';
 export * from './dish';
+export * from './image';
+export * from './arrowLeft';

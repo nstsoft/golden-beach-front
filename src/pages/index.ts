@@ -6,3 +6,5 @@ export * from './event-item';
 export * from './admin';
 export * from './dish';
 export * from './description';
+export * from './news-item';
+export * from './news';

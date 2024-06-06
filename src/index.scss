@@ -70,12 +70,13 @@ body {
   color: $color;
   font-size: 1.5rem;
   font-weight: 900;
+  text-transform: capitalize;
   @media screen and (max-width: 800px) {
     font-size: 1.2rem;
   }
 }
 .title {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 900;
   width: 100%;
   @media screen and (max-width: 800px) {

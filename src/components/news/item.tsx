@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const EventItem = (event: Event) => {
   return (
-    <Link key={event._id} className="unstyled-link" to={'news'}>
+    <Link key={event._id} className="unstyled-link" to={`news/${event._id}`}>
       <div className="news_item">
         <div className="news_item_content">
           <div className="image_background">

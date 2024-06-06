@@ -1,13 +1,20 @@
 @import '../../variables.scss';
 
-.page {
-  &_video {
+.description-page {
+  .page_video {
     width: 100%;
     position: relative;
     background-color: rgba(0, 0, 0, 0.4);
     min-height: auto;
+    max-height: 700px;
+    overflow: hidden;
     &_content {
       position: relative;
+      max-height: 700px;
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      overflow: hidden;
       .big-title {
         position: absolute;
         color: $color;
@@ -60,7 +67,7 @@
     }
   }
 }
-.mobile {
+.description-page.mobile {
   .page_video {
     // height: 40vh;
     min-height: 0;

@@ -32,6 +32,16 @@ export const SideMenu: FC<Props> = ({ toggleDrawer }) => {
             <Link onClick={handleClick} className="link" to="/">
               {t('HomePage.Menu.home')}
             </Link>
+
+            <Link onClick={handleClick} className="link" to="golden-beach/club">
+              {t('HomePage.Menu.club')}
+            </Link>
+            <Link onClick={handleClick} className="link" to="golden-beach/beach">
+              {t('HomePage.Menu.beach')}
+            </Link>
+            <Link onClick={handleClick} className="link" to="golden-beach/restaurant">
+              {t('HomePage.Menu.restaurant')}
+            </Link>
             <Link onClick={handleClick} className="link" to="events">
               {t('HomePage.Menu.events')}
             </Link>
@@ -43,9 +53,15 @@ export const SideMenu: FC<Props> = ({ toggleDrawer }) => {
             </Link>
           </div>
           <div className="social_media">
-            <FacebookIcon onClick={handleClick} />
-            <InstagramIcon onClick={handleClick} />
-            <YouTubeIcon onClick={handleClick} />
+            <a href=" https://www.facebook.com/goldenbeachalbisola">
+              <FacebookIcon onClick={handleClick} />
+            </a>
+            <a href="https://www.instagram.com/goldenbeach_albisola/?hl=it">
+              <InstagramIcon onClick={handleClick} />
+            </a>
+            <a href="https://www.youtube.com/@discotecaGoldenBeach">
+              <YouTubeIcon onClick={handleClick} />
+            </a>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const { i18n } = useTranslation();
-  const [language, setLanguage] = useState(Language.en);
+  const [language, setLanguage] = useState(i18n.language);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -25,6 +25,7 @@ export const Header = () => {
 
   const handleLanguageChange = (event: SelectChangeEvent<unknown>) => {
     setLanguage(event.target.value as Language);
+    localStorage.setItem('language', JSON.stringify(event.target.value));
   };
 
   const toggleDrawer = (newOpen?: boolean) => () => {

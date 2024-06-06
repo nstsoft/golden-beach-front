@@ -2,7 +2,7 @@ import './editMenu.scss';
 
 import { isMobile } from 'react-device-detect';
 import { FC, useState } from 'react';
-import { Button, Box, Typography, TextField } from '@mui/material';
+import { Button, Box, Typography, TextField, List, ListItem, ListItemText } from '@mui/material';
 import { http, MenuItemType } from 'utils';
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import FormGroup from '@mui/material/FormGroup';
@@ -20,7 +20,7 @@ export const EditMenu: FC<Props> = ({ selected, onConfirmed }) => {
   const [price, setPrice] = useState(selected.price);
   const [descriptionEn, setDescriptionEn] = useState(selected.descriptionEn);
   const [descriptionIt, setDescriptionIt] = useState(selected.descriptionIt);
-  const [file, setFile] = useState<File>();
+
   const [notification, setNotification] = useState<string>();
   const [checkboxes, setCheckboxes] = useState({
     vegan: selected.labels.includes('vegan'),
@@ -28,9 +28,12 @@ export const EditMenu: FC<Props> = ({ selected, onConfirmed }) => {
     gluten: selected.labels.includes('gluten'),
   });
 
-  const handleAddFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files.length > 0) {
-      setFile(event.target.files[0]);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      setSelectedFiles((prev) => prev.concat(...files));
     }
   };
 
@@ -44,9 +47,14 @@ export const EditMenu: FC<Props> = ({ selected, onConfirmed }) => {
       .filter(([, value]) => value)
       .map(([key]) => key);
 
-    if (file) {
-      formData.append('file', file);
+    if (selectedFiles.length > 5) {
+      alert('Max 5 files');
+      return;
     }
+
+    selectedFiles.forEach((file) => {
+      formData.append('files', file);
+    });
 
     formData.append('name', name);
     formData.append('labels', labels.toString());
@@ -155,9 +163,18 @@ export const EditMenu: FC<Props> = ({ selected, onConfirmed }) => {
         <div className="item">
           <Button variant="contained" component="label">
             Select File
-            <input type="file" hidden onChange={handleAddFile} />
+            <input type="file" multiple hidden onChange={handleFileChange} />
           </Button>
-          {file && <Typography variant="body1">Selected file: {file.name}</Typography>}
+          {selectedFiles && (
+            <List>
+              {selectedFiles.length > 0 &&
+                Array.from(selectedFiles).map((file, index) => (
+                  <ListItem key={index}>
+                    <ListItemText primary={file.name} />
+                  </ListItem>
+                ))}
+            </List>
+          )}
           <Button type="submit" variant="contained" color="primary">
             Confirm
           </Button>

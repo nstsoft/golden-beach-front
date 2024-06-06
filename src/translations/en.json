@@ -3,10 +3,68 @@
     "Menu": {
       "home": "HOME",
       "events": "EVENTS",
+      "club": "CLUB",
+      "beach": "BEACH",
+      "restaurant": "RESTAURANT",
       "news": "NEWS",
       "service": "SERVICE",
       "video": "VIDEO",
       "gallery": "GALLERY"
+    }
+  },
+  "serviceOffers": {
+    "1": {
+      "title": "Themed Parties",
+      "text": "Host your special event with our exclusive themed parties. We offer personalized decorations, tailored entertainment, and a unique atmosphere to make every celebration unforgettable."
+    },
+    "2": {
+      "title": "Bachelor and Bachelorette Parties",
+      "text": " Celebrate your bachelor or bachelorette party with us. We offer personalized packages, fun activities, and a festive atmosphere to make this special occasion unforgettable."
+    },
+    "3": {
+      "title": "Birthday Parties",
+      "text": "Celebrate your birthday in style. We offer personalized solutions, tailored entertainment, and a joyful atmosphere to make your special day truly memorable."
+    }
+  },
+  "discover": {
+    "more": "More details",
+    "club": {
+      "title": "Night Club",
+      "description": "Golden Beach transforms into a spectacular nightclub as the sun sets. High-quality music blends with a meticulously designed environment, creating a refined and welcoming atmosphere. Our bar offers a wide range of cocktails prepared by expert bartenders, ensuring your evening is as unforgettable as the view."
+    },
+    "beach": {
+      "title": "Beach Club",
+      "description": "During the day, our beach club offers a range of services to make your beach experience unforgettable. You can relax under the sun with our sunbeds and umbrellas, enjoy the comfort of our cabins and showers, and savor delicious drinks and snacks at our beach bar.We also organize special events, such as beachside aperitifs, to make your days even more enjoyable. Come and discover all that Golden Beach has to offer!"
+    },
+    "restaurant": {
+      "title": "Restaurant",
+      "description": "Welcome to our restaurant, where Ligurian tradition meets the freshness of the sea. Open for both lunch and dinner, we offer a unique culinary experience with dishes prepared using fresh, high-quality ingredients. Come and discover the authentic flavors of our cuisine in a welcoming and refined atmosphere."
+    }
+  },
+  "Headers": {
+    "UpcomingEvents": {
+      "big": "Upcoming",
+      "small": "Events"
+    },
+    "DiscoverGB": {
+      "big": "Discover",
+      "small": "Golden beach"
+    },
+    "ServiceOffers": {
+      "big": "Service",
+      "small": "Offers"
+    },
+    "photoGallery": {
+      "big": "Gallery",
+      "small": "photo"
+    },
+    "interestingNews": {
+      "big": "Interesting",
+      "small": "news"
+    },
+    "locations": {
+      "big": "Locations",
+      "small": "contact us"
     }
   }
 }

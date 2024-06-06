@@ -8,16 +8,16 @@ import { useRef, useState, useEffect } from 'react';
 import Grow from '@mui/material/Grow';
 import { useIntersectionObserver } from 'hooks';
 import { useNavigate } from 'react-router-dom';
-
-const remove = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ipsum? Sed unde, sequi nam laborum
-              aliquid architecto illo autem explicabo dolore.`;
+import { useTranslation } from 'react-i18next';
 
 export const BeachClubRestaurant = () => {
+  const { t } = useTranslation();
+
   const componentRef = useRef(null);
   const [isAnimated, setIsAnimated] = useState(false);
   const navigate = useNavigate();
 
-  const { isIntersecting } = useIntersectionObserver(componentRef);
+  const { isIntersecting } = useIntersectionObserver(componentRef, { threshold: 0.1 });
 
   useEffect(() => {
     if (isIntersecting && !isAnimated) {
@@ -34,10 +34,10 @@ export const BeachClubRestaurant = () => {
               <img src={ClubImg} />
             </div>
             <div className="text">
-              <div className="title white-header-text">Club</div>
-              <div className="decsription shadowed-text">{remove}</div>
+              <div className="title white-header-text">{t('discover.club.title')}</div>
+              <div className="decsription shadowed-text">{t('discover.club.description')}</div>
               <div className="footer">
-                <div className="details">Details</div> <ArrowRightSvg />
+                <div className="details">{t('discover.more')}</div> <ArrowRightSvg />
               </div>
             </div>
           </div>
@@ -48,10 +48,12 @@ export const BeachClubRestaurant = () => {
               <img src={RestaurantImg} />
             </div>
             <div className="text">
-              <div className="title white-header-text">Restaurant</div>
-              <div className="decsription shadowed-text">{remove}</div>
+              <div className="title white-header-text">{t('discover.restaurant.title')}</div>
+              <div className="decsription shadowed-text">
+                {t('discover.restaurant.description')}
+              </div>
               <div className="footer">
-                <div className="details">Details</div> <ArrowRightSvg />
+                <div className="details">{t('discover.more')}</div> <ArrowRightSvg />
               </div>
             </div>
           </div>
@@ -62,10 +64,10 @@ export const BeachClubRestaurant = () => {
               <img src={BeachImg} />
             </div>
             <div className="text text-last">
-              <div className="title white-header-text">Beach</div>
-              <div className="decsription shadowed-text">{remove}</div>
+              <div className="title white-header-text">{t('discover.beach.title')}</div>
+              <div className="decsription shadowed-text">{t('discover.beach.description')}</div>
               <div className="footer">
-                <div className="details">Details</div> <ArrowRightSvg />
+                <div className="details">{t('discover.more')}</div> <ArrowRightSvg />
               </div>
             </div>
           </div>

@@ -7,5 +7,6 @@ export type MenuItemType = {
   descriptionEn: string;
   descriptionIt: string;
   category: string;
+  images: { thumb: string; image: string }[];
   _id: string;
 };

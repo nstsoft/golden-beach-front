@@ -7,6 +7,7 @@ import { FullScreenDialog, EditGallery, UploadGallery } from 'components';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { GalleryItemType } from 'utils';
 
 const style = {
   position: 'absolute' as const,
@@ -20,21 +21,30 @@ const style = {
   p: 4,
 };
 
-const columns: GridColDef[] = [
-  { field: '_id', headerName: 'ID', width: 210 },
+const albumColumns: GridColDef[] = [
+  { field: 'name', headerName: 'name', width: 210 },
   {
-    field: 'thumb',
-    headerName: 'image',
+    field: 'items',
+    headerName: 'Img',
     width: 70,
-    renderCell: (params) => <img style={{ height: '100%' }} src={params.row.thumb} />,
+    renderCell: (params) => <img style={{ height: '100%' }} src={params.row.items[0].thumb} />,
   },
-  { field: 'type', headerName: 'Type', width: 150 },
-  { field: 'album', headerName: 'Album', width: 150 },
-  { field: 'event', headerName: 'Event', width: 150 },
+  {
+    field: 'count',
+    headerName: 'Count',
+    width: 150,
+    renderCell: (params) => params.row.items.length,
+  },
+  {
+    field: 'event',
+    headerName: 'Event',
+    width: 250,
+    renderCell: (params) => params.row.items[0].event,
+  },
 ];
 
 export const GalleryTab = () => {
-  const { galleryItems, count, execute, remove } = useGallery({ skip: 0 });
+  const { galleryItems, execute, remove } = useGallery({ skip: 0 });
   const [isOpenDialogAdd, setIsOpenDialogAdd] = useState(false);
   const [isOpenDialogEdit, setIsOpenDialogEdit] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
@@ -44,6 +54,24 @@ export const GalleryTab = () => {
     pageSize: 10,
     page: 0,
   });
+
+  const albumsMap = galleryItems.reduce(
+    (acc, el) => {
+      if (!acc[el.album]) {
+        acc[el.album] = [];
+      }
+      acc[el.album].push(el);
+      return acc;
+    },
+    {} as { [key: string]: GalleryItemType[] },
+  );
+
+  const albums = Object.entries(albumsMap).map(([key, value]) => ({
+    name: key,
+    items: value,
+    count: value.length,
+    id: key,
+  }));
 
   const deleteItems = () => {
     remove(selected).then(() => {
@@ -87,11 +115,11 @@ export const GalleryTab = () => {
         Delete selected
       </Button>
       <DataGrid
-        rowCount={count}
+        rowCount={albums.length}
         autoHeight
         checkboxSelection
-        rows={galleryItems.map((el) => ({ ...el, id: el._id }))}
-        columns={columns}
+        rows={albums}
+        columns={albumColumns}
         pageSizeOptions={[10, 25, 50]}
         paginationModel={paginationModel}
         onPaginationModelChange={setPaginationModel}
@@ -121,10 +149,7 @@ export const GalleryTab = () => {
         }}
         isOpen={isOpenDialogEdit}
       >
-        <EditGallery
-          onConfirmed={onConfirmed}
-          selected={galleryItems.find((el) => selected[0] === el._id) ?? galleryItems[0]}
-        />
+        <EditGallery onConfirmed={onConfirmed} selected={albumsMap[selected[0]] ?? []} />
       </FullScreenDialog>
       <Modal
         open={confirmDeletion}

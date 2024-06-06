@@ -1,0 +1,102 @@
+.news-item-section {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  .head-content {
+    width: 100%;
+    .date {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 20px;
+      svg {
+        margin-right: 20px;
+      }
+    }
+  }
+  .image {
+    max-height: 500px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 20px 0;
+    img {
+      height: max-content;
+      width: 100%;
+    }
+  }
+  .content {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+
+    .description {
+      width: 60%;
+      padding-right: 30px;
+    }
+    .recent-events {
+      width: 40%;
+      .recent-header-content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .head {
+          margin-right: 10px;
+          min-width: 135px;
+        }
+        .line {
+          width: 100%;
+          height: 1px;
+          border: 1px solid white;
+        }
+      }
+      .recent-posts {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        .recent-post {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          margin-bottom: 15px;
+          height: 110px;
+          .image {
+            width: 50%;
+            margin: 0;
+          }
+          .text {
+            width: 100%;
+            padding-left: 20px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 850px) {
+      flex-direction: column;
+      .description {
+        width: 100%;
+        padding: 0;
+      }
+      .recent-events {
+        width: 100%;
+        padding: 20px 0;
+        .recent-header-content {
+          padding: 10px;
+        }
+        .recent-posts {
+          .recent-post {
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}

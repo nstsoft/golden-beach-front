@@ -2,11 +2,69 @@
   "HomePage": {
     "Menu": {
       "home": "HOMES",
-      "events": "EVENTS",
-      "news": "NEWS",
+      "events": "EVENTI",
+      "club": "Discoteca",
+      "beach": "Spiaggia",
+      "restaurant": "Ristorante",
+      "news": "NOVITA’",
       "service": "SERVICE",
       "video": "VIDEO",
-      "gallery": "GALLERY"
+      "gallery": "GALLERIA"
+    }
+  },
+  "discover": {
+    "more": "Maggiori Informazioni",
+    "club": {
+      "title": "Discoteca",
+      "description": "Il Golden Beach si trasforma in una spettacolare discoteca al calar del sole. La musica di alta qualità si fonde con un ambiente curato nei minimi dettagli, creando un’atmosfera raffinata e accogliente. Il nostro bar offre una vasta gamma di cocktail preparati da esperti barman, garantendo che la vostra serata sia indimenticabile quanto il panorama."
+    },
+    "beach": {
+      "title": "Stabilimento Balneare",
+      "description": "Durante il giorno, il nostro stabilimento balneare offre una gamma di servizi per rendere indimenticabile la vostra esperienza sulla spiaggia. Potrete rilassarvi sotto il sole con lettini e ombrelloni, usufruire di cabine e docce confortevoli, e gustare drink e snack deliziosi presso il nostro beach bar.Organizziamo anche eventi speciali, come aperitivi sulla spiaggia, per rendere le vostre giornate ancora più piacevoli. Venite a scoprire tutto ciò che Golden Beach ha da offrire!"
+    },
+    "restaurant": {
+      "title": "Ristorante",
+      "description": "Benvenuti nel nostro ristorante, dove la tradizione ligure si unisce alla freschezza del mare. Aperto sia a pranzo che a cena, offriamo un'esperienza culinaria unica con piatti preparati con ingredienti freschi e di alta qualità. Venite a scoprire i sapori autentici della nostra cucina, immersi in un ambiente accogliente e raffinato."
+    }
+  },
+  "serviceOffers": {
+    "1": {
+      "title": "Party a Tema",
+      "text": "Organizza il tuo evento speciale con i nostri esclusivi party a tema. Offriamo decorazioni personalizzate, intrattenimento su misura e un'atmosfera unica per rendere ogni festa indimenticabile."
+    },
+    "2": {
+      "title": "Addii al Celibato o Nubilato",
+      "text": "Celebra l'addio al celibato o nubilato con noi. Offriamo pacchetti personalizzati, attività divertenti e un'atmosfera festosa per rendere indimenticabile questa occasione speciale."
+    },
+    "3": {
+      "title": "Feste di Compleanno",
+      "text": "Festeggia il tuo compleanno con stile. Offriamo soluzioni personalizzate, intrattenimento su misura e un'atmosfera gioiosa per rendere il tuo giorno speciale davvero memorabile."
+    }
+  },
+  "Headers": {
+    "UpcomingEvents": {
+      "big": "Prossimi",
+      "small": "Eventi"
+    },
+    "DiscoverGB": {
+      "big": "Alla scoperta di",
+      "small": "Golden beach"
+    },
+    "ServiceOffers": {
+      "big": "Servizi",
+      "small": "offerti"
+    },
+    "photoGallery": {
+      "big": "Galleria",
+      "small": "foto"
+    },
+    "interestingNews": {
+      "big": "Ultime",
+      "small": "Novita'"
+    },
+    "locations": {
+      "big": "Dove siamo",
+      "small": "contattaci"
     }
   }
 }

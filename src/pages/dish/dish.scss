@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .dish-page {
   .page_content {
     .dish-page_content {
@@ -7,18 +9,59 @@
       justify-content: center;
       align-items: flex-start;
       margin-top: 30px;
-      .image {
+      .image-block {
+        display: flex;
         width: 50%;
-        img {
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20px;
+        .image {
           width: 100%;
+          max-height: 300px;
+          display: flex;
+          justify-content: center;
+          overflow: hidden;
+          align-items: center;
+
+          img {
+            width: 100%;
+            height: fit-content;
+          }
+        }
+        .images-container {
+          margin-top: 10px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          .image-preview-block {
+            width: 22%;
+            background-color: #3498db;
+            opacity: 0.2;
+            cursor: pointer;
+            img {
+              width: 100%;
+            }
+          }
+          .active {
+            opacity: 1;
+          }
         }
       }
+
       .text {
         width: 50%;
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
         padding-left: 20px;
+        .description.header {
+          background: transparent;
+          .price {
+            background: $background;
+            padding: 0 15px;
+          }
+        }
 
         .labels {
           margin-top: 10px;
@@ -42,14 +85,24 @@
       //   height: 400px;
       .carusel-item {
         padding: 20px;
-        height: 350px;
+        height: 300px;
         .name {
           font-size: 1.2rem;
         }
         .description {
           font-size: 0.8rem;
         }
+        .carusel-text {
+          min-height: 100px;
+          background-color: $background;
+          padding: 10px;
+        }
         .image {
+          height: 170px;
+          overflow: hidden;
+          justify-content: center;
+          align-items: center;
+          display: flex;
           img {
             width: 100%;
           }
@@ -62,12 +115,40 @@
       .dish-page_content {
         flex-direction: column;
         justify-content: flex-start;
+        .image-block {
+          width: 100%;
+          .image {
+            height: 400px;
+          }
+        }
         .image {
           width: 100%;
         }
         .text {
           width: 100%;
         }
+      }
+    }
+  }
+  @media screen and (max-width: 580) {
+    .page_content {
+      .react-multi-carousel-list {
+        .carusel-item {
+          padding: 5px;
+          height: 300px;
+          .name {
+            font-size: 1.2rem;
+          }
+
+          .carusel-text {
+            min-height: 130px;
+          }
+          .image {
+            height: 200px;
+          }
+        }
+      }
+      .dish-page_content {
       }
     }
   }

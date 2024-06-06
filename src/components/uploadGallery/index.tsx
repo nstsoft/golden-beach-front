@@ -12,8 +12,9 @@ import {
   TextField,
   MenuItem,
 } from '@mui/material';
-import { http, ServiceType } from 'utils';
+import { http, ServiceType, splitByChunks } from 'utils';
 import Select, { type SelectChangeEvent } from '@mui/material/Select';
+import CircularProgress from '@mui/material/CircularProgress';
 
 type Props = {
   onConfirmed?: () => void;
@@ -25,6 +26,7 @@ export const UploadGallery: FC<Props> = ({ onConfirmed }) => {
   const [type, setType] = useState<string>(ServiceType.beach);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [notification, setNotification] = useState<string>();
+  const [isUploading, setIsUploading] = useState(false);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -42,32 +44,42 @@ export const UploadGallery: FC<Props> = ({ onConfirmed }) => {
       return;
     }
 
-    const formData = new FormData();
-    selectedFiles.forEach((file) => {
-      formData.append('files', file);
-    });
-    formData.append('album', album);
-    formData.append('type', type);
-    formData.append('event', eventId);
-    formData.append('eventId', 'eventId');
+    const chunks = splitByChunks(selectedFiles, 3);
 
-    try {
-      await http.post('/api/v1/gallery', formData, {
+    const upload = async (files: File[]) => {
+      const formData = new FormData();
+      files.forEach((file) => {
+        formData.append('files', file);
+      });
+      formData.append('album', album);
+      formData.append('type', type);
+      formData.append('event', eventId);
+      formData.append('eventId', 'eventId');
+
+      return http.post('/api/v1/gallery', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
+    };
 
-      setNotification('File uploaded successfully!');
-      setTimeout(setNotification, 3000, undefined);
-    } catch (err: unknown) {
-      setNotification('Error uploading file.' + err);
-      setTimeout(setNotification, 3000, undefined);
-    }
-    onConfirmed?.();
+    setIsUploading(true);
+
+    await Promise.all(chunks.map(upload))
+      .then(() => {
+        setNotification('File uploaded successfully!');
+        setTimeout(setNotification, 3000, undefined);
+        setIsUploading(false);
+        onConfirmed?.();
+      })
+      .catch((err) => {
+        setIsUploading(false);
+        setNotification('Error uploading file.' + err);
+        setTimeout(setNotification, 3000, undefined);
+      });
   };
   return (
     <div className={`upload_gallery ${isMobile ? 'mobile' : ''}`}>
       <Box>
-        <Typography variant="h6">{notification ?? 'Upload photo to gallery'}</Typography>
+        <Typography variant="h6">{notification ?? 'Upload new album '}</Typography>
         <div className="item">
           <TextField
             className="item-member"
@@ -75,13 +87,6 @@ export const UploadGallery: FC<Props> = ({ onConfirmed }) => {
             variant="outlined"
             value={album}
             onChange={(e) => setAlbum(e.target.value)}
-          />
-          <TextField
-            className="item-member"
-            label="Event ID"
-            variant="outlined"
-            value={eventId}
-            onChange={(e) => setEventId(e.target.value)}
           />
           <Select
             className="item-member"
@@ -95,6 +100,15 @@ export const UploadGallery: FC<Props> = ({ onConfirmed }) => {
             <MenuItem value={ServiceType.restaurant}>{ServiceType.restaurant}</MenuItem>
             <MenuItem value={ServiceType.club}>{ServiceType.club}</MenuItem>
           </Select>
+        </div>
+        <div className="item event">
+          <TextField
+            className="item-member"
+            label="Event ID"
+            variant="outlined"
+            value={eventId}
+            onChange={(e) => setEventId(e.target.value)}
+          />
         </div>
         <input
           accept="*"
@@ -110,7 +124,10 @@ export const UploadGallery: FC<Props> = ({ onConfirmed }) => {
           </Button>
         </label>
         <Box mt={2}>
-          <Typography variant="body1">{selectedFiles.length} file(s) selected</Typography>
+          <Typography className="selected-files-count" variant="body1">
+            {selectedFiles.length} file(s) selected
+          </Typography>
+
           <List>
             {selectedFiles.length > 0 &&
               Array.from(selectedFiles).map((file, index) => (
@@ -119,14 +136,19 @@ export const UploadGallery: FC<Props> = ({ onConfirmed }) => {
                 </ListItem>
               ))}
           </List>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSubmit}
-            disabled={selectedFiles.length === 0}
-          >
-            Upload
-          </Button>
+
+          {isUploading ? (
+            <CircularProgress />
+          ) : (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSubmit}
+              disabled={selectedFiles.length === 0}
+            >
+              Upload
+            </Button>
+          )}
         </Box>
       </Box>
     </div>

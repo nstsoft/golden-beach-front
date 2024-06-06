@@ -1,24 +1,44 @@
 import './eventspage.scss';
 import { CustomInput, CustomButton, EventItem } from 'components';
-import { type ChangeEvent, useState } from 'react';
+import { type ChangeEvent, useState, useEffect } from 'react';
 import { useEvents } from 'hooks';
-import { groupItemsByMonth, EventType } from 'utils';
+import { groupItemsByMonth, EventType, Event } from 'utils';
 import moment from 'moment';
 
 export const EventsPage = () => {
   const [search, setSearch] = useState('');
-  const [selectedDate, setDate] = useState<Date | undefined>();
-  const { events } = useEvents({ name: search, date: selectedDate, type: EventType.event });
+  const { events, execute } = useEvents({ type: EventType.event });
+  const [eventsData, setEventsData] = useState<null | Event[]>(null);
+
+  useEffect(() => {
+    if (eventsData == null && events.length) {
+      setEventsData(events);
+    }
+  }, [events, eventsData]);
+
+  useEffect(() => {
+    execute({ name: search, type: EventType.event }).then(() => {
+      setEventsData(events);
+    });
+  }, [events.length, execute, search, setEventsData]);
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSearch(e.target.value);
   };
 
-  const handleChangeDate = () => {
-    setDate((prev) => (prev ? undefined : new Date()));
+  const handleChangeDate = (type: 'today' | 'week' | 'all') => {
+    if (type === 'all') {
+      setEventsData(events);
+    }
+    if (type === 'today') {
+      setEventsData(events.filter((event) => moment(event.date).isSame(moment(), 'day')));
+    }
+    if (type === 'week') {
+      setEventsData(events.filter((event) => moment(event.date).isSame(moment(), 'week')));
+    }
   };
 
-  const groups = Object.entries(groupItemsByMonth(events));
+  const groups = Object.entries(groupItemsByMonth(eventsData ?? []));
   const sorted = groups.sort((a, b) => (moment(b[0]).isAfter(moment(a[0])) ? 1 : -1));
 
   return (
@@ -26,7 +46,9 @@ export const EventsPage = () => {
       <div className="page_content">
         <CustomInput onChange={handleSearchChange} label="Search events" />
         <div className="button-container">
-          <CustomButton onClick={handleChangeDate}>Today</CustomButton>
+          <CustomButton onClick={() => handleChangeDate('today')}>Today</CustomButton>{' '}
+          <CustomButton onClick={() => handleChangeDate('week')}>This week</CustomButton>
+          <CustomButton onClick={() => handleChangeDate('all')}>All</CustomButton>
         </div>
         <div className="events-list">
           {sorted.map(([date, eventsItems]) => (
