@@ -1,12 +1,11 @@
 import './service.scss';
 import { ServiceType } from 'utils';
 import { FC } from 'react';
-import { services } from './services';
-import { useTranslation } from 'react-i18next';
 import ClubImg from 'assets/service/club.png';
 import BeachImg from 'assets/service/beach.png';
 import RestaurantImg from 'assets/service/restaurant.png';
 import { isMobile } from 'react-device-detect';
+import { useLanguage } from 'hooks';
 
 const images: Record<ServiceType, string> = {
   club: ClubImg,
@@ -33,17 +32,18 @@ const renderServiceItem = (item: string, index: number) => {
 };
 
 export const ServiceSection: FC<Props> = ({ service }) => {
-  const { i18n } = useTranslation();
-  const currentLanguage = i18n.language as Languages;
-  const serviceList: string[] = services[currentLanguage][service];
+  const { t } = useLanguage();
 
-  if (!serviceList) return null;
+  const services = t(`descriptionPage.${service}.services`, {
+    returnObjects: true,
+  }) as unknown as string[];
+
   return (
     <section className={`service-section  ${isMobile ? 'mobile' : ''}`}>
       <div className="image">
         <img src={images[service]} alt="" />
       </div>
-      <div className="service-list">{serviceList?.map(renderServiceItem)}</div>
+      <div className="service-list">{services?.map(renderServiceItem)}</div>
     </section>
   );
 };

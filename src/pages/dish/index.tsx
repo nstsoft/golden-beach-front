@@ -1,6 +1,6 @@
 import './dish.scss';
 import { isMobile } from 'react-device-detect';
-import { useMenu } from 'hooks';
+import { useMenu, useLanguage } from 'hooks';
 import { useParams } from 'react-router-dom';
 import { ShadowHeader } from 'components';
 import Carousel from 'react-multi-carousel';
@@ -31,6 +31,7 @@ export const DishPage = () => {
   const params = useParams();
   const { menuItems } = useMenu(params.id);
   const { menuItems: allMenus } = useMenu();
+  const { language } = useLanguage();
 
   const [item] = menuItems;
   const [activeImage, setActiveImage] = useState<null | string>(null);
@@ -74,7 +75,7 @@ export const DishPage = () => {
               ))}
             </div>
 
-            <p>{item.descriptionEn}</p>
+            <p>{language === 'en' ? item.descriptionEn : item.descriptionIt}</p>
           </div>
         </div>
         <ShadowHeader bigText="Other" smallText="menu" />
@@ -86,7 +87,9 @@ export const DishPage = () => {
               </div>
               <div className="carusel-text">
                 <div className="name">{menu.name}</div>
-                <div className="description shadowed-text">{cutString(menu.descriptionEn, 80)}</div>
+                <div className="description shadowed-text">
+                  {cutString(language === 'en' ? menu.descriptionEn : menu.descriptionIt, 80)}
+                </div>
               </div>
             </div>
           ))}

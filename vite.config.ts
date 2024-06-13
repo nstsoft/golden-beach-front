@@ -6,9 +6,7 @@ import dotenv from 'dotenv';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
 
-  if (process.env.NODE_ENV === 'staging') {
-    dotenv.config({ path: '.env.staging' });
-  }
+  dotenv.config({ path: `.env.${process.env.NODE_ENV ?? 'local'}` });
 
   return {
     plugins: [react(), tsconfigPaths()],

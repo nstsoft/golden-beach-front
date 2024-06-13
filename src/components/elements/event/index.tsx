@@ -5,6 +5,7 @@ import { CalendarSvg } from 'assets/svg';
 import moment from 'moment';
 import { isMobile } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from 'hooks';
 
 type Props = {
   event: Event;
@@ -13,9 +14,10 @@ type Props = {
 
 export const EventItem: FC<Props> = ({ event, type }) => {
   const navigate = useNavigate();
+  const { language } = useLanguage();
   return (
     <section
-      onClick={() => navigate(`/${type === 'event' ? 'events' : 'news'}/${event._id}`)}
+      onClick={() => navigate(`/${language}/${type === 'event' ? 'events' : 'news'}/${event._id}`)}
       className={`event-item ${type === 'event' ? 'event' : 'news'} ${isMobile ? 'mobile' : ''}`}
     >
       <div className="date" style={{ display: type === 'event' && !isMobile ? 'flex' : 'none' }}>
@@ -31,7 +33,10 @@ export const EventItem: FC<Props> = ({ event, type }) => {
         </div>
         <div className="title white-header-text">{event.name}</div>
         <div className="description shadowed-text">
-          {cutString(event.descriptionEng, isMobile ? 230 : 400)}
+          {cutString(
+            language === 'en' ? event.descriptionEng : event.descriptionIt,
+            isMobile ? 230 : 400,
+          )}
         </div>
       </div>
     </section>

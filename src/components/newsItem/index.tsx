@@ -4,13 +4,13 @@ import './newsItemSections.scss';
 import { isMobile } from 'react-device-detect';
 import moment from 'moment';
 import { CalendarSvg } from 'assets/svg';
-import { useEvents } from 'hooks';
+import { useEvents, useLanguage } from 'hooks';
 
 type Props = { event: Event };
 
 const renderRecentPost = (event: Event) => {
   return (
-    <div className="recent-post">
+    <div className="recent-post" key={event._id}>
       <div className="image">
         {' '}
         <img src={event.image} />{' '}
@@ -25,7 +25,10 @@ const renderRecentPost = (event: Event) => {
 
 export const NewsItemSection: FC<Props> = ({ event }) => {
   const { events } = useEvents({ type: EventType.news });
-  console.log(events);
+  const { t, language } = useLanguage();
+
+  console.log(event);
+
   return (
     <section className={`news-item-section ${isMobile ? 'mobile' : ''}`}>
       <div className="head-content">
@@ -38,10 +41,12 @@ export const NewsItemSection: FC<Props> = ({ event }) => {
         <img src={event.image} />
       </div>
       <div className="content">
-        <div className="description shadowed-text">{event.descriptionEng}</div>
+        <div className="description shadowed-text">
+          {language === 'en' ? event.descriptionEng : event.descriptionIt}
+        </div>
         <div className="recent-events">
           <div className="title recent-header-content">
-            <div className="head">RECENT POST</div>
+            <div className="head">{t('recentPost')}</div>
             <div className="line"></div>
           </div>
           <div className="recent-posts">{events.slice(0, 3).map(renderRecentPost)}</div>

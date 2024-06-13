@@ -13,7 +13,7 @@ export const Slide: FC<Props> = ({ images, index }) => {
       {images.map((image, i) => (
         <Grow key={i * 400} timeout={1500 + i * 400} in={isIntersecting}>
           <div className="image" key={image + index + i}>
-            <img src={image} />;
+            <img src={image} />
           </div>
         </Grow>
       ))}

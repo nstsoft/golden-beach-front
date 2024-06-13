@@ -2,9 +2,8 @@ import './index.scss';
 import Logo from 'assets/logo.svg';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Language } from 'utils';
-import { useTranslation } from 'react-i18next';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -12,20 +11,15 @@ import { isMobile } from 'react-device-detect';
 import { SideMenu } from './components';
 import { CartSvg, UserSvg, SearchSvg } from 'assets/svg/header';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from 'hooks';
 
 export const Header = () => {
-  const { i18n } = useTranslation();
-  const [language, setLanguage] = useState(i18n.language);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [language, i18n]);
+  const { change, language } = useLanguage();
 
   const handleLanguageChange = (event: SelectChangeEvent<unknown>) => {
-    setLanguage(event.target.value as Language);
-    localStorage.setItem('language', JSON.stringify(event.target.value));
+    change(event.target.value as Language);
   };
 
   const toggleDrawer = (newOpen?: boolean) => () => {
@@ -35,7 +29,7 @@ export const Header = () => {
   return (
     <div className={`header app-padding ${isMobile ? 'mobile' : ''}`}>
       <div className="header_content">
-        <div className="logo" onClick={() => navigate('/')}>
+        <div className="logo" onClick={() => navigate(`/${language}`)}>
           <img src={Logo} alt="Golden beach logo" />
         </div>
         <div className="menu">

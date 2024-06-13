@@ -1,6 +1,6 @@
 import './events.scss';
 import { isMobile } from 'react-device-detect';
-import { useEvents } from 'hooks';
+import { useEvents, useLanguage } from 'hooks';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
@@ -16,6 +16,7 @@ const responsive = {
 export const EventsSection = () => {
   const { events } = useEvents({ type: EventType.event, date: new Date() });
   const navigate = useNavigate();
+  const { language } = useLanguage();
 
   if (!events.length) {
     return <section className="upcoming-soon white-header-text">Upcoming soon</section>;
@@ -29,14 +30,18 @@ export const EventsSection = () => {
     >
       <Carousel responsive={responsive}>
         {events.reverse().map((event) => (
-          <div key={event._id} className="image" onClick={() => navigate(`events/${event._id}`)}>
+          <div
+            key={event._id}
+            className="image"
+            onClick={() => navigate(`/${language}/events/${event._id}`)}
+          >
             <div className="date">
               <div className="month">
                 {event.date.toLocaleString('default', { month: 'short' })}
               </div>
               <div className="day">{event.date.getDate()}</div>
             </div>
-            <img src={event.thumb} />;
+            <img src={event.thumb} />
           </div>
         ))}
       </Carousel>

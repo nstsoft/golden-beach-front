@@ -1,3 +1,7 @@
 export const NotFoundPage = () => {
-  return <div>404</div>;
+  return (
+    <div className="page">
+      <section className="page_content">Page not found</section>
+    </div>
+  );
 };

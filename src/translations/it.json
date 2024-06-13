@@ -42,29 +42,64 @@
     }
   },
   "Headers": {
-    "UpcomingEvents": {
-      "big": "Prossimi",
-      "small": "Eventi"
+    "UpcomingEvents": { "big": "Prossimi", "small": "Eventi" },
+    "DiscoverGB": { "big": "Alla scoperta di", "small": "Golden beach" },
+    "ServiceOffers": { "big": "Servizi", "small": "offerti" },
+    "photoGallery": { "big": "Galleria", "small": "foto" },
+    "interestingNews": { "big": "Ultime", "small": "Novita'" },
+    "locations": { "big": "Dove siamo", "small": "contattaci" },
+    "providedServices": { "big": "Servizi", "small": "offerti" },
+    "menu": { "big": "Menù", "small": "speciale" }
+  },
+  "descriptionPage": {
+    "club": {
+      "mainHeader": "DISCOTECA",
+      "aboutTitle": "La Discoteca Golden Beach",
+      "aboutDescription": "Mentre il sole tramonta e il cielo si colora di sfumature dorate, il Golden Beach si trasforma in una spettacolare discoteca. La musica di qualità, curata nei minimi dettagli, crea un'atmosfera raffinata e accogliente. Il nostro bar, cuore pulsante della serata, offre una vasta gamma di cocktail preparati da esperti barman, garantendo un'esperienza sensoriale unica. Ogni sorso e ogni nota rendono la vostra serata tanto indimenticabile quanto il panorama mozzafiato che vi circonda. Al Golden Beach, il divertimento si fonde con la bellezza e l'eleganza, regalando notti magiche e cariche di emozioni.",
+      "services": [
+        "Musica di alta qualità: DJ professionisti e una selezione musicale curata nei minimi dettagli per creare un'atmosfera coinvolgente e raffinata.",
+        "Bar con cocktail d'autore: Esperti barman che preparano una vasta gamma di cocktail unici, garantendo un'esperienza sensoriale indimenticabile.",
+        "Ambiente elegante e accogliente: Spazi arredati con gusto e attenzione ai dettagli, pensati per offrire un'esperienza di lusso e comfort.",
+        "Vista panoramica mozzafiato: Un’ambientazione suggestiva con panorami che aggiungono un tocco di magia alla serata.",
+        "Eventi speciali e serate a tema: Programmazione di eventi esclusivi e serate a tema per offrire sempre nuove esperienze ai clienti."
+      ]
     },
-    "DiscoverGB": {
-      "big": "Alla scoperta di",
-      "small": "Golden beach"
+    "beach": {
+      "mainHeader": "SPIAGGIA",
+      "aboutTitle": "Lo Stabilimento Balneare",
+      "aboutDescription": "Durante il giorno, Golden Beach si trasforma in un'oasi di relax e divertimento. Il nostro stabilimento balneare offre una gamma di servizi che rendono la vostra esperienza sulla spiaggia indimenticabile. Rilassatevi su lettini e ombrelloni, usufruite di cabine e docce per il massimo comfort e deliziatevi con drink e snack presso il nostro beach bar. Inoltre, eventi speciali come aperitivi sulla spiaggia aggiungono un tocco di magia alle vostre giornate. Venite a scoprire tutto ciò che Golden Beach ha da offrire!",
+      "services": [
+        "Ombrelloni e lettini imbottiti: Rilassatevi sotto il sole con lettini confortevoli e servizio al lettino con cameriere dedicato.",
+        "Wi-Fi gratuito e ricarica cellulare: Rimanete connessi con il Wi-Fi gratuito e ricaricate il vostro cellulare in modo sicuro.",
+        "Assistenza bagnanti e docce calde: Godetevi la sicurezza dell'assistenza bagnanti e il comfort delle docce con acqua calda, con spogliatoi disponibili.",
+        "Attività ricreative: Divertitevi con calcio balilla e Ping Pong, e godetevi pranzi animati con intrattenimento musicale durante la stagione.",
+        "Ristorante e bar: Gustate menù alla carta a pranzo e scegliete tra le migliori selezioni di vini, bollicine, liquori e distillati."
+      ]
     },
-    "ServiceOffers": {
-      "big": "Servizi",
-      "small": "offerti"
-    },
-    "photoGallery": {
-      "big": "Galleria",
-      "small": "foto"
-    },
-    "interestingNews": {
-      "big": "Ultime",
-      "small": "Novita'"
-    },
-    "locations": {
-      "big": "Dove siamo",
-      "small": "contattaci"
+    "restaurant": {
+      "mainHeader": "RISTORANTE",
+      "aboutTitle": "Il nostro ristorante",
+      "aboutDescription": "Benvenuti nel nostro ristorante, dove la tradizione ligure si unisce alla freschezza del mare per un’esperienza culinaria unica. Aperto a pranzo e cena, vi offriamo piatti preparati con ingredienti freschi e di alta qualità, in un ambiente accogliente e raffinato. Il nostro Chef Luca Sereni mescola la tradizione toscana con influenze arabe e internazionali, esplorando anche le diverse regioni italiane. Grazie alle tecniche di cottura contemporanee, propone un menù moderno e variegato, con opzioni vegetariane e vegane. Venite a scoprire sapori autentici e innovativi che raccontano una storia di passione e tradizione.",
+      "services": [
+        "Cucina Liguria e Freschezza del Mare: Piatti che uniscono la tradizione ligure con ingredienti freschi e di alta qualità.",
+        "Aperto a Pranzo e Cena: Servizio continuo per offrirvi un’esperienza culinaria unica in qualsiasi momento della giornata.",
+        "Ambiente Accogliente e Raffinato: Un’atmosfera elegante e confortevole per un'esperienza gastronomica piacevole.",
+        "Menù Moderno e Variegato: Creazioni dello Chef Luca Sereni che combinano tradizione toscana, influenze arabe e internazionali, con opzioni vegetariane e vegane.",
+        "Eventi Speciali e Degustazioni: Organizzazione di serate a tema, degustazioni di vini e cene speciali per arricchire la vostra esperienza."
+      ],
+      "seeMenu": "Vedi Menu Completo",
+      "detailsMenu": "Menù dettagli"
     }
+  },
+  "readMore": "Per saperne di più",
+  "recentPost": "Post recente",
+  "description": "descrizione",
+  "viewFullAlbum": "Visualizza l'album completo",
+  "eventLocation": "Luogo dell'evento",
+  "events": {
+    "search": "Cerca eventi",
+    "today": "Oggi",
+    "week": "Questa settimana",
+    "all": "Tutto"
   }
 }

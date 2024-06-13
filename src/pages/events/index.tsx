@@ -1,7 +1,7 @@
 import './eventspage.scss';
 import { CustomInput, CustomButton, EventItem } from 'components';
 import { type ChangeEvent, useState, useEffect } from 'react';
-import { useEvents } from 'hooks';
+import { useEvents, useLanguage } from 'hooks';
 import { groupItemsByMonth, EventType, Event } from 'utils';
 import moment from 'moment';
 
@@ -9,6 +9,7 @@ export const EventsPage = () => {
   const [search, setSearch] = useState('');
   const { events, execute } = useEvents({ type: EventType.event });
   const [eventsData, setEventsData] = useState<null | Event[]>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (eventsData == null && events.length) {
@@ -44,11 +45,11 @@ export const EventsPage = () => {
   return (
     <div className="page events-page">
       <div className="page_content">
-        <CustomInput onChange={handleSearchChange} label="Search events" />
+        <CustomInput onChange={handleSearchChange} label={t('events.search')} />
         <div className="button-container">
-          <CustomButton onClick={() => handleChangeDate('today')}>Today</CustomButton>{' '}
-          <CustomButton onClick={() => handleChangeDate('week')}>This week</CustomButton>
-          <CustomButton onClick={() => handleChangeDate('all')}>All</CustomButton>
+          <CustomButton onClick={() => handleChangeDate('today')}>{t('events.today')}</CustomButton>{' '}
+          <CustomButton onClick={() => handleChangeDate('week')}>{t('events.week')}</CustomButton>
+          <CustomButton onClick={() => handleChangeDate('all')}>{t('events.all')}</CustomButton>
         </div>
         <div className="events-list">
           {sorted.map(([date, eventsItems]) => (

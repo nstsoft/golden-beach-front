@@ -1,11 +1,10 @@
 import './about.scss';
 import { ServiceType } from 'utils';
 import { FC } from 'react';
-import { descriptions } from './descriptions';
-import { useTranslation } from 'react-i18next';
 import ClubImg from 'assets/description/d_club.png';
 import BeachImg from 'assets/description/d_beach.png';
 import RestaurantImg from 'assets/description/d_restaurant.png';
+import { useLanguage } from 'hooks';
 
 const images: Record<ServiceType, string> = {
   club: ClubImg,
@@ -13,23 +12,15 @@ const images: Record<ServiceType, string> = {
   restaurant: RestaurantImg,
 };
 
-type Props = {
-  service: ServiceType;
-};
-
-type Languages = 'en' | 'it';
+type Props = { service: ServiceType };
 
 export const AboutSection: FC<Props> = ({ service }) => {
-  const { i18n } = useTranslation();
-
-  const currentLanguage = i18n.language as Languages;
-  console.log(currentLanguage);
-  const description = descriptions[currentLanguage][service];
+  const { t } = useLanguage();
 
   return (
     <section className="about-section">
-      <h2>About {service}</h2>
-      <p>{description}</p>
+      <h2>{t(`descriptionPage.${service}.aboutTitle`)}</h2>
+      <p>{t(`descriptionPage.${service}.aboutDescription`)}</p>
       <div className="image">
         <img src={images[service]} alt="" />
       </div>

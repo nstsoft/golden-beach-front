@@ -2,8 +2,10 @@ import { type Event, cutString } from 'utils';
 import './item.scss';
 import { isMobile } from 'react-device-detect';
 import { Link } from 'react-router-dom';
+import { useLanguage } from 'src/hooks';
 
 export const EventItem = (event: Event) => {
+  const { t, language } = useLanguage();
   return (
     <Link key={event._id} className="unstyled-link" to={`news/${event._id}`}>
       <div className="news_item">
@@ -22,11 +24,14 @@ export const EventItem = (event: Event) => {
               <div className="text">
                 <div className="title">{event.name}</div>
                 <div className="description">
-                  {cutString(event.descriptionEng, isMobile ? 80 : 110)}
+                  {cutString(
+                    language === 'en' ? event.descriptionEng : event.descriptionIt,
+                    isMobile ? 80 : 110,
+                  )}
                 </div>
               </div>
             </div>
-            <div className="footer">Read more</div>
+            <div className="footer">{t('readMore')}</div>
           </div>
         </div>
       </div>

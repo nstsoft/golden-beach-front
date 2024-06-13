@@ -74,7 +74,8 @@ export const GalleryTab = () => {
   }));
 
   const deleteItems = () => {
-    remove(selected).then(() => {
+    const ids = galleryItems.filter((el) => selected.includes(el.album)).map((el) => el._id);
+    remove(ids).then(() => {
       execute({ skip: 0 });
       setSelected([]);
     });

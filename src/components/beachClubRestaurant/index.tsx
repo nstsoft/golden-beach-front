@@ -6,12 +6,12 @@ import BeachImg from 'assets/hardcode/beach.jpeg';
 import { ArrowRightSvg } from 'assets/svg/header';
 import { useRef, useState, useEffect } from 'react';
 import Grow from '@mui/material/Grow';
-import { useIntersectionObserver } from 'hooks';
+import { useIntersectionObserver, useLanguage } from 'hooks';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 export const BeachClubRestaurant = () => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
+  const { language, t } = useLanguage();
 
   const componentRef = useRef(null);
   const [isAnimated, setIsAnimated] = useState(false);
@@ -29,7 +29,7 @@ export const BeachClubRestaurant = () => {
     <section className={`beach-club-restaurant ${isMobile ? 'mobile' : ''}`}>
       <div ref={componentRef} className="content">
         <Grow in={isIntersecting || isAnimated}>
-          <div className="item" onClick={() => navigate('/golden-beach/club')}>
+          <div className="item" onClick={() => navigate(`/${language}/golden-beach/club`)}>
             <div className="image">
               <img src={ClubImg} />
             </div>
@@ -43,7 +43,7 @@ export const BeachClubRestaurant = () => {
           </div>
         </Grow>
         <Grow timeout={500} in={isIntersecting || isAnimated}>
-          <div className="item" onClick={() => navigate('/golden-beach/restaurant')}>
+          <div className="item" onClick={() => navigate(`/${language}/golden-beach/restaurant`)}>
             <div className="image">
               <img src={RestaurantImg} />
             </div>
@@ -59,7 +59,7 @@ export const BeachClubRestaurant = () => {
           </div>
         </Grow>
         <Grow in={isIntersecting || isAnimated} timeout={1000}>
-          <div className="item" onClick={() => navigate('/golden-beach/beach')}>
+          <div className="item" onClick={() => navigate(`/${language}/golden-beach/beach`)}>
             <div className="image">
               <img src={BeachImg} />
             </div>

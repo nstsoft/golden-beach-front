@@ -4,7 +4,7 @@ import itTranslation from 'translations/it.json';
 import { Language } from 'utils';
 
 const inStorage = localStorage.getItem('language');
-const language = inStorage ? JSON.parse(inStorage) : Language.en;
+const language = inStorage ? JSON.parse(inStorage) : Language.it;
 i18n.init({
   interpolation: { escapeValue: false },
   lng: language,
@@ -12,7 +12,8 @@ i18n.init({
     en: { translation: enTranslation },
     it: { translation: itTranslation },
   },
-  fallbackLng: 'en',
+  supportedLngs: Object.values(Language),
+  fallbackLng: 'it',
 });
 
 export { i18n };

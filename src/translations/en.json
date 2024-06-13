@@ -42,29 +42,64 @@
     }
   },
   "Headers": {
-    "UpcomingEvents": {
-      "big": "Upcoming",
-      "small": "Events"
+    "UpcomingEvents": { "big": "Upcoming", "small": "Events" },
+    "DiscoverGB": { "big": "Discover", "small": "Golden beach" },
+    "ServiceOffers": { "big": "Service", "small": "Offers" },
+    "photoGallery": { "big": "Gallery", "small": "photo" },
+    "interestingNews": { "big": "Interesting", "small": "news" },
+    "locations": { "big": "Locations", "small": "contact us" },
+    "providedServices": { "big": "Provided", "small": "services" },
+    "menu": { "big": "Special", "small": "menu" }
+  },
+  "descriptionPage": {
+    "club": {
+      "mainHeader": "NIGHT CLUB",
+      "aboutTitle": "The Golden Beach Night Club",
+      "aboutDescription": "As the sun sets and the sky is painted with golden hues, Golden Beach transforms into a spectacular nightclub. High-quality music, meticulously curated, creates a refined and welcoming atmosphere. Our bar, the pulsating heart of the evening, offers a wide range of cocktails prepared by expert bartenders, ensuring a unique sensory experience. Every sip and every note make your evening as unforgettable as the breathtaking scenery around you. At Golden Beach, fun merges with beauty and elegance, providing magical nights full of emotions.",
+      "services": [
+        "High-quality music: Professional DJs and a meticulously curated music selection to create an engaging and refined atmosphere.",
+        "Signature cocktails at the bar: Expert bartenders preparing a wide range of unique cocktails, ensuring an unforgettable sensory experience.",
+        "Elegant and welcoming environment: Spaces tastefully furnished with attention to detail, designed to offer a luxurious and comfortable experience.",
+        "Breathtaking panoramic view: A scenic setting with views that add a touch of magic to the evening.",
+        "Special events and themed nights: Exclusive events and themed nights programming to always offer new experiences to customers."
+      ]
     },
-    "DiscoverGB": {
-      "big": "Discover",
-      "small": "Golden beach"
+    "beach": {
+      "mainHeader": "BEACH",
+      "aboutTitle": "The Equipped Beach",
+      "aboutDescription": "During the day, Golden Beach transforms into an oasis of relaxation and fun. Our beach resort offers a range of services to make your beach experience unforgettable. Relax on sunbeds and under umbrellas, enjoy the comfort of our cabins and showers, and delight in drinks and snacks at our beach bar. Additionally, special events like beachside aperitifs add a touch of magic to your days. Come and discover all that Golden Beach has to offer!",
+      "services": [
+        "Umbrellas and padded sunbeds: Relax under the sun with comfortable sunbeds and dedicated beach waiter service.",
+        "Free Wi-Fi and phone charging: Stay connected with free Wi-Fi and safely charge your phone.",
+        "Lifeguard assistance and hot showers: Enjoy the safety of lifeguard assistance and the comfort of hot showers, with changing rooms available.",
+        "Recreational activities: Have fun with foosball and Ping Pong, and enjoy lively lunches with musical entertainment during the season.",
+        "Restaurant and bar: Savor à la carte lunch menus and choose from the finest selections of wines, sparkling wines, liquors, and spirits."
+      ]
     },
-    "ServiceOffers": {
-      "big": "Service",
-      "small": "Offers"
-    },
-    "photoGallery": {
-      "big": "Gallery",
-      "small": "photo"
-    },
-    "interestingNews": {
-      "big": "Interesting",
-      "small": "news"
-    },
-    "locations": {
-      "big": "Locations",
-      "small": "contact us"
+    "restaurant": {
+      "mainHeader": "RESTAURANT",
+      "aboutTitle": "Our Restaurant",
+      "aboutDescription": "Welcome to our restaurant, where Ligurian tradition meets the freshness of the sea for a unique culinary experience. Open for lunch and dinner, we offer dishes prepared with fresh, high-quality ingredients in a welcoming and refined atmosphere.Our Chef Luca Sereni blends Tuscan tradition with Arab and international influences, also exploring different Italian regions. With contemporary cooking techniques, he presents a modern and varied menu, including vegetarian and vegan options. Come and discover authentic and innovative flavors that tell a story of passion and tradition.",
+      "services": [
+        "Ligurian Cuisine and Sea Freshness: Dishes that combine Ligurian tradition with fresh, high-quality ingredients.",
+        "Open for Lunch and Dinner: Continuous service to offer you a unique culinary experience at any time of the day.",
+        "Welcoming and Refined Atmosphere: An elegant and comfortable setting for a pleasant dining experience.",
+        "Modern and Varied Menu: Creations by Chef Luca Sereni that blend Tuscan tradition, Arab and international influences, with vegetarian and vegan options.",
+        "Special Events and Tastings: Organization of themed evenings, wine tastings, and special dinners to enrich your experience."
+      ],
+      "seeMenu": "See Full Menu",
+      "detailsMenu": "Details menu"
     }
+  },
+  "readMore": "Read More",
+  "recentPost": "Recent post",
+  "description": "description",
+  "viewFullAlbum": "View the full album",
+  "eventLocation": "Event location",
+  "events": {
+    "search": "Search events",
+    "today": "Today",
+    "week": "this week",
+    "all": "All"
   }
 }
