@@ -93,7 +93,7 @@
   },
   "readMore": "Per saperne di più",
   "recentPost": "Post recente",
-  "description": "descrizione",
+  "description": "Descrizione",
   "viewFullAlbum": "Visualizza l'album completo",
   "eventLocation": "Luogo dell'evento",
   "events": {
@@ -101,5 +101,11 @@
     "today": "Oggi",
     "week": "Questa settimana",
     "all": "Tutto"
+  },
+  "gallery": {
+    "search": "Cerca",
+    "club": "discoteca",
+    "beach": "spiaggia",
+    "restaurant": "Tutto"
   }
 }

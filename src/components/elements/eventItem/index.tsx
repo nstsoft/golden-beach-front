@@ -55,7 +55,7 @@ export const EventItemSection: FC<Props> = ({ event }) => {
         </div>
         <div className="description-content" ref={textRef}>
           <div className="description">
-            <div className="title white-header-text">Description</div>
+            <div className="title white-header-text">{t('description')}</div>
             <div className="shadowed-text">
               {language === 'en' ? event.descriptionEng : event.descriptionIt}
             </div>

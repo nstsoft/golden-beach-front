@@ -7,12 +7,16 @@ import { useDebounce, ServiceType } from 'utils';
 import { CustomInput } from 'elements';
 import { ArrowLeftSvg } from 'assets/svg';
 import { useParams } from 'react-router-dom';
+import { useLanguage } from 'src/hooks';
+import meta from 'src/meta';
+import { Helmet } from 'react-helmet-async';
 
 export const GalleryPage = () => {
   const params = useParams();
   const [type, setType] = useState<ServiceType | null>();
   const [album, setAlbum] = useState<string | null>();
   const [search, setSearch] = useDebounce<string>('', 400);
+  const { t, language } = useLanguage();
 
   const showImages = album || album === '' || params.id;
 
@@ -23,7 +27,7 @@ export const GalleryPage = () => {
       className={`item ${selectedType === type ? 'active' : ''}`}
       onClick={() => setType(selectedType)}
     >
-      {selectedType ?? 'all'}
+      {t(`gallery.${selectedType ?? 'all'}`)}
     </div>
   );
 
@@ -52,11 +56,13 @@ export const GalleryPage = () => {
 
   return (
     <div className={`gallery-page page ${isMobile ? 'mobile' : ''}`}>
+      <Helmet>{meta[language].gallery}</Helmet>
       <div className={`page_content ${isMobile ? 'mobile' : ''}`}>
         <div className="gallery-header">
           <CustomInput
             style={{ display: showImages ? 'none' : 'flex' }}
             onChange={(event) => setSearch(event.target.value)}
+            label={t('gallery.search')}
           />
 
           <div className="types">

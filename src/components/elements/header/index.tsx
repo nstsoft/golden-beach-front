@@ -9,7 +9,7 @@ import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import { isMobile } from 'react-device-detect';
 import { SideMenu } from './components';
-import { CartSvg, UserSvg, SearchSvg } from 'assets/svg/header';
+import { Phone2Svg } from 'assets/svg';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from 'hooks';
 
@@ -33,14 +33,10 @@ export const Header = () => {
           <img src={Logo} alt="Golden beach logo" />
         </div>
         <div className="menu">
-          <div className="menu_item search">
-            <SearchSvg />
-          </div>
-          <div className="menu_item cart">
-            <CartSvg />
-          </div>
-          <div className="menu_item profile">
-            <UserSvg />
+          <div className="menu_item phone">
+            <a href="tel:+393475918364">
+              <Phone2Svg />
+            </a>
           </div>
 
           <div className="menu_item language">

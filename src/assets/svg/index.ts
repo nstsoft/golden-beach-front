@@ -5,3 +5,4 @@ export * from './download';
 export * from './dish';
 export * from './image';
 export * from './arrowLeft';
+export * from './phone';

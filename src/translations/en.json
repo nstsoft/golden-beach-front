@@ -101,5 +101,12 @@
     "today": "Today",
     "week": "this week",
     "all": "All"
+  },
+  "gallery": {
+    "search": "Search",
+    "club": "Club",
+    "beach": "Beach",
+    "restaurant": "Restaurant",
+    "all": "All"
   }
 }

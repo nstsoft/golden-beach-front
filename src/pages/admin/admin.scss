@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .admin-page {
   background: white;
   color: black;
@@ -18,5 +20,31 @@
   }
   [role='tabpanel'] {
     width: 100%;
+  }
+  .passcode-container {
+    .custom-input-control {
+      border: 1px solid $color;
+      color: black;
+      .custom-label {
+        color: black;
+        top: 7px;
+        left: 15px;
+      }
+      .custom-input {
+        color: black;
+        border: 1px solid $color;
+        padding: 5px 10px;
+      }
+      .custom-label.Mui-focused {
+        color: black;
+        top: 0px;
+        left: 0px;
+      }
+      .custom-input.Mui-focused {
+        &:after {
+          border-bottom: none;
+        }
+      }
+    }
   }
 }

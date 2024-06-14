@@ -2,13 +2,16 @@ import './news.scss';
 import { useEvents, useLanguage } from 'hooks';
 import { EventItem } from 'components';
 import { EventType } from 'utils';
+import meta from 'src/meta';
+import { Helmet } from 'react-helmet-async';
 
 export const NewsPage = () => {
   const { events: news } = useEvents({ type: EventType.news });
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <div className="news-page page events-page">
+      <Helmet>{meta[language].news}</Helmet>
       <div className="page_content">
         <div className="new-header-container">
           <div className="news-header">

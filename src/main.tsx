@@ -12,6 +12,7 @@ import theme from './theme';
 import 'leaflet/dist/leaflet.css';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { HelmetProvider } from 'react-helmet-async';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -19,9 +20,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>
-          <I18nextProvider i18n={i18n}>
-            <App />
-          </I18nextProvider>
+          <HelmetProvider>
+            <I18nextProvider i18n={i18n}>
+              <App />
+            </I18nextProvider>
+          </HelmetProvider>
         </BrowserRouter>
       </ThemeProvider>
     </LocalizationProvider>

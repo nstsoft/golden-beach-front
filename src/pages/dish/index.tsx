@@ -7,6 +7,8 @@ import Carousel from 'react-multi-carousel';
 import { cutString } from 'utils';
 import { SoyaSvg, VeganSvg, GlutenSvg } from 'assets/svg';
 import { useState } from 'react';
+import meta from 'src/meta';
+import { Helmet } from 'react-helmet-async';
 
 const labels: Record<string, JSX.Element> = {
   soya: <SoyaSvg />,
@@ -46,6 +48,7 @@ export const DishPage = () => {
 
   return (
     <div className={`dish-page page ${isMobile ? 'mobile' : ''}`}>
+      <Helmet>{meta[language].menu}</Helmet>
       <div className="page_content">
         <div className="dish-page_content">
           <div className="image-block">

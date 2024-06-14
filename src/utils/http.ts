@@ -7,7 +7,10 @@ const axiosInstance = axios.create({
   },
 });
 
-axiosInstance.interceptors.request.use();
+axiosInstance.interceptors.request.use((config) => {
+  config.headers.passphrase = localStorage.getItem('passphrase');
+  return config;
+});
 axiosInstance.interceptors.response.use();
 
 export const http = axiosInstance;

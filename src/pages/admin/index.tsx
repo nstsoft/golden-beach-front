@@ -7,6 +7,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { EventsTab, GalleryTab, MenuTab } from './adminComponents';
+import { CustomInput } from 'components';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -49,6 +50,15 @@ export const AdminPage = () => {
   return (
     <div className={`admin-page page ${isMobile ? 'mobile' : ''}`}>
       <section className={`page_content ${isMobile ? 'mobile' : ''}`}>
+        <div className="passcode-container">
+          <CustomInput
+            onChange={(ev) => {
+              localStorage.setItem('passphrase', ev.target.value);
+            }}
+            label="Pass code"
+          />{' '}
+        </div>
+
         <Box className="main-tabs" sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="Events/news" {...a11yProps(0)} />

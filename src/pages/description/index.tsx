@@ -7,6 +7,8 @@ import BeachPng from 'assets/description/beach.png';
 import RestaurantPng from 'assets/description/restaurant.png';
 import { ServiceType } from 'utils';
 import { useLanguage } from 'src/hooks';
+import meta from 'src/meta';
+import { Helmet } from 'react-helmet-async';
 
 const images = {
   club: ClubPng,
@@ -16,12 +18,13 @@ const images = {
 
 export const DescriptionPage = () => {
   const params = useParams<{ type: ServiceType }>();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   if (!params.type) return null;
 
   return (
     <div className={`page description-page ${isMobile ? 'mobile' : ''}`}>
+      <Helmet>{meta[language][params.type]}</Helmet>
       <div className="page_video">
         <div className="page_video_content">
           <div className="big-title">{t(`descriptionPage.${params.type}.mainHeader`)}</div>

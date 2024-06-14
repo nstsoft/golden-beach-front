@@ -10,12 +10,15 @@ import {
   ContactUs,
 } from 'components';
 import { isMobile } from 'react-device-detect';
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from 'src/hooks';
+import meta from 'src/meta';
+import { Helmet } from 'react-helmet-async';
 
 export const HomePage = () => {
-  const { t } = useTranslation();
+  const { t, language } = useLanguage();
   return (
     <div className={`page ${isMobile ? 'mobile' : ''}`}>
+      <Helmet>{meta[language].home}</Helmet>
       <div className="page_video">
         <div className="page_video_content">
           <video loop={true} className="clip" autoPlay muted>

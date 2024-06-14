@@ -4,12 +4,14 @@ import { type ChangeEvent, useState, useEffect } from 'react';
 import { useEvents, useLanguage } from 'hooks';
 import { groupItemsByMonth, EventType, Event } from 'utils';
 import moment from 'moment';
+import meta from 'src/meta';
+import { Helmet } from 'react-helmet-async';
 
 export const EventsPage = () => {
   const [search, setSearch] = useState('');
   const { events, execute } = useEvents({ type: EventType.event });
   const [eventsData, setEventsData] = useState<null | Event[]>(null);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     if (eventsData == null && events.length) {
@@ -44,6 +46,7 @@ export const EventsPage = () => {
 
   return (
     <div className="page events-page">
+      <Helmet>{meta[language].events}</Helmet>
       <div className="page_content">
         <CustomInput onChange={handleSearchChange} label={t('events.search')} />
         <div className="button-container">

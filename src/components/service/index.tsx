@@ -15,8 +15,6 @@ const images: Record<ServiceType, string> = {
 
 type Props = { service: ServiceType };
 
-type Languages = 'en' | 'it';
-
 const renderServiceItem = (item: string, index: number) => {
   let numberItem = '' + (index + 1);
   if (numberItem.length < 2) {
