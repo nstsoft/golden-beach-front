@@ -14,6 +14,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { HelmetProvider } from 'react-helmet-async';
 
+import 'dayjs/locale/en';
+import 'dayjs/locale/it';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <LocalizationProvider dateAdapter={AdapterMoment}>

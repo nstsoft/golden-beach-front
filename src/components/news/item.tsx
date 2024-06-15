@@ -3,6 +3,7 @@ import './item.scss';
 import { isMobile } from 'react-device-detect';
 import { Link } from 'react-router-dom';
 import { useLanguage } from 'src/hooks';
+import days from 'dayjs';
 
 export const EventItem = (event: Event) => {
   const { t, language } = useLanguage();
@@ -16,9 +17,7 @@ export const EventItem = (event: Event) => {
           <div className="content">
             <div className="body">
               <div className="date">
-                <div className="month">
-                  {event.date.toLocaleString('default', { month: 'short' })}
-                </div>
+                <div className="month">{days(event.date).format('MMM')}</div>
                 <div className="day">{event.date.getDate()}</div>
               </div>
               <div className="text">

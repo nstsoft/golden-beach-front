@@ -10,7 +10,6 @@ import { useIntersectionObserver, useLanguage } from 'hooks';
 import { useNavigate } from 'react-router-dom';
 
 export const BeachClubRestaurant = () => {
-  // const { t } = useTranslation();
   const { language, t } = useLanguage();
 
   const componentRef = useRef(null);
@@ -29,7 +28,7 @@ export const BeachClubRestaurant = () => {
     <section className={`beach-club-restaurant ${isMobile ? 'mobile' : ''}`}>
       <div ref={componentRef} className="content">
         <Grow in={isIntersecting || isAnimated}>
-          <div className="item" onClick={() => navigate(`/${language}/golden-beach/club`)}>
+          <div className="item" onClick={() => navigate(`/${language === 'it' ? '' : 'en/'}club`)}>
             <div className="image">
               <img src={ClubImg} />
             </div>
@@ -43,7 +42,10 @@ export const BeachClubRestaurant = () => {
           </div>
         </Grow>
         <Grow timeout={500} in={isIntersecting || isAnimated}>
-          <div className="item" onClick={() => navigate(`/${language}/golden-beach/restaurant`)}>
+          <div
+            className="item"
+            onClick={() => navigate(`/${language === 'it' ? '' : 'en/'}restaurant`)}
+          >
             <div className="image">
               <img src={RestaurantImg} />
             </div>
@@ -59,7 +61,7 @@ export const BeachClubRestaurant = () => {
           </div>
         </Grow>
         <Grow in={isIntersecting || isAnimated} timeout={1000}>
-          <div className="item" onClick={() => navigate(`/${language}/golden-beach/beach`)}>
+          <div className="item" onClick={() => navigate(`/${language === 'it' ? '' : 'en/'}beach`)}>
             <div className="image">
               <img src={BeachImg} />
             </div>

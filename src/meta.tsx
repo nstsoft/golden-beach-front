@@ -25,17 +25,9 @@ const ItRestaurant = (
       content="Gusta piatti prelibati al Ristorante Golden Beach di Albisola Superiore, Savona. Una cucina raffinata con vista mare ti aspetta per un'esperienza culinaria indimenticabile in un'atmosfera esclusiva."
     />
     <meta name="robots" content="index,archive,follow" />
-    <link href="https://www.mividagoldenbeach.com/it/golden-beach/restaurant" rel="canonical" />
-    <link
-      rel="alternate"
-      hrefLang="it"
-      href="https://www.mividagoldenbeach.com/it/golden-beach/restaurant/"
-    />
-    <link
-      rel="alternate"
-      hrefLang="en"
-      href="https://www.mividagoldenbeach.com/en/golden-beach/restaurant/"
-    />
+    <link href="https://www.mividagoldenbeach.com/restaurant" rel="canonical" />
+    <link rel="alternate" hrefLang="it" href="https://www.mividagoldenbeach.com/restaurant/" />
+    <link rel="alternate" hrefLang="en" href="https://www.mividagoldenbeach.com/en/restaurant/" />
 
     <meta property="og:image" content="https://www.mividagoldenbeach.com/og-logo.jpg" />
   </Fragment>
@@ -49,17 +41,9 @@ const ItBeach = (
       content="Vivi una giornata di relax e divertimento allo Stabilimento Balneare Golden Beach di Albisola Superiore, Savona. Goditi il sole, il mare e i servizi esclusivi offerti per un'esperienza balneare indimenticabile."
     />
     <meta name="robots" content="index,archive,follow" />
-    <link href="https://www.mividagoldenbeach.com/it/golden-beach/beach/" rel="canonical" />
-    <link
-      rel="alternate"
-      hrefLang="it"
-      href="https://www.mividagoldenbeach.com/it/golden-beach/beach/"
-    />
-    <link
-      rel="alternate"
-      hrefLang="en"
-      href="https://www.mividagoldenbeach.com/en/golden-beach/beach/"
-    />
+    <link href="https://www.mividagoldenbeach.com/beach/" rel="canonical" />
+    <link rel="alternate" hrefLang="it" href="https://www.mividagoldenbeach.com/beach/" />
+    <link rel="alternate" hrefLang="en" href="https://www.mividagoldenbeach.com/en/beach/" />
 
     <meta property="og:image" content="https://www.mividagoldenbeach.com/og-logo.jpg" />
   </Fragment>
@@ -73,17 +57,9 @@ const ItClub = (
       content="Scatena la tua voglia di divertimento alla Discoteca Golden Beach di Albisola Superiore, Savona. Vivi serate uniche con musica, balli e un'atmosfera coinvolgente in una delle migliori discoteche della riviera."
     />
     <meta name="robots" content="index,archive,follow" />
-    <link href="https://www.mividagoldenbeach.com/it/golden-beach/club/" rel="canonical" />
-    <link
-      rel="alternate"
-      hrefLang="it"
-      href="https://www.mividagoldenbeach.com/it/golden-beach/club/"
-    />
-    <link
-      rel="alternate"
-      hrefLang="en"
-      href="https://www.mividagoldenbeach.com/en/golden-beach/club/"
-    />
+    <link href="https://www.mividagoldenbeach.com/club/" rel="canonical" />
+    <link rel="alternate" hrefLang="it" href="https://www.mividagoldenbeach.com/club/" />
+    <link rel="alternate" hrefLang="en" href="https://www.mividagoldenbeach.com/en/club/" />
     <meta property="og:image" content="https://www.mividagoldenbeach.com/og-logo.jpg" />
   </Fragment>
 );
@@ -185,19 +161,16 @@ const ItMenu = (
     <title>##MENU TITLE FROM DB## - Menu Golden Beach - Albisola Superiore</title>
     <meta name="description" content="first 255 characters from italian description" />
     <meta name="robots" content="index,archive,follow" />
-    <link
-      href="https://www.mividagoldenbeach.com/it/golden-beach/restaurant/menu/<ITEM-ID>/"
-      rel="canonical"
-    />
+    <link href="https://www.mividagoldenbeach.com/restaurant/menu/<ITEM-ID>/" rel="canonical" />
     <link
       rel="alternate"
       hrefLang="it"
-      href="https://www.mividagoldenbeach.com/it/golden-beach/restaurant/menu/<ITEM-ID>/"
+      href="https://www.mividagoldenbeach.com/restaurant/menu/<ITEM-ID>/"
     />
     <link
       rel="alternate"
       hrefLang="en"
-      href="https://www.mividagoldenbeach.com/en/golden-beach/restaurant/menu/<ITEM-ID>/"
+      href="https://www.mividagoldenbeach.com/en/restaurant/menu/<ITEM-ID>/"
     />
 
     <meta property="og:image" content="https://www.mividagoldenbeach.com/og-logo.jpg" />
@@ -228,17 +201,9 @@ const EnRestaurant = (
       content="Savor exquisite dishes at the Golden Beach Restaurant in Albisola Superiore, Savona. Refined cuisine with a sea view awaits you for an unforgettable culinary experience in an exclusive atmosphere."
     />
     <meta name="robots" content="index,archive,follow" />
-    <link href="https://www.mividagoldenbeach.com/en/golden-beach/restaurant/" rel="canonical" />
-    <link
-      rel="alternate"
-      hrefLang="it"
-      href="https://www.mividagoldenbeach.com/it/golden-beach/restaurant/"
-    />
-    <link
-      rel="alternate"
-      hrefLang="en"
-      href="https://www.mividagoldenbeach.com/en/golden-beach/restaurant/"
-    />
+    <link href="https://www.mividagoldenbeach.com/en/restaurant/" rel="canonical" />
+    <link rel="alternate" hrefLang="it" href="https://www.mividagoldenbeach.com/restaurant/" />
+    <link rel="alternate" hrefLang="en" href="https://www.mividagoldenbeach.com/en/restaurant/" />
 
     <meta property="og:image" content="https://www.mividagoldenbeach.com/og-logo.jpg" />
   </Fragment>
@@ -252,17 +217,9 @@ const EnBeach = (
       content="Enjoy a day of relaxation and fun at the Golden Beach Bathing Establishment in Albisola Superiore, Savona. Enjoy the sun, the sea, and the exclusive services offered for an unforgettable beach experience."
     />
     <meta name="robots" content="index,archive,follow" />
-    <link href="https://www.mividagoldenbeach.com/en/golden-beach/beach/" rel="canonical" />
-    <link
-      rel="alternate"
-      hrefLang="it"
-      href="https://www.mividagoldenbeach.com/it/golden-beach/beach/"
-    />
-    <link
-      rel="alternate"
-      hrefLang="en"
-      href="https://www.mividagoldenbeach.com/en/golden-beach/beach/"
-    />
+    <link href="https://www.mividagoldenbeach.com/en/beach/" rel="canonical" />
+    <link rel="alternate" hrefLang="it" href="https://www.mividagoldenbeach.com/beach/" />
+    <link rel="alternate" hrefLang="en" href="https://www.mividagoldenbeach.com/en/beach/" />
 
     <meta property="og:image" content="https://www.mividagoldenbeach.com/og-logo.jpg" />
   </Fragment>
@@ -276,17 +233,9 @@ const EnCLub = (
       content="Unleash your desire for fun at the Golden Beach Nightclub in Albisola Superiore, Savona. Experience unique evenings with music, dancing, and an engaging atmosphere at one of the best nightclubs on the Riviera."
     />
     <meta name="robots" content="index,archive,follow" />
-    <link href="https://www.mividagoldenbeach.com/en/golden-beach/club/" rel="canonical" />
-    <link
-      rel="alternate"
-      hrefLang="it"
-      href="https://www.mividagoldenbeach.com/it/golden-beach/club/"
-    />
-    <link
-      rel="alternate"
-      hrefLang="en"
-      href="https://www.mividagoldenbeach.com/en/golden-beach/club/"
-    />
+    <link href="https://www.mividagoldenbeach.com/en/club/" rel="canonical" />
+    <link rel="alternate" hrefLang="it" href="https://www.mividagoldenbeach.com/club/" />
+    <link rel="alternate" hrefLang="en" href="https://www.mividagoldenbeach.com/en/club/" />
 
     <meta property="og:image" content="https://www.mividagoldenbeach.com/og-logo.jpg" />
   </Fragment>
@@ -389,19 +338,16 @@ const EnMenu = (
     <title>##MENU TITLE FROM DB## - Golden Beach Menu - Albisola Superiore</title>
     <meta name="description" content="first 255 characters from italian description" />
     <meta name="robots" content="index,archive,follow" />
-    <link
-      href="https://www.mividagoldenbeach.com/en/golden-beach/restaurant/menu/<ITEM-ID>/"
-      rel="canonical"
-    />
+    <link href="https://www.mividagoldenbeach.com/en/restaurant/menu/<ITEM-ID>/" rel="canonical" />
     <link
       rel="alternate"
       hrefLang="it"
-      href="https://www.mividagoldenbeach.com/it/golden-beach/restaurant/menu/<ITEM-ID>/"
+      href="https://www.mividagoldenbeach.com/restaurant/menu/<ITEM-ID>/"
     />
     <link
       rel="alternate"
       hrefLang="en"
-      href="https://www.mividagoldenbeach.com/en/golden-beach/restaurant/menu/<ITEM-ID>/"
+      href="https://www.mividagoldenbeach.com/en/restaurant/menu/<ITEM-ID>/"
     />
 
     <meta property="og:image" content="https://www.mividagoldenbeach.com/og-logo.jpg" />

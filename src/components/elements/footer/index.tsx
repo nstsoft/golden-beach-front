@@ -16,7 +16,11 @@ export const Footer = () => {
       <div className="page_footer_content">
         <div className="item text">Siti web © 2023. Tutti i diritti riservati.</div>
         <div className="item logo">
-          <img onClick={() => navigate(`/${language}`)} src={Logo} alt="logo" />
+          <img
+            onClick={() => navigate(`/${language === 'it' ? 'it' : ''}`)}
+            src={Logo}
+            alt="logo"
+          />
         </div>
         <div className="item social_media">
           <a className="unstyled-link" href=" https://www.facebook.com/goldenbeachalbisola">

@@ -29,7 +29,7 @@ export const Header = () => {
   return (
     <div className={`header app-padding ${isMobile ? 'mobile' : ''}`}>
       <div className="header_content">
-        <div className="logo" onClick={() => navigate(`/${language}`)}>
+        <div className="logo" onClick={() => navigate(`/${language === 'it' ? '' : 'en'}`)}>
           <img src={Logo} alt="Golden beach logo" />
         </div>
         <div className="menu">

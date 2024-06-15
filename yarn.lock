@@ -2581,7 +2581,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.8.34":
+"dayjs@npm:^1.11.11, dayjs@npm:^1.8.34":
   version: 1.11.11
   resolution: "dayjs@npm:1.11.11"
   checksum: 10c0/0131d10516b9945f05a57e13f4af49a6814de5573a494824e103131a3bbe4cc470b1aefe8e17e51f9a478a22cd116084be1ee5725cedb66ec4c3f9091202dc4b
@@ -3665,6 +3665,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:^4.2.1"
     add: "npm:^2.0.6"
     axios: "npm:^1.7.2"
+    dayjs: "npm:^1.11.11"
     dotenv: "npm:^16.4.5"
     eslint: "npm:^8.57.0"
     eslint-config-airbnb-typescript: "npm:^18.0.0"
@@ -3679,6 +3680,7 @@ __metadata:
     leaflet: "npm:^1.9.4"
     lightgallery: "npm:^2.7.2"
     moment: "npm:^2.30.1"
+    moment-timezone: "npm:^0.5.45"
     prettier: "npm:^3.2.5"
     react: "npm:^18.2.0"
     react-device-detect: "npm:^2.2.3"
@@ -4844,7 +4846,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.30.1":
+"moment-timezone@npm:^0.5.45":
+  version: 0.5.45
+  resolution: "moment-timezone@npm:0.5.45"
+  dependencies:
+    moment: "npm:^2.29.4"
+  checksum: 10c0/7497f23c4b8c875dbf07c03f9a1253f79edaeedc29d5732e36bfd3c5577e25aed1924fbd84cbb713ce1920dbe822be0e21bd487851a7d13907226f289a5e568b
+  languageName: node
+  linkType: hard
+
+"moment@npm:^2.29.4, moment@npm:^2.30.1":
   version: 2.30.1
   resolution: "moment@npm:2.30.1"
   checksum: 10c0/865e4279418c6de666fca7786607705fd0189d8a7b7624e2e56be99290ac846f90878a6f602e34b4e0455c549b85385b1baf9966845962b313699e7cb847543a

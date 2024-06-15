@@ -5,6 +5,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
 import { EventType } from 'utils';
+import days from 'dayjs';
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 6 },
@@ -33,12 +34,10 @@ export const EventsSection = () => {
           <div
             key={event._id}
             className="image"
-            onClick={() => navigate(`/${language}/events/${event._id}`)}
+            onClick={() => navigate(`/${language === 'it' ? '' : 'en/'}events/${event._id}`)}
           >
             <div className="date">
-              <div className="month">
-                {event.date.toLocaleString('default', { month: 'short' })}
-              </div>
+              <div className="month">{days(event.date).format('MMM')}</div>
               <div className="day">{event.date.getDate()}</div>
             </div>
             <img src={event.thumb} />

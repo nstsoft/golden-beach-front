@@ -3,18 +3,18 @@ import { FC } from 'react';
 import logo from 'assets/logo.svg';
 import { isMobile } from 'react-device-detect';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { ArrowRightSvg } from 'assets/svg/header';
+import { useLanguage } from 'src/hooks';
 
 type Props = {
   toggleDrawer: (newOpen?: boolean) => void;
 };
 
 export const SideMenu: FC<Props> = ({ toggleDrawer }) => {
-  const { t } = useTranslation();
+  const { t, language } = useLanguage();
   const handleClick = () => {
     toggleDrawer();
   };
@@ -29,17 +29,17 @@ export const SideMenu: FC<Props> = ({ toggleDrawer }) => {
         </div>
         <div className="menu">
           <div className="menu_items">
-            <Link onClick={handleClick} className="link" to="/">
+            <Link onClick={handleClick} className="link" to={`/${language === 'it' ? 'it' : ''}`}>
               {t('HomePage.Menu.home')}
             </Link>
 
-            <Link onClick={handleClick} className="link" to="golden-beach/club">
+            <Link onClick={handleClick} className="link" to="club">
               {t('HomePage.Menu.club')}
             </Link>
-            <Link onClick={handleClick} className="link" to="golden-beach/beach">
+            <Link onClick={handleClick} className="link" to="beach">
               {t('HomePage.Menu.beach')}
             </Link>
-            <Link onClick={handleClick} className="link" to="golden-beach/restaurant">
+            <Link onClick={handleClick} className="link" to="restaurant">
               {t('HomePage.Menu.restaurant')}
             </Link>
             <Link onClick={handleClick} className="link" to="events">

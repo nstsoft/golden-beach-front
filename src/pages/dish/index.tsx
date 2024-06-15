@@ -78,7 +78,9 @@ export const DishPage = () => {
               ))}
             </div>
 
-            <p>{language === 'en' ? item.descriptionEn : item.descriptionIt}</p>
+            <p className="shadowed-text">
+              {language === 'en' ? item.descriptionEn : item.descriptionIt}
+            </p>
           </div>
         </div>
         <ShadowHeader bigText="Other" smallText="menu" />

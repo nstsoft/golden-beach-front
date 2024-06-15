@@ -2,39 +2,46 @@ import { type Event, EventType } from 'utils';
 import { FC } from 'react';
 import './newsItemSections.scss';
 import { isMobile } from 'react-device-detect';
-import moment from 'moment';
 import { CalendarSvg } from 'assets/svg';
 import { useEvents, useLanguage } from 'hooks';
+import days from 'dayjs';
+import { useNavigate } from 'react-router-dom';
 
 type Props = { event: Event };
-
-const renderRecentPost = (event: Event) => {
-  return (
-    <div className="recent-post" key={event._id}>
-      <div className="image">
-        {' '}
-        <img src={event.image} />{' '}
-      </div>
-      <div className="text">
-        <div className="name">{event.name}</div>
-        <div className="date shadowed-text">{moment(event.date).format('MMM DD | HH:mma')}</div>
-      </div>
-    </div>
-  );
-};
 
 export const NewsItemSection: FC<Props> = ({ event }) => {
   const { events } = useEvents({ type: EventType.news });
   const { t, language } = useLanguage();
+  const navigate = useNavigate();
 
-  console.log(event);
+  const renderRecentPost = (item: Event) => {
+    return (
+      <div
+        className="recent-post"
+        key={item._id}
+        onClick={() => navigate(`/${language === 'it' ? '' : 'en/'}news/${event._id}`)}
+      >
+        <div className="image">
+          {' '}
+          <img src={item.image} />{' '}
+        </div>
+        <div className="text">
+          <div className="name">{item.name}</div>
+          <div className="date shadowed-text" style={{ textTransform: 'capitalize' }}>
+            {days(item.date).format('MMM DD | HH:mm')}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <section className={`news-item-section ${isMobile ? 'mobile' : ''}`}>
       <div className="head-content">
         <div className="white-header-text">{event.name}</div>
         <div className="date">
-          <CalendarSvg /> <a>{moment(event.date).format('MMM DD | HH:mma')}</a>
+          <CalendarSvg />{' '}
+          <a style={{ textTransform: 'capitalize' }}>{days(event.date).format('MMM DD | HH:mm')}</a>
         </div>
       </div>
       <div className="image">

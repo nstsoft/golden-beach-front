@@ -6,6 +6,7 @@ import { groupItemsByMonth, EventType, Event } from 'utils';
 import moment from 'moment';
 import meta from 'src/meta';
 import { Helmet } from 'react-helmet-async';
+import days from 'dayjs';
 
 export const EventsPage = () => {
   const [search, setSearch] = useState('');
@@ -58,7 +59,7 @@ export const EventsPage = () => {
           {sorted.map(([date, eventsItems]) => (
             <div className="event-list-container" key={date}>
               <div className="list-header">
-                <div className="date">{moment(date).format('MMMM YYYY')}</div>
+                <div className="date">{days(date).format('MMMM YYYY')}</div>
                 <div className="line"></div>
               </div>
               {eventsItems.map((event) => (

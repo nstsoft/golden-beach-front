@@ -1,7 +1,6 @@
 import { type Event } from 'utils';
 import { FC, useRef, useEffect, useState } from 'react';
 import { CalendarSvg } from 'assets/svg';
-import moment from 'moment';
 import './eventItems.scss';
 import { isMobile } from 'react-device-detect';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -10,6 +9,7 @@ import MarkerImg from 'assets/marker.png';
 import { PhotoGallery, ShadowHeader, CustomButton } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { useGallery, useLanguage } from 'hooks';
+import days from 'dayjs';
 
 const documentWidth = window.innerWidth;
 const documentHeight = window.innerHeight;
@@ -47,7 +47,7 @@ export const EventItemSection: FC<Props> = ({ event }) => {
     <section className={`event-item-section ${isMobile ? 'mobile' : ''}`}>
       <div className="white-header-text">{event.name}</div>
       <div className="date">
-        <CalendarSvg /> <a>{moment(event.date).format('MMM DD | HH:mma')}</a>
+        <CalendarSvg /> <a>{days(event.date).format('MMM DD | HH:mm')}</a>
       </div>
       <div className="content">
         <div className="image" onClick={() => setShowEnlarged(true)}>
