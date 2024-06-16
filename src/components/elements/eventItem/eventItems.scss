@@ -51,7 +51,8 @@
       align-items: flex-start;
       flex-direction: column;
       padding-left: 20px;
-      max-height: 60vh;
+      min-height: 60vh;
+      height: auto !important;
       .title {
         width: 100%;
       }
@@ -137,7 +138,9 @@
   .description-content {
     height: auto;
     @media screen and (max-height: 800px) {
-      max-height: 80vh;
+      // max-height: 80vh;
+      min-height: auto;
+      height: auto;
     }
     .map {
       height: auto;

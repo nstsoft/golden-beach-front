@@ -8,11 +8,10 @@ import { type GalleryItemType, type ServiceType } from 'utils';
 import LightGallery from 'lightgallery/react';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { CustomButton } from 'components';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from 'react-router-dom';
-import Grow from '@mui/material/Grow';
 
 const documentWidth = window.innerWidth;
 
@@ -35,7 +34,7 @@ export const PhotoGallery: FC<Props> = (props) => {
   const galleryRef = useRef(null);
   const initiatedRef = useRef(false);
   const navigate = useNavigate();
-  const [grows, setGrows] = useState<{ [key: string]: boolean }>({});
+  // const [grows, setGrows] = useState<{ [key: string]: boolean }>({});
 
   const { galleryItems, loadMore, isLoading } = useGallery({
     ...props,
@@ -48,33 +47,33 @@ export const PhotoGallery: FC<Props> = (props) => {
   useEffect(() => {
     if (galleryItems.length > 0 && !initiatedRef.current && props.infinityScroll) {
       initiatedRef.current = true;
-      setGrows(
-        galleryItems.reduce((acc, { _id }, index) => ({ [_id]: index < limit, ...acc }), {}),
-      );
+      // setGrows(
+      //   galleryItems.reduce((acc, { _id }, index) => ({ [_id]: index < limit, ...acc }), {}),
+      // );
     }
   }, [galleryItems, isLoading, props.infinityScroll, limit]);
 
   const GalleryItem = (item: GalleryItemType, total: number) => {
     if (props.infinityScroll) {
       return (
-        <Grow in={grows[item._id as string]} key={item._id}>
-          <div
-            itemID={item._id}
-            id={item._id}
-            key={item._id}
-            className={`gallery-item ${total < 4 ? 'small' : ''}`}
-            data-src={item.image}
+        // <Grow in={grows[item._id as string]} key={item._id}>
+        <div
+          itemID={item._id}
+          id={item._id}
+          key={item._id}
+          className={`gallery-item ${total < 4 ? 'small' : ''}`}
+          data-src={item.image}
+        >
+          <a
+            href={item.image}
+            data-lg-size="3000-3000"
+            data-poster={item.thumb}
+            data-src={item.thumb}
           >
-            <a
-              href={item.image}
-              data-lg-size="3000-3000"
-              data-poster={item.thumb}
-              data-src={item.thumb}
-            >
-              <img src={item.thumb} />
-            </a>
-          </div>
-        </Grow>
+            <img src={item.thumb} />
+          </a>
+        </div>
+        // </Grow>
       );
     }
     return (
@@ -99,30 +98,30 @@ export const PhotoGallery: FC<Props> = (props) => {
 
   const onInit = () => {};
 
-  const boxes = document.querySelectorAll('.gallery-item');
+  // const boxes = document.querySelectorAll('.gallery-item');
 
-  const isInViewport = (element: Element) => {
-    const rect = element.getBoundingClientRect();
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  };
+  // const isInViewport = (element: Element) => {
+  //   const rect = element.getBoundingClientRect();
+  //   return (
+  //     rect.top >= 0 &&
+  //     rect.left >= 0 &&
+  //     rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+  //     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  //   );
+  // };
 
-  if (props.infinityScroll) {
-    const checkVisibility = () => {
-      boxes.forEach((box) => {
-        if (isInViewport(box)) {
-          setGrows((prev) => ({ ...prev, [box.id]: true }));
-        }
-      });
-    };
+  // if (props.infinityScroll) {
+  //   const checkVisibility = () => {
+  //     boxes.forEach((box) => {
+  //       if (isInViewport(box)) {
+  //         setGrows((prev) => ({ ...prev, [box.id]: true }));
+  //       }
+  //     });
+  //   };
 
-    window.addEventListener('scroll', checkVisibility);
-    // window.addEventListener('resize', checkVisibility);
-  }
+  //   window.addEventListener('scroll', checkVisibility);
+  //   // window.addEventListener('resize', checkVisibility);
+  // }
 
   if (isLoading) {
     return <CircularProgress />;
