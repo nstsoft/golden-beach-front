@@ -14,7 +14,9 @@ export const useLanguage = () => {
     change: (lang: Language) => {
       i18n.changeLanguage(lang);
       localStorage.setItem('language', JSON.stringify(lang));
-      const origin = pathname.replace('/en/', '/');
+      const origin = pathname.replace('/en', pathname.startsWith('/en/') ? '' : '/');
+
+      console.log({ lang, origin, pathname });
 
       const path = lang === 'it' ? origin : '/en' + origin;
       daysjs.locale(i18n.language);

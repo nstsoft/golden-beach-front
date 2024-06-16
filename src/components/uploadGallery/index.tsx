@@ -12,7 +12,7 @@ import {
   TextField,
   MenuItem,
 } from '@mui/material';
-import { http, ServiceType, splitByChunks } from 'utils';
+import { http, ServiceType, splitByChunks, runPromisesSequentially } from 'utils';
 import Select, { type SelectChangeEvent } from '@mui/material/Select';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -46,7 +46,7 @@ export const UploadGallery: FC<Props> = ({ onConfirmed }) => {
 
     const chunks = splitByChunks(selectedFiles, 3);
 
-    const upload = async (files: File[]) => {
+    const upload = (files: File[]) => {
       const formData = new FormData();
       files.forEach((file) => {
         formData.append('files', file);
@@ -56,14 +56,16 @@ export const UploadGallery: FC<Props> = ({ onConfirmed }) => {
       formData.append('event', eventId);
       formData.append('eventId', 'eventId');
 
-      return http.post('/api/v1/gallery', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      return async () => {
+        await http.post('/api/v1/gallery', formData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        });
+      };
     };
 
     setIsUploading(true);
 
-    await Promise.all(chunks.map(upload))
+    await runPromisesSequentially(chunks.map(upload))
       .then(() => {
         setNotification('File uploaded successfully!');
         setTimeout(setNotification, 3000, undefined);
@@ -76,6 +78,7 @@ export const UploadGallery: FC<Props> = ({ onConfirmed }) => {
         setTimeout(setNotification, 3000, undefined);
       });
   };
+
   return (
     <div className={`upload_gallery ${isMobile ? 'mobile' : ''}`}>
       <Box>

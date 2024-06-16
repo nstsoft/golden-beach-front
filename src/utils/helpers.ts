@@ -45,3 +45,11 @@ export const chunkArray = (array: unknown[], size: number) => {
 
   return result;
 };
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function runPromisesSequentially(promises: any[]) {
+  console.log('=====', promises, promises.length);
+  for (let i = 0; i < promises.length; i++) {
+    await promises[i]().catch(() => {});
+  }
+}

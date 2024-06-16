@@ -136,6 +136,9 @@
 .event-item-section.mobile {
   .description-content {
     height: auto;
+    @media screen and (max-height: 800px) {
+      max-height: 80vh;
+    }
     .map {
       height: auto;
     }

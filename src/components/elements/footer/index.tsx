@@ -17,7 +17,7 @@ export const Footer = () => {
         <div className="item text">Siti web © 2023. Tutti i diritti riservati.</div>
         <div className="item logo">
           <img
-            onClick={() => navigate(`/${language === 'it' ? 'it' : ''}`)}
+            onClick={() => navigate(`/${language === 'it' ? '' : 'en'}`)}
             src={Logo}
             alt="logo"
           />

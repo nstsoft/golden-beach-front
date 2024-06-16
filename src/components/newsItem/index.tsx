@@ -1,5 +1,5 @@
 import { type Event, EventType } from 'utils';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import './newsItemSections.scss';
 import { isMobile } from 'react-device-detect';
 import { CalendarSvg } from 'assets/svg';
@@ -9,17 +9,21 @@ import { useNavigate } from 'react-router-dom';
 
 type Props = { event: Event };
 
-export const NewsItemSection: FC<Props> = ({ event }) => {
+export const NewsItemSection: FC<Props> = ({ event: current }) => {
   const { events } = useEvents({ type: EventType.news });
   const { t, language } = useLanguage();
   const navigate = useNavigate();
+  const [event, setEvent] = useState(current);
 
   const renderRecentPost = (item: Event) => {
     return (
       <div
         className="recent-post"
         key={item._id}
-        onClick={() => navigate(`/${language === 'it' ? '' : 'en/'}news/${event._id}`)}
+        onClick={() => {
+          navigate(`/${language === 'it' ? '' : 'en/'}news/${item._id}`);
+          setEvent(item);
+        }}
       >
         <div className="image">
           {' '}
@@ -56,7 +60,12 @@ export const NewsItemSection: FC<Props> = ({ event }) => {
             <div className="head">{t('recentPost')}</div>
             <div className="line"></div>
           </div>
-          <div className="recent-posts">{events.slice(0, 3).map(renderRecentPost)}</div>
+          <div className="recent-posts">
+            {events
+              .filter((el) => el._id !== event._id)
+              .slice(0, 3)
+              .map(renderRecentPost)}
+          </div>
         </div>
       </div>
     </section>

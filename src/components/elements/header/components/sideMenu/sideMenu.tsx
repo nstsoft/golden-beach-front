@@ -29,7 +29,7 @@ export const SideMenu: FC<Props> = ({ toggleDrawer }) => {
         </div>
         <div className="menu">
           <div className="menu_items">
-            <Link onClick={handleClick} className="link" to={`/${language === 'it' ? 'it' : ''}`}>
+            <Link onClick={handleClick} className="link" to={`/${language === 'it' ? '' : 'en'}`}>
               {t('HomePage.Menu.home')}
             </Link>
 
