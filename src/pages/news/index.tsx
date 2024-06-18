@@ -4,13 +4,14 @@ import { EventItem } from 'components';
 import { EventType } from 'utils';
 import meta from 'src/meta';
 import { Helmet } from 'react-helmet-async';
+import { isMobile } from 'react-device-detect';
 
 export const NewsPage = () => {
   const { events: news } = useEvents({ type: EventType.news });
   const { t, language } = useLanguage();
 
   return (
-    <div className="news-page page events-page">
+    <div className={`news-page page events-page ${isMobile ? 'mobile' : ''}`}>
       <Helmet>{meta[language].news}</Helmet>
       <div className="page_content">
         <div className="new-header-container">

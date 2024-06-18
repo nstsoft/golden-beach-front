@@ -114,9 +114,9 @@ const ItGallery = (
   </Fragment>
 );
 
-const ItSingleEvent = (
+const ItSingleEvent = (name: string) => (
   <Fragment>
-    <title>##EVENT TITLE FROM DB## - Eventi Golden Beach - Albisola Superiore</title>
+    <title>{name} - Eventi Golden Beach - Albisola Superiore</title>
     <meta name="description" content="first 255 characters from italian description" />
     <meta name="robots" content="index,archive,follow" />
     <link href="https://www.mividagoldenbeach.com/it/events/<ITEM_ID>/" rel="canonical" />
@@ -135,9 +135,9 @@ const ItSingleEvent = (
   </Fragment>
 );
 
-const ItSingleNews = (
+const ItSingleNews = (name: string) => (
   <Fragment>
-    <title>##EVENT TITLE FROM DB## - Novità Golden Beach - Albisola Superiore</title>
+    <title>{name} - Novità Golden Beach - Albisola Superiore</title>
     <meta name="description" content="first 255 characters from italian description" />
     <meta name="robots" content="index,archive,follow" />
     <link href="https://www.mividagoldenbeach.com/it/news/<ITEM_ID>/" rel="canonical" />
@@ -156,9 +156,9 @@ const ItSingleNews = (
   </Fragment>
 );
 
-const ItMenu = (
+const ItMenu = (name: string) => (
   <Fragment>
-    <title>##MENU TITLE FROM DB## - Menu Golden Beach - Albisola Superiore</title>
+    <title>{name} - Menu Golden Beach - Albisola Superiore</title>
     <meta name="description" content="first 255 characters from italian description" />
     <meta name="robots" content="index,archive,follow" />
     <link href="https://www.mividagoldenbeach.com/restaurant/menu/<ITEM-ID>/" rel="canonical" />
@@ -291,9 +291,9 @@ const EnGallery = (
   </Fragment>
 );
 
-const EnSingleEvent = (
+const EnSingleEvent = (name: string) => (
   <Fragment>
-    <title>##EVENT TITLE FROM DB## - Golden Beach Events - Albisola Superiore</title>
+    <title>{name} - Golden Beach Events - Albisola Superiore</title>
     <meta name="description" content="first 255 characters from italian description" />
     <meta name="robots" content="index,archive,follow" />
     <link href="https://www.mividagoldenbeach.com/en/events/<ITEM_ID>/" rel="canonical" />
@@ -312,9 +312,9 @@ const EnSingleEvent = (
   </Fragment>
 );
 
-const EnSingleNews = (
+const EnSingleNews = (name: string) => (
   <Fragment>
-    <title>##EVENT TITLE FROM DB## - Golden Beach News - Albisola Superiore</title>
+    <title>{name} - Golden Beach News - Albisola Superiore</title>
     <meta name="description" content="first 255 characters from italian description" />
     <meta name="robots" content="index,archive,follow" />
     <link href="https://www.mividagoldenbeach.com/en/news/<ITEM_ID>/" rel="canonical" />
@@ -333,9 +333,9 @@ const EnSingleNews = (
   </Fragment>
 );
 
-const EnMenu = (
+const EnMenu = (name: string) => (
   <Fragment>
-    <title>##MENU TITLE FROM DB## - Golden Beach Menu - Albisola Superiore</title>
+    <title>{name} - Golden Beach Menu - Albisola Superiore</title>
     <meta name="description" content="first 255 characters from italian description" />
     <meta name="robots" content="index,archive,follow" />
     <link href="https://www.mividagoldenbeach.com/en/restaurant/menu/<ITEM-ID>/" rel="canonical" />

@@ -16,6 +16,9 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import 'dayjs/locale/en';
 import 'dayjs/locale/it';
+import utc from 'dayjs/plugin/utc';
+import days from 'dayjs';
+days.extend(utc);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

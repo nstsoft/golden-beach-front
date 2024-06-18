@@ -48,7 +48,7 @@ export const DishPage = () => {
 
   return (
     <div className={`dish-page page ${isMobile ? 'mobile' : ''}`}>
-      <Helmet>{meta[language].menu}</Helmet>
+      {item && <Helmet>{meta[language].menu(item.name)}</Helmet>}
       <div className="page_content">
         <div className="dish-page_content">
           <div className="image-block">

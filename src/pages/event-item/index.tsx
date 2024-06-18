@@ -17,7 +17,7 @@ export const EventItemPage = () => {
 
   return (
     <div className="page">
-      <Helmet>{meta[language].singleEvent}</Helmet>
+      {events[0] && <Helmet>{meta[language].singleEvent(events[0].name)}</Helmet>}
       <div className="page_content">{renderItem()}</div>
     </div>
   );

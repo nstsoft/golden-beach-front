@@ -15,7 +15,10 @@ const responsive = {
 };
 
 export const EventsSection = () => {
-  const { events } = useEvents({ type: EventType.event, date: new Date() });
+  const { events } = useEvents({
+    type: EventType.event,
+    date: days().endOf('day').utc().toDate(),
+  });
   const navigate = useNavigate();
   const { language } = useLanguage();
 

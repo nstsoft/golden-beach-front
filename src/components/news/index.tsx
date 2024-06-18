@@ -5,6 +5,7 @@ import { isMobile } from 'react-device-detect';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { EventType } from 'src/utils';
+import dayjs from 'dayjs';
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1100 }, items: 3 },
@@ -13,7 +14,10 @@ const responsive = {
 };
 
 export const NewsSection = () => {
-  const { events: news } = useEvents({ type: EventType.news, date: new Date() });
+  const { events: news } = useEvents({
+    type: EventType.news,
+    date: dayjs().endOf('day').utc().toDate(),
+  });
 
   if (!news.length) {
     return <section className="upcoming-soon white-header-text">Upcoming soon</section>;

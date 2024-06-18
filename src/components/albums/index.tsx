@@ -22,7 +22,7 @@ export const Albums: FC<Props> = ({ onAlbumSelect, name, type }) => {
 
   return (
     <section className={`albums_section ${isMobile ? 'mobile' : ''}`}>
-      <ImageList variant="masonry" sx={{ width: '100%', height: '100%' }} cols={isMobile ? 2 : 3}>
+      <ImageList variant="quilted" sx={{ width: '100%', height: '100%' }} cols={isMobile ? 2 : 3}>
         {albums.map((item) => (
           <ImageListItem
             className="album-item"
